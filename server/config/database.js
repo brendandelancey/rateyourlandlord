@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // Bring in the Database Config and connect with the database 
 //using the ORM (Object Related Mapping)
 
-const db = require('../config/keys').mongoURI;
+const db = require('./keys').mongoURI;
 mongoose.connect(db, { 
     useNewUrlParser:true
 }).then(() => {

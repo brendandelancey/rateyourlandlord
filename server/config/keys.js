@@ -8,6 +8,7 @@ const fs = require('fs');
 //mongodb+srv://Admin:<password>@cluster0.lguyp.mongodb.net/<dbname>?retryWrites=true&w=majority
 //Check original tutorial to see if how he saves the later db is how you think he will
 const pathToKey = path.join(__dirname, '..', 'id_rsa_pub.pem');
+//const pathToKey = path.join(__dirname, '..', 'id_rsa_pub.pem');
 const PUB_KEY = fs.readFileSync(pathToKey, 'utf8');
 
 

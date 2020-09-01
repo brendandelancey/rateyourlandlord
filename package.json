@@ -2,7 +2,7 @@
   "name": "ratemylandlord",
   "version": "1.0.0",
   "description": "Application that allows users to rate and review previous and current landlords",
-  "main": "app.js",
+  "main": "server/app.js",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node app.js",

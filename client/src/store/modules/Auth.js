@@ -36,7 +36,7 @@ const actions = {
             let res = await axios.post('http://localhost:5000/api/users/login', user)
             // if editing on local http://localhost:5000/api/users/login
             // if preparing for launching api/users/login
-            console.log("AAAAAAAAA");
+            //console.log("AAAAAAAAA");
             if (res.data.success) {
                 const token = res.data.token;
                 const user = res.data.user;

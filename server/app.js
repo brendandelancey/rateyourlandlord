@@ -143,7 +143,8 @@ app.use('/api/initialpost', initialpost);
  */
 //Probably should hide the port in a "".env" file using 
 //"dotenv" thats what the .env.Port is for
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ||5000;
+//
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
