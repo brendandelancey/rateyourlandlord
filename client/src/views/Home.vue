@@ -260,7 +260,6 @@ export default {
           this.fetchInitialPosts(searchparameters);
           this.$router.push("/SearchResults");
         }
-        
         else if(this.landlordname!=""&&this.city!=""){
           let searchparameters ={
                   
@@ -422,7 +421,7 @@ export default {
   background: rgb(196,196,196);
   background: linear-gradient(90deg, rgba(196,196,196,1) 0%, rgba(163,163,163,1) 35%, rgba(31,31,31,1) 98%);
 }
-.ThirdBackgroundSection{
+/* .ThirdBackgroundSection{
   
-}
+} */
 </style>

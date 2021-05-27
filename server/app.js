@@ -81,14 +81,14 @@ require('./config/passport')(passport);
 // Bring in the Users route
 const users = require('./routes/api/users');
 //**Created
-// const session = require('./routes/api/session');
 const rating = require('./routes/api/rating');
 const initialpost = require('./routes/api/initialpost');
+const search = require('./routes/api/search');
 
 app.use('/api/users',users);
-// app.use('/api/session', session);
-// app.use('/api/rating', rating);
+app.use('/api/rating', rating);
 app.use('/api/initialpost', initialpost);
+app.use('/api/search', search);
 //** 
 
 //**Will most likely have to change this so that incorrect request get errors

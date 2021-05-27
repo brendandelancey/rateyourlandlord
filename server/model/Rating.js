@@ -17,7 +17,7 @@ const RatingSchema = new Schema({
     },
     username: {
         type: String,
-        required: true
+        required: false
     },
     //Always Equals the initial post it is associated with,
     // this is NOT unique among ratings, and all ratings associated

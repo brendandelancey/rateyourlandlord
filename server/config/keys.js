@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
     };
 } else {
     module.exports = {
-        mongoURI: "mongodb://localhost:27017/meven_auth",
+        mongoURI: "mongodb://localhost:27017/reviewyourlandlord",
         secret: PUB_KEY
     };
 }

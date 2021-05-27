@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 
 // Create the User Schema
 const InitialPostSchema = new Schema({
-    landlordname: {
+    landlordfirstname: {
+        type: String,
+        required: true
+    },
+    landlordlastname: {
         type: String,
         required: true
     },
@@ -29,23 +33,16 @@ const InitialPostSchema = new Schema({
     id:{
         type: String,
         required: true
-    }
-    // review: {
-    //     type: String,
-    //     required: true
-    // },
-    // rating: {
-    //     type: Number,
-    //     required: true
-    // },
-    // date: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // username: {
-    //     type: String,
-    //     required: true
-    // }
+    },
+    ratingNumber: {
+        type: Number,
+        required: true
+    },
+    ratingAverage: {
+        type: Number,
+        required: true
+    },
+ 
 });
 
 
