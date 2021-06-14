@@ -12,7 +12,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import Header from "@/components/Header.vue";
+import Header from "@/components/Header2.vue";
 import Footer from "@/components/Footer.vue";
 import Errors from "@/components/Errors.vue"
 export default {
