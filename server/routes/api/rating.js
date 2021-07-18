@@ -21,7 +21,7 @@ router.get('/',  (req,res) => {
     //       res.send(IP_Object+objectofRatings);
     //     } catch (err) {
     //       res.status(500).send(err);
-    //     }
+    //     } 
     Rating.find({
         // Query by ID of Initial Post
         IPid: req.body.IPid

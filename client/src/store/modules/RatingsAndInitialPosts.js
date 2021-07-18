@@ -6,80 +6,105 @@ import axios from 'axios';
 //**Probably will be adding initial post here and review because they are elements of data that will need to be changed and 
 //require authentication before the action of posting can be done 
 const state = {
-    queryofIPs: {},
-    searchparameters:{},
-    IP:{},
-    queryofRatings:{}
-    // status: '',
-    // error: null
+    // queryofIPs: {},
+    // searchparameters:{},
+    // Ratings:{},
+    queryofRatings:{},
+    status: '',
+    error: null
 };
 
 const getters = {
     queriedInitialPosts: state => state.queryofIPs,
-    queriedRatings: state=> state.queryofRatings
-    // error: state => state.error
+    queriedRatings: state=> state.queryofRatings,
+    error: state => state.error,
+    status: state => state.status
 };
 
 const actions = {
     //Initial Posts
-    async fetchInitialPosts({commit}, searchparameters){
-        // commit('making_query');
-        // try{
+    // async fetchInitialPosts({commit}, searchparameters){
+    //     // commit('making_query');
+    //     // try{
         
-        console.log("BBBBBBBB");
-        console.log(searchparameters);
-        let res = await axios.post('http://localhost:5000/api/initialpost/searchresults', searchparameters)
+    //     console.log("BBBBBBBB");
+    //     console.log(searchparameters);
+    //     let res = await axios.get('http://localhost:5000/api/initialpost/searchresults', searchparameters)
         
-        console.log("CCCCCCCC");
-        console.log(res);
-        commit('setSearchResults', res.data);
-        // if (res.data) {
-        //     const searchparameters = res.data.searchparameters;
+    //     console.log("CCCCCCCC");
+    //     console.log(res);
+    //     commit('setSearchResults', res.data);
+    //     // if (res.data) {
+    //     //     const searchparameters = res.data.searchparameters;
         
-        //  }
-        return res.data;
-        // }catch (err) {
-        //     commit('query_error', err);
-        // }
-        //router.push('/SearchResults');
-    },
+    //     //  }
+    //     return res.data;
+    //     // }catch (err) {
+    //     //     commit('query_error', err);
+    //     // }
+    //     //router.push('/SearchResults');
+    // },
 
     async createInitialPosts({commit}, newIP){
         // commit('making_query');
-        // try{
-        
-        console.log("DDDDDDDDDD");
-        console.log(newIP);
-        let res = await axios.post('http://localhost:5000/api/initialpost/searchresults', newIP)
-        
-        //Should just return some success message or failure message
-        console.log("EEEEEEEEEEE");
-        console.log(res);
-        commit('setSearchResults', res.data);
-        // if (res.data) {
-        //     const searchparameters = res.data.searchparameters;
-        
-        //  }
-        return res.data;
+        try{
+ 
+            console.log(newIP);
+            let res = await axios.post('http://localhost:5000/api/initialpost/', newIP)
+            
+            //Should just return some success message or failure message
+            console.log(res);
+            
+            if (res.data.status) {
+                commit('createIPSuccess');
+            
+            }
+            // return res.data;
+        }
+        catch (err) {
+            console.log(err);
+        }
         // }catch (err) {
         //     commit('query_error', err);
         // }
-        //router.push('/SearchResults');
     },
-
-
     //Ratings
     async fetchRatings({commit}, IPid){
-        const response = await axios.get('http://localhost:5000/api/initialpost/searchresults/landlordratings/'+ IPid);
-        
-        //Should ratings of specific IP 
-        commit('setRatingsResults', response.data);
+        try{
+            let res = await axios.get('http://localhost:5000/api/rating/', IPid);
+            
+            //Should ratings of specific IP 
+            if (res.data) {
+                commit('setRatingsSearchResults', res.data);
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
     },
-    async newRating({commit}, IPid, Rating){
-        const response = await axios.post('http://localhost:5000/api/initialpost/searchresults/landlordratings/'+ IPid +'/createreview',Rating);
-        //Should return success or error message
-        commit('FIX', response.data);
-    }
+    async newRating({commit}, Rating){
+        try{
+ 
+            console.log(newIP);
+            let res = await axios.post('http://localhost:5000/api/rating/', Rating)
+            
+            //Should just return some success message or failure message
+            console.log(res);
+            
+            if (res.data.status) {
+                commit('createRatingSuccess');
+            
+            }
+            // return res.data;
+        }
+        catch (err) {
+            console.log(err);
+        }
+        // }catch (err) {
+        //     commit('query_error', err);
+        // }
+    },
+
 };
 
 const mutations = {
@@ -90,8 +115,16 @@ const mutations = {
     // query_error(state, err) {
     //     state.error = err.response.data.msg
     // },
-    setSearchResults: (state, queryofIPs) => (state.queryofIPs = queryofIPs),
-    setRatingsResults: (state, queryofRatings) => (state.queryofRatings = queryofRatings),
+    createIPSuccess(state) {
+        state.error = null
+        state.status = 'success'
+    },
+    createRatingSuccess(state) {
+        state.error = null
+        state.status = 'success'
+    },
+    // setSearchResults: (state, queryofIPs) => (state.queryofIPs = queryofIPs),
+    setRatingsSearchResults: (state, queryofRatings) => (state.queryofRatings = queryofRatings),
 };
 
 export default {

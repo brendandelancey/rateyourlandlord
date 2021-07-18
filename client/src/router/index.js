@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home2.vue";
+import Home from "../views/Home.vue";
 import store from "../store/index.js"
 
 Vue.use(VueRouter);
@@ -9,7 +9,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/login",
@@ -20,13 +20,16 @@ const routes = [
   {
     path: "/profile",
     name: "Profile",
-    component: () =>
-      import( "../views/Profile.vue")
+    component: () => import( "../views/Profile.vue"),
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/register",
     name: "Register",
-    component: () => import("../views/Register.vue")
+    component: () => import("../views/Register.vue"),
+    
   },
   {
   path: "/searchresults",
@@ -71,14 +74,17 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-  } else if (to.matched.some(record => record.meta.requiresGuest)) {
-    if (store.getters.isLoggedIn) {
-      // Redirect to the Login Page
-      next('/profile');
-    } else {
-      next();
-    }
-  } else {
+  
+  } 
+  // else if (to.matched.some(record => record.meta.requiresGuest)) {
+  //   if (store.getters.isLoggedIn) {
+      
+  //     next('/profile');
+  //   } else {
+  //     next();
+  //   }
+  // }
+   else {
     next()
   }
 });

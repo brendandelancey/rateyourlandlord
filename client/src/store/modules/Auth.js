@@ -38,8 +38,8 @@ const actions = {
             // if preparing for launching api/users/login
             //console.log("AAAAAAAAA");
             if (res.data.success) {
-                const token = res.data.token;
-                const user = res.data.user;
+                let token = res.data.token;
+                let user = res.data.user;
                 // Store the token into the localstorage
                 localStorage.setItem('token', token);
                 // Set the axios defaults
@@ -49,6 +49,7 @@ const actions = {
             return res;
         } catch (err) {
             commit('auth_error', err);
+            localStorage.removeItem('token')
         }
     },
     // Register User
