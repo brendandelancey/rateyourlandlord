@@ -78,7 +78,8 @@ router.get('/landlord', async (req,res) => {
       { 
         landlordfirstname: req.body.landlordfirstname,
         landlordlastname: req.body.landlordlastname,
-        city: req.body.city
+        //Note: Not sure if needed
+        // city: req.body.city
       }
       // Removes Empty Parameters, these searches should be aloud to be variable
       Object.keys(objectofIPs).forEach(key => objectofIPs[key] === undefined && delete objectofIPs[key])

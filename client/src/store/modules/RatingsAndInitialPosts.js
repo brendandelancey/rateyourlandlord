@@ -47,8 +47,8 @@ const actions = {
 
     async createInitialPosts({commit}, newIP){
         // commit('making_query');
-        try{
- 
+        try
+        {
             console.log(newIP);
             let res = await axios.post('http://localhost:5000/api/initialpost/', newIP)
             
@@ -56,12 +56,12 @@ const actions = {
             console.log(res);
             
             if (res.data.status) {
-                commit('createIPSuccess');
-            
+                commit('createIPSuccess');   
             }
             // return res.data;
         }
-        catch (err) {
+        catch (err)
+        {
             console.log(err);
         }
         // }catch (err) {
@@ -85,7 +85,7 @@ const actions = {
     async newRating({commit}, Rating){
         try{
  
-            console.log(newIP);
+            console.log(Rating);
             let res = await axios.post('http://localhost:5000/api/rating/', Rating)
             
             //Should just return some success message or failure message
@@ -97,7 +97,8 @@ const actions = {
             }
             // return res.data;
         }
-        catch (err) {
+        catch (err) 
+        {
             console.log(err);
         }
         // }catch (err) {

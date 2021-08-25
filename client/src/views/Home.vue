@@ -1,8 +1,8 @@
 <template>
 <div class = "LandingPage">
         <div class="Hsearch">
-            <input class="HsearchByAddress" type="text" v-model="searchAddress" placeholder="Search by name"> 
-            <input class="HsearchByName" type="text" v-model="searchName" placeholder="Search by address "> 
+            <input id="autocomplete" class="HsearchByAddress" type="text" v-model="searchAddress" placeholder="Search by address"> 
+            <input class="HsearchByName" type="text" v-model="searchName" placeholder="Search by name"> 
         </div>
     <div class="LandingSearch">
     </div>
@@ -33,13 +33,58 @@
 </template>
 
 <script>
-// import { defineComponent } from '@vue/composition-api'
+import { mapActions } from "vuex";
+export default {
 
-// export default defineComponent({
-//     setup() {
-        
-//     },
-// })
+    mounted() {
+    this.autocomplete = new google.maps.places.Autocomplete(
+      (this.$refs.autocomplete),
+      {types: ['geocode']}
+    );
+  },
+  
+  methods: {
+    //! This might not be how you call two modules, needs testing
+    ...mapActions(["addressSearch","landlordSearch"]),
+  
+  //! Need to actually get the parameters from the search box
+  //! Also need to involve google in the auto correct
+    searchByAddress() {
+      let searchparameters = {
+        street: this.street,
+        city: this.city,
+        province: this.province,
+        country: this.country
+      };
+      this.addressSearch(searchparameters)
+        .then(res => {
+          if (res.data) {
+            this.$router.push("/searchresults");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    
+    searchByLandlord() {
+      let searchparameters = {
+        landlordfirstname: this.landlordfirstname,
+        landlordlastname: this.landlordlastname,
+        // city: this.city
+      };
+      this.landlordSearch(searchparameters)
+        .then(res => {
+          if (res.data) {
+            this.$router.push("/searchresults");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
+};
 </script>
 
 <style>

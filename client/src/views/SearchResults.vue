@@ -10,8 +10,9 @@
 
                 
                 <!-- Add boarder and off white colour also add results in cards multiplied by number of results scrolling down -->
+                <!--Should use the vuex searchResults gathered from the last page -->
                 <div class="queryofIPs">
-                    <div v-for="initialpost in queriedInitialPosts" :key="initialpost.id" class="initialpost">
+                    <div v-for="initialpost in queriedResults" :key="initialpost.id" class="initialpost">
                         {{initialpost.street
                         }}
                     </div>
@@ -61,49 +62,41 @@
 </template>
 
 <script>
-import { mapGetters  } from "vuex";
+// mapActions
+import { mapGetters,  } from "vuex";
 export default {
-    computed: mapGetters(["queriedInitialPosts"]),
-    // created() {
-    //     this.fetchInitialPosts();
-    // },
-
-//   name:"SearchRequest",
-//   methods: {
-//     ...mapActions([fetchInitialPosts])
-//     onDblClick(searchrequest){
-//         const theSearchParam ={
-                
-//             landlordname: theSearchParam.landlordname,
-//             street: theSearchParam.street,
-//             city: theSearchParam.city,
-//             province: theSearchParam.province,
-//             country: theSearchParam.country,
-
-//         };
-//         this.fetchInitialPosts(theSearchParam);
-//     }
+    // ! Fix This
+    // TODO Get queried results from state
+    // TODO Display qurried results
+    // TODO On Click MapAction Get Ratings Results and save to state
+    computed: mapGetters(["queriedResults"]),
   
-//   },
+  
+
+  name:"SearchRequest",
+  methods: {
+    // ...mapActions(["fetchRatings"]),
+    // fetchByResults() {
+    //     // ! Probably not accurate
+    //   let IPid = {
+    //     IPid: this.IP.IPid,
+    //   };
+    //   this.fetchRatings(searchparameters)
+    //     .then(res => {
+    //       if (res.data) {
+    //         this.$router.push("/LandlordRatings");
+    //       }
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+    // },
+  
+  },
 //   computed: mapGetters(["queriedInitialPosts"]),
 //   created() {
 //     this.fetchTodos();
 //   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //   data() {
 //     return {

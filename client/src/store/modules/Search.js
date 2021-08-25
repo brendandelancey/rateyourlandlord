@@ -6,8 +6,9 @@ import axios from 'axios';
 //**Probably will be adding initial post here and review because they are elements of data that will need to be changed and 
 //require authentication before the action of posting can be done 
 const state = {
-    queryAddress: {},
-    queryLandlords:{},
+    // queryAddress: {},
+    // queryLandlords:{},
+    queryResults:{},
     searchparameters:{},
    
  
@@ -16,8 +17,9 @@ const state = {
 };
 
 const getters = {
-    queriedAddressSearchResults: state => state.queryAddress,
-    queriedLandlordSearchResults: state=> state.queryLandlords
+    // queriedAddressSearchResults: state=> state.queryAddress,
+    // queriedLandlordSearchResults: state=> state.queryLandlords
+    queriedResults: state=> state.queryResults
     // error: state => state.error
 };
 
@@ -29,7 +31,7 @@ const actions = {
         
        
         console.log(searchparameters);
-        let res = await axios.get('http://localhost:5000/api/initialpost/searchresults', searchparameters)
+        let res = await axios.get('http://localhost:5000/api/search/address', searchparameters)
         
         if (res.data) 
         {
@@ -50,7 +52,7 @@ const actions = {
         {
             console.log(searchparameters);
             // search parameter object created in front end vue code, passed here
-            let res = await axios.get('http://localhost:5000/api/initialpost/searchresults', searchparameters)
+            let res = await axios.get('http://localhost:5000/api/search/landlord', searchparameters)
     
             console.log(res);
             if (res.data) 
@@ -77,8 +79,11 @@ const mutations = {
     // query_error(state, err) {
     //     state.error = err.response.data.msg
     // },
-    setAddressSearchResults: (state, queryAddress) => (state.queryAddress = queryAddress),
-    setLandlordSearchResults: (state, queryLandlords) => (state.queryLandlords = queryLandlords),
+    // setAddressSearchResults: (state, queryAddress) => (state.queryAddress = queryAddress),
+    // setLandlordSearchResults: (state, queryLandlords) => (state.queryLandlords = queryLandlords),
+    // ? This may be wrong
+    setAddressSearchResults: (state, queryAddress) => (state.queryResults = queryAddress),
+    setLandlordSearchResults: (state, queryLandlords) => (state.queryResults = queryLandlords)
 };
 
 export default {

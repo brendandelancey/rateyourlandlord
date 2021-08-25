@@ -41,11 +41,51 @@ export default {
     ...mapGetters(["isLoggedIn"])
   },
   methods: {
-    ...mapActions(["logout"]),
+    //! This might not be how you call two modules, needs testing
+    ...mapActions(["logout"],["addressSearch"]),
     logoutUser() {
       this.logout();
+    },
+
+  
+  //! Need to actually get the parameters from the search box
+  //! Also need to involve google in the auto correct
+    searchByAddress() {
+      let searchparameters = {
+        street: this.street,
+        city: this.city,
+        province: this.province,
+        country: this.country
+      };
+      this.addressSearch(searchparameters)
+        .then(res => {
+          if (res.data) {
+            this.$router.push("/searchresults");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    searchByLandlord() {
+      let searchparameters = {
+        street: this.street,
+        city: this.city,
+        province: this.province,
+        country: this.country
+      };
+      this.landlordSearch(searchparameters)
+        .then(res => {
+          if (res.data) {
+            this.$router.push("/searchresults");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
+
 };
 </script>
 
