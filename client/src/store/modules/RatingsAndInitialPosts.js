@@ -9,7 +9,7 @@ const state = {
     // queryofIPs: {},
     // searchparameters:{},
     // Ratings:{},
-    queryofRatings:{},
+    queryofRatings:[],
     status: '',
     error: null
 };
@@ -47,6 +47,7 @@ const actions = {
 
     async createInitialPosts({commit}, newIP){
         // commit('making_query');
+       
         try
         {
             console.log(newIP);
@@ -56,7 +57,8 @@ const actions = {
             console.log(res);
             
             if (res.data.status) {
-                commit('createIPSuccess');   
+                commit('createIPSuccess');
+                return true;   
             }
             // return res.data;
         }
@@ -70,19 +72,39 @@ const actions = {
     },
     //Ratings
     async fetchRatings({commit}, IPid){
+        console.log(JSON.stringify(IPid));
+        console.log(IPid);
+        var listOfDataObjects=[];
         try{
-            let res = await axios.get('http://localhost:5000/api/rating/', IPid);
+            const res = await axios.get('http://localhost:5000/api/rating/', {
+                params:{
+                    "IPid" : IPid}
+                
+            } );
             
             //Should ratings of specific IP 
             if (res.data) {
-                commit('setRatingsSearchResults', res.data);
+                if (res.data.length>0){
+                    for (var rating in res.data){
+                        console.log(res.data[rating])
+                        listOfDataObjects.push(res.data[rating])}
+                        
+                    }
             }
         }
         catch (err) {
             console.log(err);
         }
+        if(listOfDataObjects!=null){
+            for(var item in listOfDataObjects){
+                console.log(JSON.stringify(listOfDataObjects[item]));
+            }
+            commit('setRatingsSearchResults', listOfDataObjects);
+            return true; 
+        }
     },
     async newRating({commit}, Rating){
+        console.log("In There");
         try{
  
             console.log(Rating);
@@ -93,6 +115,7 @@ const actions = {
             
             if (res.data.status) {
                 commit('createRatingSuccess');
+                return true;
             
             }
             // return res.data;

@@ -31,29 +31,22 @@ const jwtDecode = require("jwt-decode");
 //                    **Probably best solution is to post two types of
 //                    objects seperately within function
 router.post('/', (req,res) => {
+    const id =uuid.v4();
     // ! Needs data validation
     const newInitialPost = new InitialPost({
       //? Could just use the objects id
-        id: uuid.v4(), 
+        id: id, 
         landlordfirstname: req.body.landlordfirstname,
         landlordlastname: req.body.landlordlastname,
         street: req.body.street,
-        ratingNumber: 0,
-        ratingAverage: 0,
+        ratingNumber: 1,
+        ratingAverage: req.body.rating,
         city: req.body.city,
         province: req.body.province,
         country: req.body.country
     });
 
-   
-    // ! Could make them enter the landlord then after entered can find the landlord and review them
-    // const newRating= new Rating({
-    //     IPid: newInitialPost.id,//This should be the same as the one above 
-    //     review: req.body.review,
-    //     rating: req.body.rating,
-    //     username: jwtDecode(req.headers.authorization).username
-    //     //The above username code is will always be correct since a prerequisite to this route is an authenticated user
-    // });
+  
     
    
 
@@ -62,7 +55,21 @@ router.post('/', (req,res) => {
     console.log(newInitialPost)
     newInitialPost.save()
     .then(()=>{
-      return res.status(200).json({status:"ok"})
+      const newRating= new Rating({
+    
+        IPid: id,//This should be the same as the IP from above 
+        review: req.body.review,
+        rating: req.body.rating,
+        username:req.body.username,//Not sure what it does if no username, but its not required
+        // username:jwtDecode(req.headers.authorization).username//this should be same as username of user posting -> token?
+      });
+
+      newRating.save() 
+      .then(()=>{
+          return res.status(200).json({status:"ok"})
+      }).catch(()=>{
+          return res.status(400).json({error:"Error creating an review for this landlord"});
+      }) 
     }).catch(()=>{
         return res.status(400).json({error:"Error creating an initial post"});
     })

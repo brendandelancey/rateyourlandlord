@@ -1,37 +1,54 @@
 <template>
   <div class="searchresults">
-    
-    
-    <b-container class="bv-example-row">
-        <b-row class="text-center">
-            <b-col>1 of 3</b-col>
+    <h4 class="advancedsearch" @click="AdvancedSearch()">Advanced Search</h4>
+    <!--     
+    <h1>
+        {{this.$store.state.queryResults }}
+    </h1> -->
+    <!-- <b-container class="bv-example-row">
+        <b-row class="text-center"> -->
+    <!-- <b-col>1 of 3</b-col>
 
-            <b-col cols="8" >2 of 3 (wider)
+            <b-col cols="8" >2 of 3 (wider) -->
 
-                
-                <!-- Add boarder and off white colour also add results in cards multiplied by number of results scrolling down -->
-                <!--Should use the vuex searchResults gathered from the last page -->
-                <div class="queryofIPs">
-                    <div v-for="initialpost in queriedResults" :key="initialpost.id" class="initialpost">
-                        {{initialpost.street
-                        }}
-                    </div>
-
-
-
-                    <b-card-group deck>
-                        <b-card
-                        header="Landlord: Actual Name of Landlord"
-                        header-tag="header"
-                        footer="Rating: Actual Rating of Landlord"
-                        footer-tag="footer"
-                        title="Address: Actaul Address"
-                        >
-                        <b-card-text>Header and footers using props.</b-card-text>
-                        <!-- <b-button href="#" variant="primary">Go somewhere</b-button>
+    <!-- Add boarder and off white colour also add results in cards multiplied by number of results scrolling down -->
+    <!--Should use the vuex searchResults gathered from the last page -->
+    <!-- <h1>HELLO</h1> -->
+    <div class="queryofIPs">
+      <div
+        v-for="initialpost in queriedResults"
+        :key="initialpost.id"
+        class="initial-post"
+      >
+        <div @click="ViewReview(initialpost)" class="result">
+          <div  class="rating">
+            <h1>
+              {{ initialpost.ratingAverage }} / 5
+            </h1>
+          </div>
+          <div class="theReview">
+          <h1 >
+            {{ initialpost.landlordfirstname }} : {{ initialpost.street }}
+          </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--                         
+                        <b-card-group deck>
+                            <b-card
+                            header="Landlord: Actual Name of Landlord"
+                            header-tag="header"
+                            footer="Rating: Actual Rating of Landlord"
+                            footer-tag="footer"
+                            title="Address: Actaul Address"
+                            >
+                            </b-card> -->
+    <!-- <b-card-text>Header and footers using props.</b-card-text> -->
+    <!-- <b-button href="#" variant="primary">Go somewhere</b-button>
                         Probably wil make whole card clickable -->
-                        <!-- **May Rearrange this to have Rating on Top, Name as title and Body as Address  -->
-                        </b-card>
+    <!-- **May Rearrange this to have Rating on Top, Name as title and Body as Address  -->
+    <!-- </b-card>
 
                        
                     </b-card-group>
@@ -41,86 +58,202 @@
             </b-col>
 
             <b-col>3 of 3
-                <!-- At Bottom -->
-                <b-card bg-variant="light"  title="Landlord Not Here?">
+                At Bottom -->
+    <!-- <b-card bg-variant="light"  title="Landlord Not Here?">
                     <b-card-text>
                         If you cant find your Landlord in your search above you can be the first to add them,
                         to let other renters like you know about your landlord.
-                    </b-card-text>
-                    <b-button href="#" variant="primary">Review Landlord</b-button>
-                </b-card>
-            </b-col>
+                    </b-card-text> -->
+    <h4 class="createAPost" @click="CreatePost()">
+      Is your house not in the list above Add Your House Here
+    </h4>
+
+    <!-- <h4 @click="ViewReview();">View rviews and ratings</h4> -->
+    <!-- </b-card> -->
+    <!-- </b-col>
         </b-row>
-    </b-container>
-
-     
-  
+    </b-container> -->
   </div>
-
-  
-  
 </template>
 
 <script>
 // mapActions
-import { mapGetters,  } from "vuex";
+import { mapGetters, mapActions } from "vuex";
+// import { store } from '../store';
 export default {
-    // ! Fix This
-    // TODO Get queried results from state
-    // TODO Display qurried results
-    // TODO On Click MapAction Get Ratings Results and save to state
-    computed: mapGetters(["queriedResults"]),
-  
-  
-
-  name:"SearchRequest",
-  methods: {
-    // ...mapActions(["fetchRatings"]),
-    // fetchByResults() {
-    //     // ! Probably not accurate
-    //   let IPid = {
-    //     IPid: this.IP.IPid,
-    //   };
-    //   this.fetchRatings(searchparameters)
-    //     .then(res => {
-    //       if (res.data) {
-    //         this.$router.push("/LandlordRatings");
-    //       }
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-    // },
-  
+  data() {
+    return {
+      // queriedResults: "",
+    };
   },
-//   computed: mapGetters(["queriedInitialPosts"]),
-//   created() {
-//     this.fetchTodos();
-//   }
+  // ! Fix This
+  // TODO Get queried results from state
+  // TODO Display qurried results
+  // TODO On Click MapAction Get Ratings Results and save to state
+  computed: mapGetters(["queriedResults"]),
+  //   ...mapGetters({
+  // // map `this.doneCount` to `this.$store.getters.doneTodosCount`
+  //   doneCount: 'doneTodosCount'
+  // })
 
-//   data() {
-//     return {
-//       username: "",
-//       password: ""
-//     };
-//   },
-//   methods: {
-//     ...mapActions(["login"]),
-//     loginUser() {
-//       let user = {
-//         username: this.username,
-//         password: this.password
-//       };
-//       this.login(user)
-//         .then(res => {
-//           if (res.data.success) {
-//             this.$router.push("/profile");
-//           }
-//         })
-//         .catch(err => {
-//           console.log(err);
-//         });
-//     }
-//   }
+  mounted() {
+    //   console.log("this.getters.queriedResults")
+    //   console.log(store.getters.queriedResults)
+    //   console.log("this.$store.state.todos")
+    //   console.log(store.state.todos)
+  },
+  methods: {
+    ...mapActions(["fetchRatings"]),
+
+    AdvancedSearch() {
+      this.$router.push("/advancedsearch");
+    },
+    CreatePost() {
+      console.log("HHHHEEEERRRREEEE")
+      this.$router.push("/createpost");
+    },
+    CreateRating() {
+      this.$router.push("/createrating");
+    },
+    ViewReview(initialpost) {
+      const id=initialpost.id;
+      const IP =JSON.stringify(initialpost);
+      console.log("READ THIS: "+ IP)
+      localStorage.setItem( "initialpost", IP );
+    
+      console.log("In Here");
+      console.log("Initial Post ID: " + JSON.stringify(id));
+      this.fetchRatings(id)
+        .then((res) => {
+          console.log("Resp: ");
+          console.log(res);
+          if (res) {
+            console.log("GOT HERE");
+            // Router needs a fix onComplete event
+            this.$router.push ({name:"ViewRatingsAndReviews",
+              params: {id},
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+
+  // ...mapActions(["fetchRatings"]),
+  // fetchByResults() {
+  //     // ! Probably not accurate
+  //   let IPid = {
+  //     IPid: this.IP.IPid,
+  //   };
+  //   this.fetchRatings(searchparameters)
+  //     .then(res => {
+  //       if (res.data) {
+  //         this.$router.push("/LandlordRatings");
+  //       }
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // },
+
+  //   },
+  //   computed: mapGetters(["queriedInitialPosts"]),
+  //   created() {
+  //     this.fetchTodos();
+  //   }
+
+  //   data() {
+  //     return {
+  //       username: "",
+  //       password: ""
+  //     };
+  //   },
+  //   methods: {
+  //     ...mapActions(["login"]),
+  //     loginUser() {
+  //       let user = {
+  //         username: this.username,
+  //         password: this.password
+  //       };
+  //       this.login(user)
+  //         .then(res => {
+  //           if (res.data.success) {
+  //             this.$router.push("/profile");
+  //           }
+  //         })
+  //         .catch(err => {
+  //           console.log(err);
+  //         });
+  //     }
+  //   }
 };
 </script>
+<style>
+.advancedsearch{
+   padding-bottom: 20px;
+}
+.searchresults {
+  min-height:100%; 
+    /* position:relative;  */
+}
+.result{
+    /* position: absolute;  */
+  /* top: 50%; */
+  /* left: 100%; */
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  /* padding-bottom: 20px; */
+  margin: 0 auto;
+  width: 75%;
+   cursor: pointer;
+  
+
+}
+.initial-post{
+    /* position: absolute;  */
+  /* top: 50%; */
+  /* left: 100%; */
+ 
+  justify-content: center;
+  padding-bottom: 35px;
+  
+  /* padding: 20px; */
+  /* margin: 0 auto; */
+
+}
+.theReview{
+  
+  background-color: #eaeff1;
+  height: 125px;
+  width: 50%;
+  
+
+}
+.theReview h1 {
+  
+  margin: 0 auto;
+  
+
+}
+.rating{
+  
+  background-color: darkgray;
+  height: 125px;
+  width: 125px;
+  
+  
+}
+.createAPost{
+  cursor: pointer;
+    /* clear: both; */
+  width: 100%;
+  /* position: absolute; */
+   height: 1.5rem; 
+  padding-bottom: 50px;
+  
+}
+
+</style>

@@ -12,7 +12,7 @@ const jwtDecode = require("jwt-decode");
 
 // ! May change this to async await syntax
 
-router.get('/',  (req,res) => {
+router.get('/',  async (req,res) => {
     // const IP_Object= await InitialPost.find({id: req.params.id})
 
     // const objectofRatings= await Rating.find({IPid: req.params.id})
@@ -22,24 +22,34 @@ router.get('/',  (req,res) => {
     //     } catch (err) {
     //       res.status(500).send(err);
     //     } 
-    Rating.find({
+    const IPidRatings=
+    {
+        IPid: req.query.IPid
+    }
+    console.log("New get ratings Call:");
+    console.log(req.query.IPid);
+    const object = await Rating.find(IPidRatings);
         // Query by ID of Initial Post
-        IPid: req.body.IPid
+        
+    try {
 
-    }).then(ratings =>{
-        if (!ratings){
-            return res.status(404).json({
-                msg: "Any Ratings for this landlord could not be found",
-                success: false
-            });
+        console.log(" Objects Found: "+ JSON.stringify(object));
+        
+        if (object.length===0){
+            res.send(null);
+            console.log("Nothing Found &&&&&&&&&&&")
+            console.log("Null Objects: "+ JSON.stringify(object));
         }
-        else {
-            return res.status(200).json(ratings);
+        else{
+            res.send(object);
+            console.log("Objects Found");
+            console.log("SUCCESS Objects: "+ JSON.stringify(object));
         }
-    }).catch(()=>{
-    return res.status(400).json({error:"Error in finding ratings for landlord"});
-    })
-
+        
+        } catch (err) {
+            res.status(500).send(err);
+            console.log("FAILURE");
+        }
 });
 
 router.post('/', (req,res) => {
@@ -86,7 +96,7 @@ router.post('/', (req,res) => {
                     IPid: req.body.IPid,//This should be the same as the IP from above 
                     review: req.body.review,
                     rating: req.body.rating,
-                    username:req.body.username,//Not sure what it does if no username, but its not required
+                    // username:req.body.username,//Not sure what it does if no username, but its not required
                     // username:jwtDecode(req.headers.authorization).username//this should be same as username of user posting -> token?
                 });
        

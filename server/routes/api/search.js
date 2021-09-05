@@ -16,27 +16,46 @@ const jwtDecode = require("jwt-decode");
 
 // ! May be moving this into initial post since this is technically where it belongs
 
-// router.get('/advanced', async (req,res) => {
-//     //Advanced search
-//     if (req.body.landlordname && req.body.street && req.body.city && req.body.province && req.body.country)
-//     {
-//         const objectofIPs= await InitialPost.find({
-//             landlordname: req.body.landlordname,
-//             street: req.body.street,
-//             city: req.body.city,
-//             province: req.body.province,
-//             country: req.body.country
-//         });
-//         try {
-//             res.send(objectofIPs);
-//           } catch (err) {
-//             res.status(500).send(err);
-//           }
-//     }
-//     else{
-//       return res.status(400).json({error:"Error finding landlord using advanced search"});
-//     }
-// });
+router.get('/advanced', async (req,res) => {
+    //Advanced search
+    
+    var objectofIPs= {
+        landlordfirstname: req.query.firstname,
+        landlordlastname: req.query.lastname,
+        street: req.query.street,
+        city: req.query.city,
+        province: req.query.province,
+        country: req.query.country
+    }
+    Object.keys(objectofIPs).forEach(key => objectofIPs[key] === undefined || objectofIPs[key] === "" && delete objectofIPs[key])
+
+    console.log("Advanced New Object: "+ JSON.stringify(objectofIPs));
+    
+    const object= await InitialPost.find(objectofIPs);
+
+    try {
+
+      console.log("Advanced Objects Found: "+ JSON.stringify(object));
+      
+      if (object.length===0){
+        res.send(null);
+        console.log("Nothing Found &&&&&&&&&&&")
+        console.log("Null Objects: "+ JSON.stringify(object));
+      }
+      else{
+        res.send(object);
+        console.log("Objects Found");
+        console.log("Advanced SUCCESS Objects: "+ JSON.stringify(object));
+      }
+      
+      } catch (err) {
+        res.status(500).send(err);
+        console.log("FAILURE");
+      }
+
+
+
+});
 
 
 // ! Need to check if properties are empty cause the search to fail
@@ -47,22 +66,46 @@ router.get('/address', async (req,res) => {
     // if (req.body.street && req.body.city && req.body.province && req.body.country)
     // {
       // console.log(req.body.street)
-      const objectofIPs=
+
+      console.log("New Address Call:");
+
+      // console.log("Backend Street: "+  req.query.street);
+      // console.log("Backend City: "+ req.query.city);
+      // console.log("Backend Province: "+ req.query.province);
+      // console.log("Backend Country: "+ req.query.country);
+
+      var objectofIPs=
       { 
-        street: req.body.street,
-        city: req.body.city,
-        province: req.body.province,
-        country: req.body.country
+        street: req.query.street,
+        city: req.query.city,
+        province: req.query.province,
+        country: req.query.country
       }
       // Removes Empty Parameters, these searches should be aloud to be variable
       Object.keys(objectofIPs).forEach(key => objectofIPs[key] === undefined && delete objectofIPs[key])
 
-      const object= await InitialPost.find(objectofIPs  
-      );
+      console.log("New Object: "+ JSON.stringify(objectofIPs));
+      
+      const object= await InitialPost.find(objectofIPs);
+
       try {
+
+        console.log(" Objects Found: "+ JSON.stringify(object));
+        
+        if (object.length===0){
+          res.send(null);
+          console.log("Nothing Found &&&&&&&&&&&")
+          console.log("Null Objects: "+ JSON.stringify(object));
+        }
+        else{
           res.send(object);
+          console.log("Objects Found");
+          console.log("SUCCESS Objects: "+ JSON.stringify(object));
+        }
+        
         } catch (err) {
           res.status(500).send(err);
+          console.log("FAILURE");
         }
     // } 
     // else{
@@ -74,22 +117,40 @@ router.get('/landlord', async (req,res) => {
     //Landlord search
     // if (req.body.landlordfirstname && req.body.city)
     // {
+      console.log("Backend Firstname: "+  req.query.firstname);
+      console.log("Backend Lastname: "+ req.query.lastname);
+
       const objectofIPs=
       { 
-        landlordfirstname: req.body.landlordfirstname,
-        landlordlastname: req.body.landlordlastname,
+        landlordfirstname: req.query.firstname,
+        landlordlastname: req.query.lastname,
         //Note: Not sure if needed
         // city: req.body.city
       }
       // Removes Empty Parameters, these searches should be aloud to be variable
       Object.keys(objectofIPs).forEach(key => objectofIPs[key] === undefined && delete objectofIPs[key])
-     
-      const object= await InitialPost.find(objectofIPs
-      );
+      console.log("New Object: "+ JSON.stringify(objectofIPs));
+      
+      const object= await InitialPost.find(objectofIPs);
+
       try {
+
+        console.log(" Objects Found: "+ JSON.stringify(object));
+        
+        if (object.length===0){
+          res.send(null);
+          console.log("Nothing Found &&&&&&&&&&&")
+          console.log("Null Objects: "+ JSON.stringify(object));
+        }
+        else{
           res.send(object);
+          console.log("Objects Found");
+          console.log("SUCCESS Objects: "+ JSON.stringify(object));
+        }
+        
         } catch (err) {
           res.status(500).send(err);
+          console.log("FAILURE");
         }
     // }
     // else{

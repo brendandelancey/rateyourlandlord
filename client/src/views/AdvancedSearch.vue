@@ -1,13 +1,12 @@
 <template>
   <div class="createpost">
-    <h1>Add your student house below</h1>
+    
     <!-- Either remove columns or make 1 and 3 very small -->
     <b-container class="bv-example-row">
-
         <b-row class="text-center">
-            <b-col></b-col>
+            <b-col>1 of 3</b-col>
 
-            <b-col cols="8" >
+            <b-col cols="8" >2 of 3 (wider)
 
                 
                 <div class="create_review_form">
@@ -31,8 +30,7 @@
                             >
                                 <b-form-input 
                                 id="landlordfirstname"
-                                v-model="landlordfirstname"
-                                required
+                                v-model="firstname"
                                 >
                                 </b-form-input>
                             </b-form-group>
@@ -40,13 +38,12 @@
                                 label-cols-sm="3"
                                 label="Landlord Last Name:"
                                 label-align-sm="right"
-                                label-for="landlordlastname"
+                                label-for="lastname"
                                 type="text"
                             >
                                 <b-form-input 
                                 id="landlordlastname"
-                                v-model="landlordlastname"
-                                required
+                                v-model="lastname"
                                 >
                                 </b-form-input>
                             </b-form-group>
@@ -60,7 +57,6 @@
                                 <b-form-input 
                                 id="street"
                                 v-model="street"
-                                required
                                 ></b-form-input>
                             </b-form-group>
 
@@ -73,7 +69,6 @@
                                 <b-form-input 
                                 id="city"
                                 v-model="city"
-                                required
                                 ></b-form-input>
                             </b-form-group>
 
@@ -86,7 +81,6 @@
                                 <b-form-input 
                                 id="province"
                                 v-model="province"
-                                required
                                 ></b-form-input>
                             </b-form-group>
 
@@ -99,40 +93,20 @@
                                 <b-form-input 
                                 id="country"
                                 v-model="country"
-                                required
                                 ></b-form-input>
                             </b-form-group>
 
             
-
-                            <!-- </b-form-group> -->
-                            <!-- Might remove divs from both -->
-                            <div>
-                                <b-form-textarea
-                                id="review"
-                                v-model="review"
-                                required
-                                placeholder="Write Your Review Here"
-                                rows="3"
-                                max-rows="6"
-                                ></b-form-textarea>
-
-                                <!-- <pre class="mt-3 mb-0">{{ text }}</pre> -->
-                                <p></p>
-                            </div>
-                            <div>
-                                <b-form-rating v-model="rating" required variant="warning" class="mb-2"></b-form-rating>
-                                <p class="mt-2">Value: {{ rating }}</p>
-                            </div>
+                            
                         </b-card>
-                        <b-button class="submit-post" type="submit" variant="primary">Submit</b-button>
+                        <b-button type="submit" variant="primary">Submit</b-button>
                     </b-form>
                 </div>
 
 
             </b-col>
 
-            <b-col></b-col>
+            <b-col>3 of 3</b-col>
         </b-row>
     </b-container>
 
@@ -151,56 +125,52 @@ import { mapActions } from "vuex";
 export default {
     data() {
       return {
-        landlordfirstname: "",
-        landlordlastname: "",
+        firstname: "",
+        lastname: "",
         street: "",
         city: "",
         province: "",
         country: "",
-        review: "",
-        rating:0
       }
     },
       mounted() {
       
   },
   methods: {
-       ...mapActions(["createInitialPosts"]),
+       ...mapActions(["advancedSearch"]),
 
     onSubmit(event) {
         event.preventDefault()
         // alert(JSON.stringify(this.form))
-        console.log("Landlord Firstname: "+this.landlordfirstname)
-        console.log("Landlord Lastname: "+this.landlordlastname)
+        console.log("Landlord Firstname: "+this.firstname)
+        console.log("Landlord Lastname: "+this.lastname)
         console.log("Street: "+this.street)
         console.log("City: "+this.city)
         console.log("Province: "+this.province)
         console.log("Country: "+this.country)
-        console.log("Review: "+this.review)
-        console.log("Rating: "+this.rating)
-        this.newInitialPost();
+
+        this.newAdvancedSearch();
         },
-    newInitialPost() {
-        const initialPostObject = {
+    newAdvancedSearch() {
+        const advancedSearchObject = {
           street: this.street.toLowerCase(),
           city: this.city.toLowerCase(),
           province: this.province.toLowerCase(),
           country: this.country.toLowerCase(),
-          landlordfirstname:this.landlordfirstname.toLowerCase(),
-          landlordlastname: this.landlordlastname.toLowerCase(),
-          rating: this.rating,
-          review: this.review.toLowerCase(),
+          firstname:this.firstname.toLowerCase(),
+          lastname: this.lastname.toLowerCase(),
+
         };
         console.log("In Here")
-        this.createInitialPosts(
-           initialPostObject)
+        this.advancedSearch(
+           advancedSearchObject)
             .then(res => {
             console.log("Resp: ");
             console.log(res);
             if (res) {
                 console.log("GOT HERE");
                 // Call an alert component, says it was completed or wasnt in the bottom, then kicks to home?
-                this.$router.push("/");
+                this.$router.push("/searchresults");
             }
             })
             .catch(err => {
@@ -213,17 +183,7 @@ export default {
 
 <style>
 .create_review_form{
-    /* height:250px; */
-    justify-content: center;
-    display: flex;
-  padding-bottom: 50px;
-}
-.createpost{
-  padding-bottom: 15px;
-  
-}
-.submit-post{
-    width: 100%;
+    height:250px;
 }
 
 </style>
