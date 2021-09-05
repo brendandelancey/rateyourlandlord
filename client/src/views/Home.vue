@@ -53,12 +53,6 @@
     </div>
 
 </div>
-  <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw26_qVKrZBvPak7lCbcgMhy2wh6muL10&libraries=places&callback=initAutocomplete"> </script> -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=${process.env.VUE_APP_AUTOCOMPLETE_API}&libraries=places&callback=initAutocomplete" async defer> </script> -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDw26_qVKrZBvPak7lCbcgMhy2wh6muL10&callback=initAutocomplete" async defer> </script> -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key={{$process.env.VUE_APP_AUTOCOMPLETE_API}}&libraries=places" async defer> </script> -->
-  <!-- <script async src='"https://maps.googleapis.com/maps/api/js?libraries=places&key="+ {{key}}'> </script> -->
-  
 </template>
 
 <script>
@@ -74,7 +68,7 @@ export default {
   return {
         // autocomplete:null,
         // place:null,
-        // key:"AIzaSyDw26_qVKrZBvPak7lCbcgMhy2wh6muL10"
+        // key:""
         address:'',
         placeResult:null, 
         id:'',
