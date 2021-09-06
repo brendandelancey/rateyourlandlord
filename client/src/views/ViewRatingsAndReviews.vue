@@ -77,6 +77,11 @@ export default {
 };
 </script>
 <style >
+.landlordratings{
+  min-height:85vh; 
+
+}
+
 .ratingsBlock{
     padding-bottom: 50px;
   
@@ -177,15 +182,18 @@ export default {
   background-color: darkgray;
   height: 125px;
   width: 125px;
+  line-height: 125px;
 }
 .createRating{
   cursor: pointer;
-  clear: both;
+  /* clear: both; */
   width: 100%;
-  /* position: absolute; */
+  position: absolute;
   height: 1.5rem; 
   /* bottom: 2rem; */
   padding-bottom: 50px;
-  
+   bottom: 0;
+  margin-bottom: 6rem;
+   
 }
 </style>

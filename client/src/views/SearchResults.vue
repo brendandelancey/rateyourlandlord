@@ -34,45 +34,11 @@
         </div>
       </div>
     </div>
-    <!--                         
-                        <b-card-group deck>
-                            <b-card
-                            header="Landlord: Actual Name of Landlord"
-                            header-tag="header"
-                            footer="Rating: Actual Rating of Landlord"
-                            footer-tag="footer"
-                            title="Address: Actaul Address"
-                            >
-                            </b-card> -->
-    <!-- <b-card-text>Header and footers using props.</b-card-text> -->
-    <!-- <b-button href="#" variant="primary">Go somewhere</b-button>
-                        Probably wil make whole card clickable -->
-    <!-- **May Rearrange this to have Rating on Top, Name as title and Body as Address  -->
-    <!-- </b-card>
-
-                       
-                    </b-card-group>
-                </div>
-
-
-            </b-col>
-
-            <b-col>3 of 3
-                At Bottom -->
-    <!-- <b-card bg-variant="light"  title="Landlord Not Here?">
-                    <b-card-text>
-                        If you cant find your Landlord in your search above you can be the first to add them,
-                        to let other renters like you know about your landlord.
-                    </b-card-text> -->
+   
     <h4 class="createAPost" @click="CreatePost()">
       Is your house not in the list above Add Your House Here
     </h4>
 
-    <!-- <h4 @click="ViewReview();">View rviews and ratings</h4> -->
-    <!-- </b-card> -->
-    <!-- </b-col>
-        </b-row>
-    </b-container> -->
   </div>
 </template>
 
@@ -192,10 +158,12 @@ export default {
 </script>
 <style>
 .advancedsearch{
-   padding-bottom: 20px;
+  cursor: pointer;
+   padding-bottom: 2rem;
+   padding-top: 1rem;
 }
 .searchresults {
-  min-height:100%; 
+  min-height:85vh; 
     /* position:relative;  */
 }
 .result{
@@ -204,11 +172,12 @@ export default {
   /* left: 100%; */
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 0rem;
   /* padding-bottom: 20px; */
   margin: 0 auto;
   width: 75%;
-   cursor: pointer;
+  cursor: pointer;
+  padding-bottom: 1rem;
   
 
 }
@@ -227,22 +196,47 @@ export default {
 .theReview{
   
   background-color: #eaeff1;
-  height: 125px;
+  height: 150px;
   width: 50%;
+ 
+   
+  /* margin: 0 auto; */
+  
+  /* padding: 35px;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle; */
   
 
 }
 .theReview h1 {
+  height: 100%;
+  line-height: 150px;
   
-  margin: 0 auto;
+  
+  /* margin: 0 auto; */
+  /* text-align: center;
+  justify-content: center;
+  vertical-align: middle; */
   
 
 }
 .rating{
   
   background-color: darkgray;
-  height: 125px;
-  width: 125px;
+  height: 150px;
+  width: 150px;
+  /* padding: 35px; */
+  
+  
+}
+.rating h1{
+  
+  line-height: 150px;
+  /* background-color: darkgray; */
+  /* height: 150px; */
+  /* width: 150px; */
+  /* padding: 35px; */
   
   
 }
@@ -250,10 +244,16 @@ export default {
   cursor: pointer;
     /* clear: both; */
   width: 100%;
-  /* position: absolute; */
-   height: 1.5rem; 
+  position: absolute;
+  height: 1.5rem; 
   padding-bottom: 50px;
+  bottom: 0;
+  margin-bottom: 6rem;
+  /* padding-top: 50px; */
   
+}
+.queryofIPs{
+  padding-bottom:2rem;
 }
 
 </style>

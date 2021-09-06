@@ -1,18 +1,5 @@
 <template>
 <div class = "LandingPage">
-  <!-- <input id="auto_complete" type="text" placeholder="Type Here" >  -->
-        <h1>
-          {{ address }}
-  
-        </h1>
-         <!-- <h1>
-          {{ placeResult }}
-  
-        </h1> -->
-        <!-- <h1>
-          {{ id }}
-  
-        </h1> -->
         <div class="Hsearch">
               <vue-google-autocomplete
                 ref="address"
@@ -655,6 +642,7 @@ export default {
     border-radius: 25px;
     width:35%;
     padding: 5px;
+    height: 50px;
 }
 .HsearchByName{
     order:2; 
@@ -663,7 +651,7 @@ export default {
     border-radius: 25px;
     width:35%;
     padding: 5px;
-    /* height: 80%; */ 
+    height: 50px;
 }
 .houseRow{
     display: flex;

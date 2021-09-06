@@ -4,16 +4,16 @@
     <!-- Either remove columns or make 1 and 3 very small -->
     <b-container class="bv-example-row">
         <b-row class="text-center">
-            <b-col>1 of 3</b-col>
+            <b-col></b-col>
 
-            <b-col cols="8" >2 of 3 (wider)
+            <b-col cols="8" >
 
                 
                 <div class="create_review_form">
-                    <b-form @submit="onSubmit"  >
+                    <b-form class="cardForm" @submit="onSubmit"  >
                         <!-- @reset="onReset" -->
                         <!-- v-if="show" -->
-                        <b-card bg-variant="light" >
+                        <b-card  bg-variant="light" >
                             <!-- <b-form-group
                             label-cols-lg="3"
                             label="Rate Your Student Home"
@@ -99,14 +99,14 @@
             
                             
                         </b-card>
-                        <b-button type="submit" variant="primary">Submit</b-button>
+                        <b-button class="submit-advancedSearch" type="submit" variant="primary">Submit</b-button>
                     </b-form>
                 </div>
 
 
             </b-col>
 
-            <b-col>3 of 3</b-col>
+            <b-col></b-col>
         </b-row>
     </b-container>
 
@@ -182,8 +182,22 @@ export default {
 </script>
 
 <style>
-.create_review_form{
-    height:250px;
+.cardForm{
+    /* height:50%;
+    position: absolute; */
+    vertical-align:middle;
+     display:inline-block;
+    height:100%;
+}
+.createpost{
+ /* min-height: 100vh; will cover the 100% of viewport */
+ /* overflow: hidden; */
+ /* display: block;
+ position: relative; */
+ height:85vh;
+}
+.submit-advancedSearch{
+    width: 100%;
 }
 
 </style>

@@ -47,22 +47,25 @@ export default {
   text-align: center;
   color: #2c3e50;
   position: relative;
-  min-height: 100%;
+  min-height: 100vh;
+  padding-bottom: 6rem;
 }
 .footer{
   /* clear: both; */
   width: 100%;
   position: absolute;
-  height: 2.5rem; 
-  margin-top: -2.2rem;
-  padding-top: 2rem;
+  
+  /* height: 2.5rem;  */
+  /* margin-top: 5.2rem; */
+  /* padding-top: 2rem; */
+  bottom: 0;
   /* min-height: 100%; */
   /* bottom:0; */
 
   /* position:fixed;
  bottom:0; */
   
- flex-shrink: 0;
+ /* flex-shrink: 0; */
 }
 
 
