@@ -105,7 +105,7 @@ export default {
     createRating() {
         const ratingObject = {
           rating: this.rating,
-          review: this.review.toLowerCase(),
+          review: this.review,
           IPid: this.initialpost.id,
         };
         console.log("In Here")

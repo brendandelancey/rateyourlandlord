@@ -31,7 +31,7 @@ router.get('/advanced', async (req,res) => {
 
     console.log("Advanced New Object: "+ JSON.stringify(objectofIPs));
     
-    const object= await InitialPost.find(objectofIPs);
+    const object= await InitialPost.find(objectofIPs).collation({locale: 'en', strength: 2 });
 
     try {
 
@@ -86,14 +86,15 @@ router.get('/address', async (req,res) => {
 
       console.log("New Object: "+ JSON.stringify(objectofIPs));
       
-      const object= await InitialPost.find(objectofIPs);
+      // const object= await InitialPost.find(objectofIPs);
+      const object= await InitialPost.find(objectofIPs).collation({locale: 'en', strength: 2 });
 
       try {
 
         console.log(" Objects Found: "+ JSON.stringify(object));
         
         if (object.length===0){
-          res.send(null);
+          res.send(object);
           console.log("Nothing Found &&&&&&&&&&&")
           console.log("Null Objects: "+ JSON.stringify(object));
         }
@@ -131,14 +132,16 @@ router.get('/landlord', async (req,res) => {
       Object.keys(objectofIPs).forEach(key => objectofIPs[key] === undefined && delete objectofIPs[key])
       console.log("New Object: "+ JSON.stringify(objectofIPs));
       
-      const object= await InitialPost.find(objectofIPs);
+      // const object= await InitialPost.find(objectofIPs);
+      const object= await InitialPost.find(objectofIPs).collation({locale: 'en', strength: 2 });
+
 
       try {
 
         console.log(" Objects Found: "+ JSON.stringify(object));
         
         if (object.length===0){
-          res.send(null);
+          res.send(object);
           console.log("Nothing Found &&&&&&&&&&&")
           console.log("Null Objects: "+ JSON.stringify(object));
         }

@@ -1,19 +1,7 @@
 <template>
   <div class="searchresults">
     <h4 class="advancedsearch" @click="AdvancedSearch()">Advanced Search</h4>
-    <!--     
-    <h1>
-        {{this.$store.state.queryResults }}
-    </h1> -->
-    <!-- <b-container class="bv-example-row">
-        <b-row class="text-center"> -->
-    <!-- <b-col>1 of 3</b-col>
-
-            <b-col cols="8" >2 of 3 (wider) -->
-
-    <!-- Add boarder and off white colour also add results in cards multiplied by number of results scrolling down -->
-    <!--Should use the vuex searchResults gathered from the last page -->
-    <!-- <h1>HELLO</h1> -->
+  
     <div class="queryofIPs">
       <div
         v-for="initialpost in queriedResults"
@@ -27,9 +15,18 @@
             </h1>
           </div>
           <div class="theReview">
-          <h1 >
-            {{ initialpost.landlordfirstname }} : {{ initialpost.street }}
+          <h1 v-if="initialpost.landlordfirstname.length+initialpost.landlordlastname.length < 26">
+            {{ initialpost.landlordfirstname }} {{ initialpost.landlordlastname }} 
           </h1>
+          <h1 v-else>
+            {{ initialpost.landlordfirstname.substring(0,13) }} {{ initialpost.landlordlastname.substring(0,13)+".."  }} 
+          </h1>
+          <h2 v-if="initialpost.street.length+initialpost.city.length < 70">
+             {{ initialpost.street }} {{ initialpost.city }}
+          </h2>
+          <h2 v-else>
+             {{ initialpost.street.substring(0,50) }} {{ initialpost.city.substring(0,20)+".."  }} 
+          </h2>
           </div>
         </div>
       </div>
@@ -52,22 +49,10 @@ export default {
       // queriedResults: "",
     };
   },
-  // ! Fix This
-  // TODO Get queried results from state
-  // TODO Display qurried results
-  // TODO On Click MapAction Get Ratings Results and save to state
-  computed: mapGetters(["queriedResults"]),
-  //   ...mapGetters({
-  // // map `this.doneCount` to `this.$store.getters.doneTodosCount`
-  //   doneCount: 'doneTodosCount'
-  // })
 
-  mounted() {
-    //   console.log("this.getters.queriedResults")
-    //   console.log(store.getters.queriedResults)
-    //   console.log("this.$store.state.todos")
-    //   console.log(store.state.todos)
-  },
+  computed: mapGetters(["queriedResults"]),
+ 
+
   methods: {
     ...mapActions(["fetchRatings"]),
 
@@ -210,8 +195,9 @@ export default {
 
 }
 .theReview h1 {
-  height: 100%;
-  line-height: 150px;
+  height: 35%;
+  /* line-height: 10px; */
+  font-size: 36px;
   
   
   /* margin: 0 auto; */
@@ -219,6 +205,14 @@ export default {
   justify-content: center;
   vertical-align: middle; */
   
+
+}
+.theReview h2 {
+  height: 65%;
+  /* line-height: 10px; */
+  font-size: 24px;
+  justify-content: left;
+
 
 }
 .rating{

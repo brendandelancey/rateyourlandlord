@@ -43,7 +43,6 @@
 </template>
 
 <script>
-// NOTE: Database needs to save only lower case for name/ address
 
 
 
@@ -142,7 +141,7 @@ export default {
         
     // },
     NameSearch(e){
-      var name = e.target.value.toLowerCase();
+      var name = e.target.value;
       const listOfNames = name.split(' ');
 
       // 2 searches, 1 object
@@ -263,7 +262,7 @@ export default {
    AddressSearch(e){
     //  LOWERCASE
      console.log(e.target.value);
-     var addressField=e.target.value.toLowerCase();
+     var addressField=e.target.value;
      console.log(addressField);
     
 
@@ -292,10 +291,10 @@ export default {
         const province = abreviationObject[this.address.administrative_area_level_1]
         this.objectOfAddressSearches={
             callOne:{
-              street: this.address.route.toLowerCase(),
-              city:this.address.locality.toLowerCase(),
-              province:province.toLowerCase(),
-              country:this.address.country.toLowerCase(),
+              street: this.address.route,
+              city:this.address.locality,
+              province:province,
+              country:this.address.country,
             }
       }
       console.log("Google Search: "+  JSON.stringify(this.objectOfAddressSearches));

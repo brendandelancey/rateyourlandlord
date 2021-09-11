@@ -182,14 +182,14 @@ export default {
         },
     newInitialPost() {
         const initialPostObject = {
-          street: this.street.toLowerCase(),
-          city: this.city.toLowerCase(),
-          province: this.province.toLowerCase(),
-          country: this.country.toLowerCase(),
-          landlordfirstname:this.landlordfirstname.toLowerCase(),
-          landlordlastname: this.landlordlastname.toLowerCase(),
+          street: this.street,
+          city: this.city,
+          province: this.province,
+          country: this.country,
+          landlordfirstname:this.landlordfirstname,
+          landlordlastname: this.landlordlastname,
           rating: this.rating,
-          review: this.review.toLowerCase(),
+          review: this.review,
         };
         console.log("In Here")
         this.createInitialPosts(

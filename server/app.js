@@ -8,6 +8,8 @@ const passport = require('passport');
 // Gives us access to variables set in the .env file via `process.env.VARIABLE_NAME` syntax
 require('dotenv').config();
 
+
+
 /**
  * -------------- GENERAL SETUP ----------------
  */
@@ -143,7 +145,7 @@ app.use('/api/search', search);
  */
 //Probably should hide the port in a "".env" file using 
 //"dotenv" thats what the .env.Port is for
-const PORT = process.env.PORT ||5000;
+const PORT = process.env.PORT || 5000;
 //
 
 app.listen(PORT, () => {

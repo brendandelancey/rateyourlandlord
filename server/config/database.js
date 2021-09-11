@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 //Could setup two connections 1 to production db and one to dev
 // Bring in the Database Config and connect with the database 
 //using the ORM (Object Related Mapping)

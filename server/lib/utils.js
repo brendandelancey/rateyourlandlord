@@ -70,6 +70,4 @@ function issueJWT(user) {
   }
 }
 
-// module.exports.validPassword = validPassword;
-// module.exports.genPassword = genPassword;
 module.exports.issueJWT = issueJWT;
