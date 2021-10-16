@@ -1,42 +1,51 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+name: CI/CD Pipeline
 
-name: CI/CD Pipeline AWS EC2
+push:
 
-on:
-  push:
-    branches: [ deployment ]
-  pull_request:
-    branches: [ deployment ]
+branches: [ deployment ]
 
 jobs:
-  build:
 
-    #runs-on: ubuntu-latest
-    runs-on: self-hosted
+deploy:
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+steps:
 
-#Step1
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-        
-#Step2  
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build 
-   # - run: npm test
+# Step 1
+
+– name: Checkout to repo
+
+uses: actions/checkout@v2
+
+# Step 2
+
+– name: Configure AWS credentials
+
+uses: aws-actions/configure-aws-credentials@v1
+
+with:
+
+aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+
+aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+aws-region: ap-south-1
+
+# Step 3
+
+– name: Create CodeDeploy Deployment
+
+id: deploy
+
+run: |
+
+aws deploy create-deployment \
+
+–application-name nodeblog_application \
+
+–deployment-group-name nodeblog_deployment \
+
+–deployment-config-name CodeDeployDefault.OneAtATime \
+
+–github-location repository=${{ github.repository }},commitId=${{ github.sha }}
