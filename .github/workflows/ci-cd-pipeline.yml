@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 push:
 
-branches: [ deployment ]
+branches: [ master ]
 
 jobs:
 
@@ -33,19 +33,11 @@ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 aws-region: us-east-2
 
 # Step 3
-
-– name: Create CodeDeploy Deployment
-
-id: deploy
-
-run: |
-
-aws deploy create-deployment \
-
-–application-name rateyourstudenthouse_application \
-
-–deployment-group-name rateyourstudenthouse_deployment \
-
-–deployment-config-name CodeDeployDefault.OneAtATime \
-
-–github-location repository=${{ github.repository }},commitId=${{ github.sha }}
+    - name: Create CodeDeploy Deployment
+        id: deploy
+        run: |
+          aws deploy create-deployment \
+            --application-name rateyourstudenthouse_application \
+            --deployment-group-name rateyourstudenthouse_deployment \
+            --deployment-config-name CodeDeployDefault.OneAtATime \
+            --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
