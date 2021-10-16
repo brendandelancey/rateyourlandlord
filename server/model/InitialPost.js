@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create the User Schema
+// Create the User Schemas
 const InitialPostSchema = new Schema({
     landlordfirstname: {
         type: String,
