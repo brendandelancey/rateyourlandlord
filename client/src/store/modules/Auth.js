@@ -24,7 +24,7 @@ const actions = {
         try {
             console.log(user);
             console.log("user");
-            var res = await axios.post('http://localhost:5000/api/users/login', user)
+            var res = await axios.post('http://rateyourstudenthouse.com:5000/api/users/login', user)
        
             if (res.data.success) {
                 let token = res.data.token;
@@ -47,7 +47,7 @@ const actions = {
     }, userData) {
         try {
             commit('register_request');
-            var res = await axios.post('http://localhost:5000/api/users/register', userData);
+            var res = await axios.post('http://rateyourstudenthouse.com:5000/api/users/register', userData);
      
             if (res.data.success !== undefined) {
                 commit('register_success');
@@ -62,7 +62,7 @@ const actions = {
         commit
     }) {
         commit('profile_request');
-        var res = await axios.get('http://localhost:5000/api/users/profile')
+        var res = await axios.get('http://rateyourstudenthouse.com:5000/api/users/profile')
         // if editing on local http://localhost:5000/api/users/profile
         // if preparing for launching api/users/profile
         commit('user_profile', res.data.user)

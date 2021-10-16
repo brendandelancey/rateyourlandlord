@@ -120,6 +120,7 @@ export default {
     getAddressData: function (addressData,) {
                 this.address = addressData;
                 console.log("Address: "+this.address)
+                
                 // this.placeResult = placeResultData;
                 // this.id = idData;
                 // placeResultData, idData

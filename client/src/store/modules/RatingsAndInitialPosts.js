@@ -23,7 +23,7 @@ const actions = {
         try
         {
             console.log(newIP);
-            var res = await axios.post('http://localhost:5000/api/initialpost/', newIP)
+            var res = await axios.post('http://rateyourstudenthouse.com:5000/api/initialpost/', newIP)
             
             //Should just return some success message or failure message
             console.log(res);
@@ -46,7 +46,7 @@ const actions = {
         console.log(IPid);
         var listOfDataObjects=[];
         try{
-            const res = await axios.get('http://localhost:5000/api/rating/', {
+            const res = await axios.get('http://rateyourstudenthouse.com:5000/api/rating/', {
                 params:{
                     "IPid" : IPid}
                 
@@ -78,7 +78,7 @@ const actions = {
         try{
  
             console.log(Rating);
-            var res = await axios.post('http://localhost:5000/api/rating/', Rating)
+            var res = await axios.post('http://rateyourstudenthouse.com:5000/api/rating/', Rating)
             
             //Should just return some success message or failure message
             console.log(res);

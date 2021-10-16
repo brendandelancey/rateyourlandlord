@@ -16,7 +16,7 @@
     </b-navbar>
     <div id="TextAndLegal">
       <b-container>
-        © RateYourLandLord
+        © RateYourStudentHouse
       </b-container>
     </div>
   </div>

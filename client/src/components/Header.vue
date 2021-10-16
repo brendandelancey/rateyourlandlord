@@ -81,7 +81,7 @@ export default {
     //! Also need to involve google in the auto correct
 
     NameSearch(e) {
-      var name = e.target.value.toLowerCase();
+      var name = e.target.value;
       const listOfNames = name.split(" ");
 
       // 2 searches, 1 object
@@ -181,7 +181,7 @@ export default {
     AddressSearch(e) {
       //  LOWERCASE
       console.log(e.target.value);
-      var addressField = e.target.value.toLowerCase();
+      var addressField = e.target.value;
       console.log(addressField);
 
       //Custom Search

@@ -24,7 +24,7 @@
         </div>
       </div>
       <div id="TextAndLegal">
-            © RateYourLandLord
+            © RateYourStudentHouse
       </div>
     </div>
   </div>

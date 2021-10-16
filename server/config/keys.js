@@ -1,10 +1,11 @@
 const path = require('path');
 const fs = require('fs');
-
+const deploy=true;
 require('dotenv').config({path: '../.env'})
-const deployment = process.env.DATABASE_DEPLOYMENT
-const development = process.env.DATABASE_DEVELOPMENT
-
+// const deployment = process.env.DATABASE_DEPLOYMENT
+// const development = process.env.DATABASE_DEVELOPMENT
+const deployment = "mongodb+srv://userone:UJAqyQFocKqSYPtG@rateyourstudenthousedb.lguyp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const development = "mongodb://localhost:27017/rateyourstudenthouse"
 // module.exports = {
 //     mongoURI: "mongodb://localhost:27017/meven_auth",
 //     secret: 'yoursecret'
@@ -17,7 +18,7 @@ const pathToKey = path.join(__dirname, '..', 'id_rsa_pub.pem');
 const PUB_KEY = fs.readFileSync(pathToKey, 'utf8');
 
 
-if (process.env.NODE_ENV === 'production') {
+if (deploy=== true) {
     module.exports = {
         mongoURI: deployment,
         secret: PUB_KEY

@@ -25,8 +25,4 @@ const UserSchema = new Schema({
     }
 });
 
-//**Note: Could add a few methods to this schema -> allowing the methods to be used by the appropraite object
-//        -> for example the findone object could be a function to check if the user is recorded in the database
-//        this is per example of; https://codesource.io/setting-up-vue-authentication-using-expressjs-mongodb-and-jwt/ 
-
 module.exports = User = mongoose.model('users', UserSchema);
