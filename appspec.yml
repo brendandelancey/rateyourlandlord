@@ -1,14 +1,15 @@
 version: 0.0
 os: linux
 files:
- - source: .
-   destination: /home/ubuntu/app/rateyourlandlord
+  - source: .
+    destination: /home/ubuntu/rateyourlandlord
 hooks:
-  AfterInstall:
-   - location: scripts/install_app_dependencies
-     timeout: 300
-     runas: root
+  ApplicationStop:
+  - location: scripts/application_stop.sh
+    timeout: 300
+    runas: ubuntu
   ApplicationStart:
-   - location: scripts/start_server
-     timeout: 300
-     runas: root
+  - location: scripts/application_start.sh
+    timeout: 300
+    runas: ubuntu
+Github uses aws.yml file to manage Github actions.
