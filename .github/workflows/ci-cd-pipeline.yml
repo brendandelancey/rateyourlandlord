@@ -42,9 +42,9 @@ run: |
 
 aws deploy create-deployment \
 
-–application-name nodeblog_application \
+–application-name rateyourstudenthouse_application \
 
-–deployment-group-name nodeblog_deployment \
+–deployment-group-name rateyourstudenthouse_deployment \
 
 –deployment-config-name CodeDeployDefault.OneAtATime \
 
