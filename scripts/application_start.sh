@@ -9,6 +9,7 @@ sudo chmod -R 777 /home/ubuntu/rateyourlandlord
 cd /home/ubuntu/rateyourlandlord
 
 # install node modules
+git pull origin master
 
 npm install
 
