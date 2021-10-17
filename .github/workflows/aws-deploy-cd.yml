@@ -20,16 +20,10 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-
-
-      - name: Create CodeDeploy Deployment
-        id: deploy
-        run: |
-          aws deploy create-deployment \
-            --application-name rateyourstudenthouse_application \
-            --deployment-group-name rateyourstudenthouse_deployment \
-            --deployment-config-name CodeDeployDefault.OneAtATime \
-            --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
-
-
+          aws-region: us-east-2b
+          
+          instance-ids: ${{ secrets.INSTANCE_ID  }}
+          comment: Deploy the master branch
+          working-directory: /home/ubuntu/rateyourlandlord
+          script: sh scripts/deploy_application.sh
+    
