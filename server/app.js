@@ -45,7 +45,6 @@ app.use(cors());
 //from the server. Create a new directory, public. 
 //Express, by default does not allow you to serve static files. You need
 // to enable it using the following built-in middleware.
-
 /**
  * -------------- Database ----------------
  */
