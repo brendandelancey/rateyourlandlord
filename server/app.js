@@ -77,9 +77,6 @@ require('./config/passport')(passport);
 /**
  * -------------- ROUTES ----------------
  */
-// app.get('/', (req, res) =>{
-//     return res.send("<h1>Hello World</h1>")
-// })
 // Bring in the Users route
 const users = require('./routes/api/users');
 //**Created
