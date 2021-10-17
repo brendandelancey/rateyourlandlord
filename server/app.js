@@ -49,7 +49,6 @@ app.use(cors());
 /**
  * -------------- Database ----------------
  */
-
 //Used to point to config database file
 require('./config/database');
 
