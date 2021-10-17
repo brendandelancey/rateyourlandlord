@@ -44,7 +44,7 @@ app.use(cors());
 //Static Directory: Static files are files that clients download as they are 
 //from the server. Create a new directory, public. 
 //Express, by default does not allow you to serve static files. You need
-// to enable it using the following built-in middleware.
+// to enable it using the following built-in middleware
 /**
  * -------------- Database ----------------
  */
