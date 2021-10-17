@@ -41,7 +41,7 @@ const actions = {
             console.log("!!!!!!!!!!!!!!!!!");
 
             console.log(JSON.stringify(searchparameters[call]));
-            const res = await axios.get('http://rateyourstudenthouse.com:5000/api/search/address', {
+            const res = await axios.get('http://rateyourstudenthouse.com/api/search/address', {
                 params:
                     searchparameters[call]
                 
@@ -94,7 +94,7 @@ const actions = {
             {
                 console.log(JSON.stringify(searchparameters[call]));
 
-                var res = await axios.get('http://rateyourstudenthouse.com:5000/api/search/landlord', {
+                var res = await axios.get('http://rateyourstudenthouse.com/api/search/landlord', {
                     params:
                         searchparameters[call]
                     
@@ -142,7 +142,7 @@ const actions = {
             console.log("!!!!!!!!!!!!!!!!!");
 
             console.log(JSON.stringify(searchparameters));
-            const res = await axios.get('http://rateyourstudenthouse.com:5000/api/search/advanced', {
+            const res = await axios.get('http://rateyourstudenthouse.com/api/search/advanced', {
                 params:
                     searchparameters
                 
