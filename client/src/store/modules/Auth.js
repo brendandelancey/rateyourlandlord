@@ -29,7 +29,7 @@ const actions = {
             if (res.data.success) {
                 let token = res.data.token;
                 let user = res.data.user;
-                // Store the token into the localstorage
+                // Store the token into the localstorage 
                 localStorage.setItem('token', token);
                 // Set the axios defaults
                 axios.defaults.headers.common['Authorization'] = token;
