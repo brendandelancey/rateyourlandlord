@@ -60,7 +60,7 @@ export default {
       this.$router.push("/advancedsearch");
     },
     CreatePost() {
-      console.log("HHHHEEEERRRREEEE")
+   // console.log("HHHHEEEERRRREEEE")
       this.$router.push("/createpost");
     },
     CreateRating() {
@@ -69,17 +69,17 @@ export default {
     ViewReview(initialpost) {
       const id=initialpost.id;
       const IP =JSON.stringify(initialpost);
-      console.log("READ THIS: "+ IP)
+   // console.log("READ THIS: "+ IP)
       localStorage.setItem( "initialpost", IP );
     
-      console.log("In Here");
-      console.log("Initial Post ID: " + JSON.stringify(id));
+   // console.log("In Here");
+   // console.log("Initial Post ID: " + JSON.stringify(id));
       this.fetchRatings(id)
         .then((res) => {
-          console.log("Resp: ");
-          console.log(res);
+       // console.log("Resp: ");
+       // console.log(res);
           if (res) {
-            console.log("GOT HERE");
+         // console.log("GOT HERE");
             // Router needs a fix onComplete event
             this.$router.push ({name:"ViewRatingsAndReviews",
               params: {id},
@@ -87,7 +87,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+       console.log(err);
         });
     },
   },
@@ -105,7 +105,7 @@ export default {
   //       }
   //     })
   //     .catch(err => {
-  //       console.log(err);
+  //    // console.log(err);
   //     });
   // },
 
@@ -135,7 +135,7 @@ export default {
   //           }
   //         })
   //         .catch(err => {
-  //           console.log(err);
+  //        // console.log(err);
   //         });
   //     }
   //   }

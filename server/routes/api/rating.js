@@ -26,29 +26,29 @@ router.get('/',  async (req,res) => {
     {
         IPid: req.query.IPid
     }
-    console.log("New get ratings Call:");
-    console.log(req.query.IPid);
+ // console.log("New get ratings Call:");
+ // console.log(req.query.IPid);
     const object = await Rating.find(IPidRatings);
         // Query by ID of Initial Post
         
     try {
 
-        console.log(" Objects Found: "+ JSON.stringify(object));
+     // console.log(" Objects Found: "+ JSON.stringify(object));
         
         if (object.length===0){
             res.send(null);
-            console.log("Nothing Found &&&&&&&&&&&")
-            console.log("Null Objects: "+ JSON.stringify(object));
+         // console.log("Nothing Found &&&&&&&&&&&")
+         // console.log("Null Objects: "+ JSON.stringify(object));
         }
         else{
             res.send(object);
-            console.log("Objects Found");
-            console.log("SUCCESS Objects: "+ JSON.stringify(object));
+         // console.log("Objects Found");
+         // console.log("SUCCESS Objects: "+ JSON.stringify(object));
         }
         
         } catch (err) {
             res.status(500).send(err);
-            console.log("FAILURE");
+         // console.log("FAILURE");
         }
 });
 

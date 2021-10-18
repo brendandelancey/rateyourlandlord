@@ -142,12 +142,12 @@ export default {
     onSubmit(event) {
         event.preventDefault()
         // alert(JSON.stringify(this.form))
-        console.log("Landlord Firstname: "+this.firstname)
-        console.log("Landlord Lastname: "+this.lastname)
-        console.log("Street: "+this.street)
-        console.log("City: "+this.city)
-        console.log("Province: "+this.province)
-        console.log("Country: "+this.country)
+     // console.log("Landlord Firstname: "+this.firstname)
+     // console.log("Landlord Lastname: "+this.lastname)
+     // console.log("Street: "+this.street)
+     // console.log("City: "+this.city)
+     // console.log("Province: "+this.province)
+     // console.log("Country: "+this.country)
 
         this.newAdvancedSearch();
         },
@@ -161,20 +161,20 @@ export default {
           lastname: this.lastname.toLowerCase(),
 
         };
-        console.log("In Here")
+     // console.log("In Here")
         this.advancedSearch(
            advancedSearchObject)
             .then(res => {
-            console.log("Resp: ");
-            console.log(res);
+         // console.log("Resp: ");
+         // console.log(res);
             if (res) {
-                console.log("GOT HERE");
+             // console.log("GOT HERE");
                 // Call an alert component, says it was completed or wasnt in the bottom, then kicks to home?
                 this.$router.push("/searchresults");
             }
             })
             .catch(err => {
-            console.log(err);
+         // console.log(err);
             });
     },
   }

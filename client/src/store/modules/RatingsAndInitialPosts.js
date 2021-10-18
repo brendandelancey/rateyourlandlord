@@ -22,11 +22,11 @@ const actions = {
        
         try
         {
-            console.log(newIP);
+         // console.log(newIP);
             var res = await axios.post('http://rateyourstudenthouse.com/api/initialpost/', newIP)
             
             //Should just return some success message or failure message
-            console.log(res);
+         // console.log(res);
             
             if (res.data.status) {
                 commit('createIPSuccess');
@@ -36,14 +36,14 @@ const actions = {
         }
         catch (err)
         {
-            console.log(err);
+         console.log(err);
         }
        
     },
    
     async fetchRatings({commit}, IPid){
-        console.log(JSON.stringify(IPid));
-        console.log(IPid);
+     // console.log(JSON.stringify(IPid));
+     // console.log(IPid);
         var listOfDataObjects=[];
         try{
             const res = await axios.get('http://rateyourstudenthouse.com/api/rating/', {
@@ -56,32 +56,32 @@ const actions = {
             if (res.data) {
                 if (res.data.length>0){
                     for (var rating in res.data){
-                        console.log(res.data[rating])
+                     // console.log(res.data[rating])
                         listOfDataObjects.push(res.data[rating])}
                         
                     }
             }
         }
         catch (err) {
-            console.log(err);
+         // console.log(err);
         }
         if(listOfDataObjects!=null){
-            for(var item in listOfDataObjects){
-                console.log(JSON.stringify(listOfDataObjects[item]));
-            }
+            // for(var item in listOfDataObjects){
+             // console.log(JSON.stringify(listOfDataObjects[item]));
+            // }
             commit('setRatingsSearchResults', listOfDataObjects);
             return true; 
         }
     },
     async newRating({commit}, Rating){
-        console.log("In There");
+     // console.log("In There");
         try{
  
-            console.log(Rating);
+         // console.log(Rating);
             var res = await axios.post('http://rateyourstudenthouse.com/api/rating/', Rating)
             
             //Should just return some success message or failure message
-            console.log(res);
+         // console.log(res);
             
             if (res.data.status) {
                 commit('createRatingSuccess');
@@ -92,7 +92,7 @@ const actions = {
         }
         catch (err) 
         {
-            console.log(err);
+         console.log(err);
         }
         // }catch (err) {
         //     commit('query_error', err);

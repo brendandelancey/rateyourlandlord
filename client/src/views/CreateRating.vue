@@ -88,7 +88,7 @@ export default {
     },
       mounted() {
         var retrieved= localStorage.getItem("initialpost");
-        console.log("InitialPost in Create Rating: " + JSON.parse(JSON.stringify(retrieved)))
+     // console.log("InitialPost in Create Rating: " + JSON.parse(JSON.stringify(retrieved)))
         this.initialpost = JSON.parse(retrieved)
 
   },
@@ -98,8 +98,8 @@ export default {
    onSubmit(event) {
         event.preventDefault()
         // alert(JSON.stringify(this.form))
-        console.log("Review: "+this.review)
-        console.log("Rating: "+this.rating)
+     // console.log("Review: "+this.review)
+     // console.log("Rating: "+this.rating)
         this.createRating();
         },
     createRating() {
@@ -108,20 +108,20 @@ export default {
           review: this.review,
           IPid: this.initialpost.id,
         };
-        console.log("In Here")
+     // console.log("In Here")
         this.newRating(
            ratingObject)
             .then(res => {
-            console.log("Resp: ");
-            console.log(res);
+         // console.log("Resp: ");
+         // console.log(res);
             if (res) {
-                console.log("GOT HERE");
+             // console.log("GOT HERE");
                 // Call an alert component, says it was completed or wasnt in the bottom, then kicks to home?
                 this.$router.push("/");
             }
             })
             .catch(err => {
-            console.log(err);
+         // console.log(err);
             });
     },
   

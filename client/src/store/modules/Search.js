@@ -38,9 +38,9 @@ const actions = {
 
             try{
             
-            console.log("!!!!!!!!!!!!!!!!!");
+         // console.log("!!!!!!!!!!!!!!!!!");
 
-            console.log(JSON.stringify(searchparameters[call]));
+         // console.log(JSON.stringify(searchparameters[call]));
             const res = await axios.get('http://rateyourstudenthouse.com/api/search/address', {
                 params:
                     searchparameters[call]
@@ -52,15 +52,15 @@ const actions = {
             // Combine Both IF Statements
             if (res.data) 
             {
-                console.log("res.data");
-                console.log(JSON.stringify(res.data));
-                console.log("res.data[0]");
-                console.log(JSON.stringify(res.data[0]));
+             // console.log("res.data");
+             // console.log(JSON.stringify(res.data));
+             // console.log("res.data[0]");
+             // console.log(JSON.stringify(res.data[0]));
                 if (res.data.length>0){
-                    console.log("It Should Be Here 11111111111111111111111")
+                 // console.log("It Should Be Here 11111111111111111111111")
                     for (var review in res.data){
-                        console.log("It Should Be Here 22222222222222222222222")
-                        console.log(res.data[review])
+                     // console.log("It Should Be Here 22222222222222222222222")
+                     // console.log(res.data[review])
                         listOfDataObjects.push(res.data[review])}
                 }
                 
@@ -69,7 +69,7 @@ const actions = {
             }
             }
             catch (err) {
-                console.log(err);
+             // console.log(err);
             }
             // return res.data;
             // }catch (err) {
@@ -77,10 +77,10 @@ const actions = {
             // }
         }
         if(listOfDataObjects!=null){
-            console.log("listOfDataObjects")
-            console.log(JSON.stringify(listOfDataObjects[item]));
+         // console.log("listOfDataObjects")
+         // console.log(JSON.stringify(listOfDataObjects[item]));
             for(var item in listOfDataObjects){
-                console.log(JSON.stringify(listOfDataObjects[item]));
+             // console.log(JSON.stringify(listOfDataObjects[item]));
             }
             commit('setAddressSearchResults', listOfDataObjects);
             return true;
@@ -92,7 +92,7 @@ const actions = {
         for (const call in searchparameters){
             try
             {
-                console.log(JSON.stringify(searchparameters[call]));
+             // console.log(JSON.stringify(searchparameters[call]));
 
                 var res = await axios.get('http://rateyourstudenthouse.com/api/search/landlord', {
                     params:
@@ -101,15 +101,15 @@ const actions = {
                 } )
             if (res.data) 
             {
-                console.log("res.data");
-                console.log(JSON.stringify(res.data));
-                console.log("res.data[0]");
-                console.log(JSON.stringify(res.data[0]));
+             // console.log("res.data");
+             // console.log(JSON.stringify(res.data));
+             // console.log("res.data[0]");
+             // console.log(JSON.stringify(res.data[0]));
                 if (res.data.length>0){
-                    console.log("It Should Be Here 11111111111111111111111")
+                 // console.log("It Should Be Here 11111111111111111111111")
                     for (var review in res.data){
-                        console.log("It Should Be Here 22222222222222222222222")
-                        console.log(res.data[review])
+                     // console.log("It Should Be Here 22222222222222222222222")
+                     // console.log(res.data[review])
                         listOfDataObjects.push(res.data[review])}
                 }
                 
@@ -118,14 +118,14 @@ const actions = {
             }
             }
             catch (err) {
-                console.log(err);
+             // console.log(err);
             }
   
         }
         if(listOfDataObjects!=null){
-            console.log("listOfDataObjects")
+         // console.log("listOfDataObjects")
             for(var item in listOfDataObjects){
-                console.log(JSON.stringify(listOfDataObjects[item]));
+             // console.log(JSON.stringify(listOfDataObjects[item]));
             }
             commit('setAddressSearchResults', listOfDataObjects);
             return true;
@@ -139,9 +139,9 @@ const actions = {
 
             try{
             
-            console.log("!!!!!!!!!!!!!!!!!");
+         // console.log("!!!!!!!!!!!!!!!!!");
 
-            console.log(JSON.stringify(searchparameters));
+         // console.log(JSON.stringify(searchparameters));
             const res = await axios.get('http://rateyourstudenthouse.com/api/search/advanced', {
                 params:
                     searchparameters
@@ -151,15 +151,15 @@ const actions = {
 
             if (res.data) 
             {
-                console.log("res.data");
-                console.log(JSON.stringify(res.data));
-                console.log("res.data[0]");
-                console.log(JSON.stringify(res.data[0]));
+             // console.log("res.data");
+             // console.log(JSON.stringify(res.data));
+             // console.log("res.data[0]");
+             // console.log(JSON.stringify(res.data[0]));
                 if (res.data.length>0){
-                    console.log("It Should Be Here 11111111111111111111111")
+                 // console.log("It Should Be Here 11111111111111111111111")
                     for (var review in res.data){
-                        console.log("It Should Be Here 22222222222222222222222")
-                        console.log(res.data[review])
+                     // console.log("It Should Be Here 22222222222222222222222")
+                     // console.log(res.data[review])
                         listOfDataObjects.push(res.data[review])}
                 }
                 
@@ -168,14 +168,14 @@ const actions = {
             }
             }
             catch (err) {
-                console.log(err);
+             // console.log(err);
             }
         
         
         if(listOfDataObjects!=null){
-            console.log("listOfDataObjects")
+         // console.log("listOfDataObjects")
             for(var item in listOfDataObjects){
-                console.log(JSON.stringify(listOfDataObjects[item]));
+             // console.log(JSON.stringify(listOfDataObjects[item]));
             }
             commit('setAddressSearchResults', listOfDataObjects);
             return true;

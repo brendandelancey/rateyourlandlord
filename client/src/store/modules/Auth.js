@@ -22,8 +22,8 @@ const actions = {
     async login({commit}, user) {
         commit('auth_request');
         try {
-            console.log(user);
-            console.log("user");
+         // console.log(user);
+         // console.log("user");
             var res = await axios.post('http://rateyourstudenthouse.com/api/users/login', user)
        
             if (res.data.success) {

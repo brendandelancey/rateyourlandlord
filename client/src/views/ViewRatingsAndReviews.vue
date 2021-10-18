@@ -57,7 +57,7 @@ export default {
   props:["id"],
   mounted() {
         var retrieved= localStorage.getItem("initialpost");
-        console.log("InitialPost in View: " + JSON.parse(JSON.stringify(retrieved)));
+     // console.log("InitialPost in View: " + JSON.parse(JSON.stringify(retrieved)));
         this.initialpost = JSON.parse(retrieved);
 
   },
@@ -69,8 +69,8 @@ export default {
       const id = IPid;
       
 
-      console.log("In Here");
-      console.log("Initial Post: " + JSON.stringify(id));
+   // console.log("In Here");
+   // console.log("Initial Post: " + JSON.stringify(id));
       this.$router.push ("/createrating");
     },
   },

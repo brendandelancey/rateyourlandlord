@@ -100,7 +100,7 @@ export default {
             lastname: listOfNames[0],
           },
         };
-        console.log("Name One Word:" + JSON.stringify(this.objectOfSearches));
+        // console.log("Name One Word:" + JSON.stringify(this.objectOfSearches));
         this.searchByLandlord();
       }
       // 3 searches, 1 object
@@ -125,7 +125,7 @@ export default {
             lastname: listOfNames[1],
           },
         };
-        console.log("Name Two Words:" + JSON.stringify(this.objectOfSearches));
+     // console.log("Name Two Words:" + JSON.stringify(this.objectOfSearches));
         this.searchByLandlord();
       }
       // 4 searches 3+ spaces, 1 object
@@ -165,9 +165,9 @@ export default {
             lastname: listOfNames[listOfNames.length - 1],
           },
         };
-        console.log(
-          "Name Three Words:" + JSON.stringify(this.objectOfSearches)
-        );
+     // console.log(
+        //   "Name Three Words:" + JSON.stringify(this.objectOfSearches)
+        // );
         this.searchByLandlord();
       }
       //! If empty do nothing and do not search
@@ -180,9 +180,9 @@ export default {
 
     AddressSearch(e) {
       //  LOWERCASE
-      console.log(e.target.value);
+   // console.log(e.target.value);
       var addressField = e.target.value;
-      console.log(addressField);
+   // console.log(addressField);
 
       //Custom Search
       if (addressField != null && addressField != "") {
@@ -221,7 +221,7 @@ export default {
               (provinceInSearch = v.toLowerCase()))
             : null;
         });
-        console.log("New Address After province: " + addressField);
+     // console.log("New Address After province: " + addressField);
         quebec.some((v) => {
           addressField.includes(v.toLowerCase()) &&
           !addressField.includes(v.toLowerCase() + " city")
@@ -235,7 +235,7 @@ export default {
             : null;
         });
 
-        console.log("New Address after qubec: " + addressField);
+     // console.log("New Address after qubec: " + addressField);
         //This then needs to be mapped to actual province
         // provinceAbreviations.some(v => {addressField.includes(v.toLowerCase())? (addressField=addressField.replace(" "+ v.toLowerCase(), ""), provinceInSearch=v.toLowerCase()):null});
 
@@ -250,14 +250,14 @@ export default {
               (countryInSearch = v.toLowerCase()))
             : null;
         });
-        console.log("New Address after country: " + addressField);
+     // console.log("New Address after country: " + addressField);
 
-        console.log(
-          "Address Field Spaces: " +
-            (addressField.split(" ").length - 1).toString()
-        );
-        console.log("Province: " + provinceInSearch);
-        console.log("Country: " + countryInSearch);
+     // console.log(
+        //   "Address Field Spaces: " +
+        //     (addressField.split(" ").length - 1).toString()
+        // );
+     // console.log("Province: " + provinceInSearch);
+     // console.log("Country: " + countryInSearch);
 
         // // callOne:{
         // //         street:,
@@ -280,9 +280,9 @@ export default {
             },
           };
 
-          console.log(
-            "Adress One Word:" + JSON.stringify(this.objectOfAddressSearches)
-          );
+       // console.log(
+          //   "Adress One Word:" + JSON.stringify(this.objectOfAddressSearches)
+          // );
           this.searchByAddress();
         } else if (
           addressField.split(" ").length - 1 === 0 &&
@@ -305,9 +305,9 @@ export default {
             },
           };
 
-          console.log(
-            "Adress One Word:" + JSON.stringify(this.objectOfAddressSearches)
-          );
+       // console.log(
+          //   "Adress One Word:" + JSON.stringify(this.objectOfAddressSearches)
+          // );
           this.searchByAddress();
         } else if (addressField.split(" ").length - 1 === 1) {
           // Three Searches Unless in List then searchTotal-numInList
@@ -332,9 +332,9 @@ export default {
               country: countryInSearch,
             },
           };
-          console.log(
-            "Adress Two Words:" + JSON.stringify(this.objectOfAddressSearches)
-          );
+       // console.log(
+          //   "Adress Two Words:" + JSON.stringify(this.objectOfAddressSearches)
+          // );
           this.searchByAddress();
         } else if (addressField.split(" ").length - 1 === 2) {
           //
@@ -366,9 +366,9 @@ export default {
               country: countryInSearch,
             },
           };
-          console.log(
-            "Adress Three Words:" + JSON.stringify(this.objectOfAddressSearches)
-          );
+       // console.log(
+          //   "Adress Three Words:" + JSON.stringify(this.objectOfAddressSearches)
+          // );
           this.searchByAddress();
         } else if (addressField.split(" ").length - 1 >= 3) {
           const addressExceptLastThreeWords = addressField
@@ -420,10 +420,10 @@ export default {
               country: countryInSearch,
             },
           };
-          console.log(
-            "Adress Four Or More Words:" +
-              JSON.stringify(this.objectOfAddressSearches)
-          );
+       // console.log(
+          //   "Adress Four Or More Words:" +
+          //     JSON.stringify(this.objectOfAddressSearches)
+          // );
           this.searchByAddress();
         }
       }
@@ -438,7 +438,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+        console.log(err);
         });
     },
     searchByLandlord() {
@@ -451,7 +451,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err);
+        console.log(err);
         });
     },
   },

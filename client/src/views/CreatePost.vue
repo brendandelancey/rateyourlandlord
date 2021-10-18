@@ -170,14 +170,14 @@ export default {
     onSubmit(event) {
         event.preventDefault()
         // alert(JSON.stringify(this.form))
-        console.log("Landlord Firstname: "+this.landlordfirstname)
-        console.log("Landlord Lastname: "+this.landlordlastname)
-        console.log("Street: "+this.street)
-        console.log("City: "+this.city)
-        console.log("Province: "+this.province)
-        console.log("Country: "+this.country)
-        console.log("Review: "+this.review)
-        console.log("Rating: "+this.rating)
+     // console.log("Landlord Firstname: "+this.landlordfirstname)
+     // console.log("Landlord Lastname: "+this.landlordlastname)
+     // console.log("Street: "+this.street)
+     // console.log("City: "+this.city)
+     // console.log("Province: "+this.province)
+     // console.log("Country: "+this.country)
+     // console.log("Review: "+this.review)
+     // console.log("Rating: "+this.rating)
         this.newInitialPost();
         },
     newInitialPost() {
@@ -191,20 +191,20 @@ export default {
           rating: this.rating,
           review: this.review,
         };
-        console.log("In Here")
+     // console.log("In Here")
         this.createInitialPosts(
            initialPostObject)
             .then(res => {
-            console.log("Resp: ");
-            console.log(res);
+         // console.log("Resp: ");
+         // console.log(res);
             if (res) {
-                console.log("GOT HERE");
+             // console.log("GOT HERE");
                 // Call an alert component, says it was completed or wasnt in the bottom, then kicks to home?
                 this.$router.push("/");
             }
             })
             .catch(err => {
-            console.log(err);
+         // console.log(err);
             });
     },
   }

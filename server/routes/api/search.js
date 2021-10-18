@@ -29,18 +29,18 @@ router.get('/advanced', async (req,res) => {
     }
     Object.keys(objectofIPs).forEach(key => objectofIPs[key] === undefined || objectofIPs[key] === "" && delete objectofIPs[key])
 
-    console.log("Advanced New Object: "+ JSON.stringify(objectofIPs));
+ // console.log("Advanced New Object: "+ JSON.stringify(objectofIPs));
     
     const object= await InitialPost.find(objectofIPs).collation({locale: 'en', strength: 2 });
 
     try {
 
-      console.log("Advanced Objects Found: "+ JSON.stringify(object));
+   // console.log("Advanced Objects Found: "+ JSON.stringify(object));
       
       if (object.length===0){
         res.send(null);
-        console.log("Nothing Found &&&&&&&&&&&")
-        console.log("Null Objects: "+ JSON.stringify(object));
+     // console.log("Nothing Found &&&&&&&&&&&")
+     // console.log("Null Objects: "+ JSON.stringify(object));
       }
       else{
         res.send(object);

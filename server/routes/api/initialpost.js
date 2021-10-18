@@ -52,7 +52,7 @@ router.post('/', (req,res) => {
 
     // newRating.save();
     // res.send("IP",newInitialPost.id,"Rating",newRating.IPid);
-    console.log(newInitialPost)
+ // console.log(newInitialPost)
     newInitialPost.save()
     .then(()=>{
       const newRating= new Rating({
