@@ -36,8 +36,8 @@
     </div>
 
 
-
-    <h4 class="createRating" @click="CreateRating(initialpost.id)">
+<!-- CreateRating(initialpost.id) -->
+    <h4 class="createRating" @click="CreateRating()">
       Create a new rating
     </h4>
 
@@ -65,12 +65,13 @@ export default {
 
   computed: mapGetters(["queriedRatings"]),
   methods: {
-    CreateRating(IPid) {
-      const id = IPid;
+    CreateRating() {
+      // IPid
+      // const id = IPid;
       
 
    // console.log("In Here");
-   // console.log("Initial Post: " + JSON.stringify(id));
+  // console.log("Initial Post: " + JSON.stringify(id));
       this.$router.push ("/createrating");
     },
   },

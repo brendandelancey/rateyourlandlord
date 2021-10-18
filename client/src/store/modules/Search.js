@@ -79,9 +79,9 @@ const actions = {
         if(listOfDataObjects!=null){
          // console.log("listOfDataObjects")
          // console.log(JSON.stringify(listOfDataObjects[item]));
-            for(var item in listOfDataObjects){
+            // for(var item in listOfDataObjects){
              // console.log(JSON.stringify(listOfDataObjects[item]));
-            }
+            // }
             commit('setAddressSearchResults', listOfDataObjects);
             return true;
         }
@@ -124,9 +124,9 @@ const actions = {
         }
         if(listOfDataObjects!=null){
          // console.log("listOfDataObjects")
-            for(var item in listOfDataObjects){
-             // console.log(JSON.stringify(listOfDataObjects[item]));
-            }
+            // for(var item in listOfDataObjects){
+            //  // console.log(JSON.stringify(listOfDataObjects[item]));
+            // }
             commit('setAddressSearchResults', listOfDataObjects);
             return true;
         }
@@ -174,9 +174,9 @@ const actions = {
         
         if(listOfDataObjects!=null){
          // console.log("listOfDataObjects")
-            for(var item in listOfDataObjects){
-             // console.log(JSON.stringify(listOfDataObjects[item]));
-            }
+            // for(var item in listOfDataObjects){
+            //  // console.log(JSON.stringify(listOfDataObjects[item]));
+            // }
             commit('setAddressSearchResults', listOfDataObjects);
             return true;
         }
