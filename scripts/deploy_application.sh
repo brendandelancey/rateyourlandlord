@@ -16,7 +16,7 @@ cd client
 
 npm install
 
-npm run build
+sudo npm run build
 
 cd ..
 
