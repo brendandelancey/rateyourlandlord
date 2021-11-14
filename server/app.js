@@ -52,7 +52,7 @@ app.use(cors());
 require('./config/database');
 
 
-/**
+/** 
  * -------------- Model ----------------
  */
 
@@ -140,7 +140,9 @@ app.use('/api/search', search);
  */
 //Probably should hide the port in a "".env" file using 
 //"dotenv" thats what the .env.Port is for
-const PORT = process.env.PORT || 5000;
+const port=process.env.PORT
+
+const PORT = port || 5000;
 //
 
 app.listen(PORT, () => {
