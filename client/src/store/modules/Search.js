@@ -1,6 +1,8 @@
 
 import axios from 'axios';
 
+const url = process.env.LOCAL
+
 const state = {
     queryResults:[],
     searchparameters:{},
@@ -41,7 +43,7 @@ const actions = {
          // console.log("!!!!!!!!!!!!!!!!!");
 
          // console.log(JSON.stringify(searchparameters[call]));
-            const res = await axios.get('http://www.rateyourstudenthouse.com/api/search/address', {
+            const res = await axios.get(url+'/search/address', {
                 params:
                     searchparameters[call]
                 
@@ -94,7 +96,7 @@ const actions = {
             {
              // console.log(JSON.stringify(searchparameters[call]));
 
-                var res = await axios.get('http://www.rateyourstudenthouse.com/api/search/landlord', {
+                var res = await axios.get(url+'/search/landlord', {
                     params:
                         searchparameters[call]
                     
@@ -142,7 +144,7 @@ const actions = {
          // console.log("!!!!!!!!!!!!!!!!!");
 
          // console.log(JSON.stringify(searchparameters));
-            const res = await axios.get('http://www.rateyourstudenthouse.com/api/search/advanced', {
+            const res = await axios.get(url+'/search/advanced', {
                 params:
                     searchparameters
                 

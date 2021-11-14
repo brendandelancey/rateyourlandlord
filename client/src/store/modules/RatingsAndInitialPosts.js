@@ -1,6 +1,8 @@
 
 import axios from 'axios';
 
+const url= process.env.LOCAL
+
 const state = {
  
     queryofRatings:[],
@@ -23,7 +25,7 @@ const actions = {
         try
         {
          // console.log(newIP);
-            var res = await axios.post('http://www.rateyourstudenthouse.com/api/initialpost/', newIP)
+            var res = await axios.post(url+'/initialpost/', newIP)
             
             //Should just return some success message or failure message
          // console.log(res);
@@ -46,7 +48,7 @@ const actions = {
      // console.log(IPid);
         var listOfDataObjects=[];
         try{
-            const res = await axios.get('http://www.rateyourstudenthouse.com/api/rating/', {
+            const res = await axios.get(url+'/rating/', {
                 params:{
                     "IPid" : IPid}
                 
@@ -78,7 +80,7 @@ const actions = {
         try{
  
          // console.log(Rating);
-            var res = await axios.post('http://www.rateyourstudenthouse.com/api/rating/', Rating)
+            var res = await axios.post(url+'/rating/', Rating)
             
             //Should just return some success message or failure message
          // console.log(res);
