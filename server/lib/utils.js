@@ -3,9 +3,15 @@ const jsonwebtoken = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
 
-const pathToKey = path.join(__dirname, '..', 'id_rsa_priv.pem');
-const PRIV_KEY = fs.readFileSync(pathToKey, 'utf8');
+// const pathToKey = path.join(__dirname, '..', 'id_rsa_priv.pem');
+// const PRIV_KEY = fs.readFileSync(pathToKey, 'utf8');
 
+const priv_key = process.env.ID_RSA_PRIV
+const buff = Buffer.from(priv_key, 'base64');
+const priv_key_string = buff.toString('utf-8');
+console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaa ');
+console.log(priv_key_string);
+const PRIV_KEY = priv_key_string;
 /**
  * -------------- HELPER FUNCTIONS ----------------
  */
