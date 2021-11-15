@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const deploy=true;
+const deploy=false;
 require('dotenv').config()
 const deployment = process.env.DATABASE_DEPLOYMENT
 const development = process.env.DATABASE_DEVELOPMENT
