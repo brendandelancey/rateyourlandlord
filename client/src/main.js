@@ -6,9 +6,11 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from 'axios';
-
+require('dotenv').config();
+const Apple=process.env.LOCAL
+console.log(Apple);
 Vue.config.productionTip = false
-
+console.log(Vue.version);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 

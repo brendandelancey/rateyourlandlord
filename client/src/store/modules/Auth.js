@@ -2,7 +2,11 @@
 import axios from 'axios';
 import router from '../../router';
 
+const path = require('path')
+require('dotenv').config({path: path.join(__dirname+'/../../../.env')})
+require('dotenv').config();
 const url=process.env.LOCAL
+console.log(url);
 
 const state = {
     token: localStorage.getItem('token') || '',
