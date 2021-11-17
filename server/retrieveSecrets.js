@@ -25,6 +25,7 @@ module.exports = () => {
 				Object.keys(secretsJSON).forEach((key) => {
 					secretsString += `${key}=${secretsJSON[key]}\n`;
 				});
+                console.log(secretsString)
 				resolve(secretsString);
 			} 
 		});
