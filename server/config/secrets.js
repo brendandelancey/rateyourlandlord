@@ -5,7 +5,7 @@ console.log("*******************Secrets");
 async function asyncCall()  {
 try {
     //get secretsString:
-    const secretsString = await retrieveSecret();
+    const secretsString = await retrieveSecret("test-secret");
 
     //write to .env file at root level of project:
     await fs.writeFile(".env", secretsString, function(err, result) {
