@@ -52,7 +52,7 @@ app.use(cors());
 //Express, by default does not allow you to serve static files. You need
 // to enable it using the following built-in middleware
 
-require('./config/secrets');
+// require('./config/secrets');
 
 app.get("/", (req, res) => {
 	return res.status(200).json({
