@@ -9,6 +9,9 @@ try {
     const secretsString = await retrieveSecret(params);
 
     //write to .env file at root level of project:
+
+    console.log("secretsString");
+    console.log(secretsString);
     //TODO Needs write privilages
     await fs.open("./../../.env", secretsString,'w', function(err, result) {
         if(err){
