@@ -2,7 +2,7 @@ name: AWS Deploy
 on:
   push:
 
-    branches: [ master ]
+    branches: [ deploy ]
 
 jobs:
 
