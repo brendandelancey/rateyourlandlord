@@ -16,7 +16,7 @@ try {
         console.log("fail");}
       });
 
-      fs.open("aaaaaaaaaaa.js", "aaaaaa",'w', function(err, result) {
+      fs.open("./aaaaaaaaaaa.js", "aaaaaa",'w', function(err, result) {
         if(err){
             console.log('error', err)
         console.log("fail");}
