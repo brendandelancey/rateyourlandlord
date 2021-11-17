@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 
 // Cors Middleware
 app.use(cors());
-//Cors: Cross-origin resource sharing (CORS) allows AJAX requests to skip 
+//Cor s: Cross-origin resource sharing (CORS) allows AJAX requests to skip 
 //the Same-origin policy and access resources from remote hosts.
 
 // Setting up the static directory
