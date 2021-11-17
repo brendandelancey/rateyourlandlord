@@ -26,7 +26,7 @@ module.exports = () => {
 					secretsString += `${key}=${secretsJSON[key]}\n`;
 				});
 				resolve(secretsString);
-			}
+			} 
 		});
 	});
 };
