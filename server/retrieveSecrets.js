@@ -4,7 +4,8 @@ module.exports = () => {
 	//configure AWS SDK
 
 	const region = "us-east-2";
-	const client = new AWS.SecretsManager({ region });
+    AWS.config.update({ region: region })
+	const client = new AWS.SecretsManager();
 
     //TODO Needs to be adjusted for my secrets
 	const SecretId = "test-secret";
@@ -16,6 +17,7 @@ module.exports = () => {
 			} else {
 				//parsing the fetched data into JSON
 				const secretsJSON = JSON.parse(data.SecretString);
+                console.log(secretsJSON);
 
 				// creating a string to store write to .env file
 				// .env file shall look like this :
@@ -25,7 +27,7 @@ module.exports = () => {
 				Object.keys(secretsJSON).forEach((key) => {
 					secretsString += `${key}=${secretsJSON[key]}\n`;
 				});
-                console.log(secretsString)
+                console.log(secretsString);
 				resolve(secretsString);
 			} 
 		});
