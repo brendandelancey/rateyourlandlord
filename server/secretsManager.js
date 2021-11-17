@@ -15,8 +15,7 @@ async function retrieveSecret (key) {
     
 
 
-
-    const secretsJSON = JSON.parse(secret);
+    const secretsJSON = JSON.parse(secret.SecretString);
     console.log(secretsJSON);
 
 	
