@@ -1,8 +1,7 @@
 
 import axios from 'axios';
-const path = require('path')
-require('dotenv').config({path: path.join(__dirname+'/../../../.env')})
-const url = process.env.LOCAL
+import config from "../../../config/env.js"
+const url=config.DOMAIN
 
 const state = {
     queryResults:[],

@@ -9,8 +9,7 @@ const path = require('path');
 const priv_key = process.env.ID_RSA_PRIV
 const buff = Buffer.from(priv_key, 'base64');
 const priv_key_string = buff.toString('utf-8');
-console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaa ');
-console.log(priv_key_string);
+
 const PRIV_KEY = priv_key_string;
 /**
  * -------------- HELPER FUNCTIONS ----------------
