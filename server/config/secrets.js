@@ -6,11 +6,11 @@ async function asyncCall(secretName)  {
     const params = secretName
 try {
     //get secretsString:
-    const secretsString = await retrieveSecret(params);
+    const secretsString = await secretRetrieve(params);
 
     //write to .env file at root level of project:
 
-    console.log("secretsString");
+    console.log("kkkkkkkkkkkkkkklkkkkkkkkkkkkkkkkkkkkkkkkkkk");
     console.log(secretsString);
     //TODO Needs write privilages
     await fs.open("./../../.env", secretsString,'w', function(err, result) {

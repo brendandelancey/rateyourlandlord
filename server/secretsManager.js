@@ -4,7 +4,7 @@ AWS.config.update({ region: 'us-east-2' })
 
 const sm = new AWS.SecretsManager()
 
-async function retrieveSecret (key) {
+async function secretRetrieve (key) {
   const params = {
     SecretId: key
   }
@@ -37,4 +37,5 @@ if (process.argv.length < 3) {
 
 const keyArg = process.argv[2]
 console.log(keyArg);
-retrieveSecret(keyArg)
+secretRetrieve(keyArg)
+print("qqqqqqqqqqqqqqqqqqqq");
