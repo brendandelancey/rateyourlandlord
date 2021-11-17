@@ -3,10 +3,10 @@ const AWS = require("aws-sdk");
 module.exports = () => {
 	//configure AWS SDK
 
-    //TODO Change
 	const region = "us-east-2";
 	const client = new AWS.SecretsManager({ region });
 
+    //TODO Needs to be adjusted for my secrets
 	const SecretId = "test-secret";
 	return new Promise((resolve, reject) => {
 		//retrieving secrets from secrets manager
