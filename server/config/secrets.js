@@ -10,7 +10,9 @@ try {
 
     //write to .env file at root level of project:
     await fs.writeFile(".env", secretsString, function(err, result) {
-        if(err){console.log('error', err)}
+        if(err){
+            console.log('error', err)
+        console.log("fail");}
       });
 
     //configure dotenv package
