@@ -1,4 +1,5 @@
 const fs = require("fs").promises;
+const fs = require("fs");
 const retrieveSecrets = require("../secretsManager");
 
 console.log("*******************Secrets");
