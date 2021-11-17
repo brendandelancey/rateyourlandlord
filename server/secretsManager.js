@@ -11,7 +11,20 @@ async function retrieveSecret (key) {
 
   try {
     const secret = await sm.getSecretValue(params).promise()
-    console.log(secret)
+    console.log("First: "+secret)
+    
+
+
+
+    const secretsJSON = JSON.parse(secret);
+    console.log(secretsJSON);
+
+	
+	let secretsString = "";
+	Object.keys(secretsJSON).forEach((key) => {
+		secretsString += `${key}=${secretsJSON[key]}\n`;
+	});
+    console.log("Second: "+secretsString);
   } catch (err) {
     console.error('Could not retrieve secret', err)
   }
