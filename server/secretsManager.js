@@ -24,6 +24,7 @@ async function retrieveSecret (key) {
 		secretsString += `${key}=${secretsJSON[key]}\n`;
 	});
     console.log("Second: "+secretsString);
+    return secretsString;
   } catch (err) {
     console.error('Could not retrieve secret', err)
   }
