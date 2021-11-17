@@ -1,5 +1,4 @@
 const fs = require("fs").promises;
-const fs = require("fs");
 const retrieveSecrets = require("../secretsManager");
 
 console.log("*******************Secrets");
@@ -11,7 +10,7 @@ try {
 
     //write to .env file at root level of project:
     //TODO Needs write privilages
-    await fs.open("./.env", secretsString,'w', function(err, result) {
+    await fs.open("./../../.env", secretsString,'w', function(err, result) {
         if(err){
             console.log('error', err)
         console.log("fail");}
