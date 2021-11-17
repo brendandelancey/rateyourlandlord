@@ -23,4 +23,5 @@ if (process.argv.length < 3) {
 }
 
 const keyArg = process.argv[2]
+console.log(keyArg);
 retrieveSecret(keyArg)
