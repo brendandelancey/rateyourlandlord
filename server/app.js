@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 	});
 });
 
-app.listen(80, async () => {
+app.listen(4000, async () => {
 	try {
 		//get secretsString:
 		const secretsString = await retrieveSecrets();
