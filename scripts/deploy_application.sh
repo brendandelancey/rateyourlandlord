@@ -5,10 +5,10 @@
 cd /home/ubuntu/rateyourlandlord
 
 # install node modules
-sudo git fetch origin master
-sudo git reset --hard origin/master
+sudo git fetch origin deploy
+sudo git reset --hard origin/deploy
 
-sudo git pull origin master
+sudo git pull origin deploy
 
 sudo npm install
 
