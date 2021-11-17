@@ -19,11 +19,11 @@ async function retrieveSecret (key) {
     console.log(secretsJSON);
 
 	
-	// let secretsString = "";
-	// Object.keys(secretsJSON).forEach((key) => {
-	// 	secretsString += `${key}=${secretsJSON[key]}\n`;
-	// });
-    // console.log("Second: "+secretsString);
+	let secretsString = "";
+	Object.keys(secretsJSON).forEach((key) => {
+		secretsString += `${key}=${secretsJSON[key]}\n`;
+	});
+    console.log("Second: "+secretsString);
   } catch (err) {
     console.error('Could not retrieve secret', err)
   }
