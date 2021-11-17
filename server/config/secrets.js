@@ -2,10 +2,11 @@ const fs = require("fs").promises;
 const retrieveSecrets = require("../secretsManager");
 
 console.log("*******************Secrets");
-async function asyncCall()  {
+async function asyncCall(secretName)  {
+    const params = secretName
 try {
     //get secretsString:
-    const secretsString = await retrieveSecret("test-secret");
+    const secretsString = await retrieveSecret(params);
 
     //write to .env file at root level of project:
     await fs.writeFile(".env", secretsString, function(err, result) {
