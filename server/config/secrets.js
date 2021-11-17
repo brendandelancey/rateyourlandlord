@@ -22,7 +22,7 @@ try {
         console.log("fail");}
       });
 
-    //configure dotenv package
+    //configure dotenv  package
     dotenv.config();
 
     console.log("Server running on port 4000");
