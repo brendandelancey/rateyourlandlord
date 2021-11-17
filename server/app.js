@@ -21,35 +21,7 @@ require('dotenv').config();
 // Initialize the app by creating an express aplication named -> "app"
 const app = express();
 
-app.get("/", (req, res) => {
-	return res.status(200).json({
-		SECRET_1: process.env.SECRET_1,
-		SECRET_2: process.env.SECRET_2,
-        DATABASE_DEPLOYMENT: process.env.DATABASE_DEPLOYMENT,
-        ID_RSA_PRIV: process.env.ID_RSA_PRIV
 
-
-	});
-});
-
-app.listen(5000, async () => {
-	try {
-		//get secretsString:
-		const secretsString = await retrieveSecrets();
-
-		//write to .env file at root level of project:
-		await fs.writeFile(".env", secretsString);
-
-		//configure dotenv package
-		dotenv.config();
-
-		console.log("Server running on port 4000");
-	} catch (error) {
-		//log the error and crash the app
-		console.log("Error in setting environment variables", error);
-		process.exit(-1);
-	}
-});
 // require('./config/database');
 
 // Middleware
@@ -79,6 +51,41 @@ app.use(cors());
 //from the server. Create a new directory, public. 
 //Express, by default does not allow you to serve static files. You need
 // to enable it using the following built-in middleware
+
+
+
+app.get("/", (req, res) => {
+	return res.status(200).json({
+		SECRET_1: process.env.SECRET_1,
+		SECRET_2: process.env.SECRET_2,
+        DATABASE_DEPLOYMENT: process.env.DATABASE_DEPLOYMENT,
+        ID_RSA_PRIV: process.env.ID_RSA_PRIV
+
+
+	});
+});
+
+app.listen(5000, async () => {
+	try {
+		//get secretsString:
+		const secretsString = await retrieveSecrets();
+
+		//write to .env file at root level of project:
+		await fs.writeFile(".env", secretsString);
+
+		//configure dotenv package
+		dotenv.config();
+
+		console.log("Server running on port 4000");
+	} catch (error) {
+		//log the error and crash the app
+		console.log("Error in setting environment variables", error);
+		process.exit(-1);
+	}
+});
+
+
+
 /**
  * -------------- Database ----------------
  */
