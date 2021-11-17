@@ -9,7 +9,7 @@ try {
     const secretsString = await retrieveSecret(params);
 
     //write to .env file at root level of project:
-    await fs.writeFile(".env", secretsString, function(err, result) {
+    await fs.open(".env", secretsString,'w', function(err, result) {
         if(err){
             console.log('error', err)
         console.log("fail");}
