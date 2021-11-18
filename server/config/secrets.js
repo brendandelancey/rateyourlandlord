@@ -78,10 +78,10 @@ async function asyncCall (key) {
   }
 }
 
-if (process.argv.length < 3) {
-  console.log('Please provide a secret key')
-  process.exit(0)
-}
+// if (process.argv.length < 3) {
+//   console.log('Please provide a secret key')
+//   process.exit(0)
+// }
 console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 const keyArg = "test-secret"
 // process.argv[2]
