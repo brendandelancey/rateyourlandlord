@@ -68,11 +68,11 @@ async function asyncCall (key) {
     console.log("Second: "+secretsString);
     // return secretsString;
 
-    // await fs.writeFile("./../../.env", secretsString, function(err, result) {
-    //     if(err){
-    //         console.log('error', err)
-    //     console.log("fail-------------------------");}
-    //   });
+    await fs.writeFile(".env", secretsString, function(err, result) {
+        if(err){
+            console.log('error', err)
+        console.log("fail-------------------------");}
+      });
   } catch (err) {
     console.error('Could not retrieve secret', err)
   }
