@@ -33,7 +33,7 @@ console.log("*******************Secrets");
 //     //log the error and crash the app
 //     console.log("Error in setting environment variables", error);
 //     process.exit(-1);
-// }
+// } 
 // };
 // module.exports = { asyncCall };
 
