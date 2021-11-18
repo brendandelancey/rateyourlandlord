@@ -38,7 +38,8 @@ console.log("*******************Secrets");
 // module.exports = { asyncCall };
 
 
-
+function getSecrets (){
+    console.log("here");
 
 const AWS = require('aws-sdk')
 
@@ -88,5 +89,5 @@ const keyArg = "test"
 console.log(keyArg);
 asyncCall(keyArg)
 console.log("qqqqqqqqqqqqqqqqqqqq");
-
-module.exports = { asyncCall };
+}
+module.exports = { getSecrets };
