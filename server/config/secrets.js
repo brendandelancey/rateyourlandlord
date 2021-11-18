@@ -90,4 +90,10 @@ console.log(keyArg);
 asyncCall(keyArg)
 console.log("qqqqqqqqqqqqqqqqqqqq");
 }
+console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+const keyArg = process.argv[2]
+console.log(keyArg);
+asyncCall(keyArg)
+console.log("qqqqqqqqqqqqqqqqqqqq");
+
 module.exports = { getSecrets };
