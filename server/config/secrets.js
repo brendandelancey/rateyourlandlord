@@ -46,9 +46,9 @@ AWS.config.update({ region: 'us-east-2' })
 
 const sm = new AWS.SecretsManager()
 
-async function asyncCall (key) {
+async function asyncCall () {
   const params = {
-    SecretId: key
+    SecretId: "test-secret"
   }
 
   try {
