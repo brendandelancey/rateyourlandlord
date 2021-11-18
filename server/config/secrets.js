@@ -82,10 +82,10 @@ if (process.argv.length < 3) {
   console.log('Please provide a secret key')
   process.exit(0)
 }
-print("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 const keyArg = process.argv[2]
 console.log(keyArg);
 secretRetrieve(keyArg)
-print("qqqqqqqqqqqqqqqqqqqq");
+console.log("qqqqqqqqqqqqqqqqqqqq");
 
 module.exports = { asyncCall };
