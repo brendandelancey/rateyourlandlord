@@ -34,7 +34,7 @@ if (process.argv.length < 3) {
   console.log('Please provide a secret key')
   process.exit(0)
 }
-
+print("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 const keyArg = process.argv[2]
 console.log(keyArg);
 secretRetrieve(keyArg)
