@@ -48,7 +48,7 @@ const sm = new AWS.SecretsManager()
 
 async function asyncCall (key) {
   const params = {
-    SecretId: "test-secret"
+    SecretId: key
   }
 
   try {
@@ -78,14 +78,15 @@ async function asyncCall (key) {
   }
 }
 
-// if (process.argv.length < 3) {
-//   console.log('Please provide a secret key')
-//   process.exit(0)
-// }
-// console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-// const keyArg = process.argv[2]
-// console.log(keyArg);
-// asyncCall(keyArg)
-// console.log("qqqqqqqqqqqqqqqqqqqq");
+if (process.argv.length < 3) {
+  console.log('Please provide a secret key')
+  process.exit(0)
+}
+console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+const keyArg = "test-secret"
+// process.argv[2]
+console.log(keyArg);
+asyncCall(keyArg)
+console.log("qqqqqqqqqqqqqqqqqqqq");
 
 module.exports = { asyncCall };
