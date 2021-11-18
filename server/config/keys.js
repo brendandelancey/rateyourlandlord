@@ -2,7 +2,10 @@ const path = require('path');
 const fs = require('fs');
 const deploy=false;
 require('dotenv').config()
+const secrets = require("./secrets");
 const deployment = process.env.DATABASE_DEPLOYMENT
+
+const secret = secrets.getSecrets("Database-Deploy");
 const development = process.env.DATABASE_DEVELOPMENT
 
 const pub_key = process.env.ID_RSA_PUB

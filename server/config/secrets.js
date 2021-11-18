@@ -1,6 +1,6 @@
 const fs = require("fs").promises;
 const retrieveSecrets = require("../secretsManager");
-
+const AWS = require('aws-sdk')
 console.log("*******************Secrets");
 // async function asyncCall(secretName)  {
 //     const params = secretName
@@ -38,16 +38,88 @@ console.log("*******************Secrets");
 // module.exports = { asyncCall };
 
 
-function getSecrets (){
-    console.log("here");
+// const AWS = require('aws-sdk')
 
-const AWS = require('aws-sdk')
+// AWS.config.update({ region: 'us-east-2' })
+
+// const sm = new AWS.SecretsManager()
+
+
+
+// function getSecrets (){
+//     console.log("here");
+
+// const AWS = require('aws-sdk')
+
+// AWS.config.update({ region: 'us-east-2' })
+
+// const sm = new AWS.SecretsManager()
+
+// async function asyncCall (key) {
+//   const params = {
+//     SecretId: key
+//   }
+
+//   try {
+//     const secret = await sm.getSecretValue(params).promise()
+//     console.log("First: "+secret)
+    
+
+
+//     const secretsJSON = JSON.parse(secret.SecretString);
+//     console.log(secretsJSON);
+
+	
+// 	let secretsString = "";
+// 	Object.keys(secretsJSON).forEach((key) => {
+// 		secretsString += `${key}=${secretsJSON[key]}\n`;
+// 	});
+//     console.log("Second: "+secretsString);
+//     // return secretsString;
+
+//     await fs.writeFile("../../.env", secretsString, function(err, result) {
+//         if(err){
+//             console.log('error', err)
+//         console.log("fail-------------------------");}
+//       });
+//   } catch (err) {
+//     console.error('Could not retrieve secret', err)
+//   }
+// }
+
+// // if (process.argv.length < 3) {
+// //   console.log('Please provide a secret key')
+// //   process.exit(0)
+// // }
+// console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+// const keyArg = "test"
+// // process.argv[2]
+// console.log(keyArg);
+// asyncCall(keyArg)
+// console.log("qqqqqqqqqqqqqqqqqqqq");
+// }
+// console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+// const keyArg = process.argv[2]
+// console.log(keyArg);
+// asyncCall(keyArg)
+// console.log("qqqqqqqqqqqqqqqqqqqq");
+
+// module.exports = { getSecrets };
+
+
+// ---------------------------------
+
+
+async function getSecrets (key) {
+
+
+
 
 AWS.config.update({ region: 'us-east-2' })
 
 const sm = new AWS.SecretsManager()
 
-async function asyncCall (key) {
+
   const params = {
     SecretId: key
   }
@@ -69,11 +141,12 @@ async function asyncCall (key) {
     console.log("Second: "+secretsString);
     // return secretsString;
 
-    await fs.writeFile("../../.env", secretsString, function(err, result) {
-        if(err){
-            console.log('error', err)
-        console.log("fail-------------------------");}
-      });
+    // await fs.writeFile("../../.env", secretsString, function(err, result) {
+    //     if(err){
+    //         console.log('error', err)
+    //     console.log("fail-------------------------");}
+    //   });
+    return secretsString;
   } catch (err) {
     console.error('Could not retrieve secret', err)
   }
@@ -82,18 +155,12 @@ async function asyncCall (key) {
 // if (process.argv.length < 3) {
 //   console.log('Please provide a secret key')
 //   process.exit(0)
-// }
-console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-const keyArg = "test"
-// process.argv[2]
-console.log(keyArg);
-asyncCall(keyArg)
-console.log("qqqqqqqqqqqqqqqqqqqq");
-}
+
+
 console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 const keyArg = process.argv[2]
 console.log(keyArg);
-asyncCall(keyArg)
+getSecrets(keyArg)
 console.log("qqqqqqqqqqqqqqqqqqqq");
 
 module.exports = { getSecrets };
