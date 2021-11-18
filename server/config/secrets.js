@@ -83,7 +83,7 @@ async function asyncCall (key) {
 //   process.exit(0)
 // }
 console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-const keyArg = "test-secret"
+const keyArg = "test"
 // process.argv[2]
 console.log(keyArg);
 asyncCall(keyArg)

@@ -84,8 +84,8 @@ app.use(cors());
 // 	}
 // });
 
-// asyncCall("test-secret");
-require('./config/secrets');
+asyncCall("test");
+// require('./config/secrets');
 
 /**
  * -------------- Database ----------------
