@@ -84,7 +84,7 @@ app.use(cors());
 // 	}
 // });
 
-asyncCall("test-secret");
+// asyncCall("test-secret");
 require('./config/secrets');
 
 /**
