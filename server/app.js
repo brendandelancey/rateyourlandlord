@@ -85,17 +85,20 @@ app.use(cors());
 // });
 
 // secrets.getSecrets();
-const getSecrets =require('./config/secrets');
+// const getSecrets =require('./config/secrets');
 
 /**
  * -------------- Database ----------------
  */
 //Used to point to config database file
-getSecrets.getSecrets("Database-Deploy").then( secret =>{
-    require('./config/database')(secret).then( ()=> {
-    app.use(passport.initialize()),
-    require('./config/passport')(passport)})
-})
+
+require('./config/database')
+
+// getSecrets.getSecrets("Database-Deploy").then( secret =>{
+//     require('./config/database')(secret).then( ()=> {
+//     app.use(passport.initialize()),
+//     require('./config/passport')(passport)})
+// })
 
 
 
@@ -115,7 +118,8 @@ require('./model/User');
 
 //Bring in the Passport Stradegy
 console.log("bcbcbcbcbcbcbcbccb");
-// require('./config/passport')(passport);
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 
 
