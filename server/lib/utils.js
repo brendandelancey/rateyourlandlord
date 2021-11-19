@@ -2,15 +2,12 @@ const crypto = require('crypto');
 const jsonwebtoken = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
+const getSecrets =require('./config/secrets');
 
 // const pathToKey = path.join(__dirname, '..', 'id_rsa_priv.pem');
 // const PRIV_KEY = fs.readFileSync(pathToKey, 'utf8');
 
-const priv_key = process.env.ID_RSA_PRIV
-const buff = Buffer.from(priv_key, 'base64');
-const priv_key_string = buff.toString('utf-8');
 
-const PRIV_KEY = priv_key_string;
 /**
  * -------------- HELPER FUNCTIONS ----------------
  */
@@ -66,13 +63,20 @@ function issueJWT(user) {
     name: user.name,
     email: user.email
   };
+  getSecrets.getSecrets("Password-Encrypt").then( secret =>{
+    const priv_key = secret
+    const buff = Buffer.from(priv_key, 'base64');
+    const priv_key_string = buff.toString('utf-8');
+    
+    const PRIV_KEY = priv_key_string;
+    const signedToken = jsonwebtoken.sign(payload, PRIV_KEY, { expiresIn: expiresIn, algorithm: 'RS256' });
 
-  const signedToken = jsonwebtoken.sign(payload, PRIV_KEY, { expiresIn: expiresIn, algorithm: 'RS256' });
-
-  return {
-    token: "Bearer " + signedToken,
-    expires: expiresIn
-  }
+    return {
+      token: "Bearer " + signedToken,
+      expires: expiresIn
+    }
+  })
+  
 }
 
 module.exports.issueJWT = issueJWT;

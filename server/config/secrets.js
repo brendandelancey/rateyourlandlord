@@ -2,6 +2,7 @@ const fs = require("fs").promises;
 const retrieveSecrets = require("../secretsManager");
 const AWS = require('aws-sdk')
 console.log("*******************Secrets");
+require('dotenv').config();
 // async function asyncCall(secretName)  {
 //     const params = secretName
 // try {
@@ -112,7 +113,12 @@ console.log("*******************Secrets");
 
 async function getSecrets (key) {
 
-
+    // console.log("aaaaaaaaaaaaaaa");
+    // // ! Test Lines
+    // const a =key;
+    // console.log(a);
+    // const secret=process.env.DATABASE_DEVELOPMENT;
+    // return secret;
 
 
 AWS.config.update({ region: 'us-east-2' })
@@ -136,7 +142,7 @@ const sm = new AWS.SecretsManager()
 	
 	let secretsString = "";
 	Object.keys(secretsJSON).forEach((key) => {
-		secretsString += `${key}=${secretsJSON[key]}\n`;
+		secretsString =secretsJSON[key];
 	});
     console.log("Second: "+secretsString);
     // return secretsString;
@@ -157,10 +163,10 @@ const sm = new AWS.SecretsManager()
 //   process.exit(0)
 
 
-console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-const keyArg = process.argv[2]
-console.log(keyArg);
-getSecrets(keyArg)
-console.log("qqqqqqqqqqqqqqqqqqqq");
+// console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+// const keyArg = process.argv[2]
+// console.log(keyArg);
+// getSecrets(keyArg)
+// console.log("qqqqqqqqqqqqqqqqqqqq");
 
 module.exports = { getSecrets };

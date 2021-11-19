@@ -5,7 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const fs = require("fs").promises;
 const retrieveSecrets = require("./retrieveSecrets");
-const secrets = require("./config/secrets");
+// const secrets = require("./config/secrets");
 
 
 
@@ -84,14 +84,19 @@ app.use(cors());
 // 	}
 // });
 
-secrets.getSecrets();
-// require('./config/secrets');
+// secrets.getSecrets();
+const getSecrets =require('./config/secrets');
 
 /**
  * -------------- Database ----------------
  */
 //Used to point to config database file
-require('./config/database');
+getSecrets.getSecrets("Database-Deploy").then( secret =>{
+    require('./config/database')(secret).then( ()=> {
+    app.use(passport.initialize()),
+    require('./config/passport')(passport)})
+})
+
 
 
 /** 
@@ -107,9 +112,10 @@ require('./model/User');
  */
 
 //Use the passport Middleware
-app.use(passport.initialize());
+
 //Bring in the Passport Stradegy
-require('./config/passport')(passport);
+console.log("bcbcbcbcbcbcbcbccb");
+// require('./config/passport')(passport);
 
 
 
