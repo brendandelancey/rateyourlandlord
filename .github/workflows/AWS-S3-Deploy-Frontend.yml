@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
 
-    branches: [ back-end/deploy ]
+    branches: [ front-end/deploy ]
 
 jobs:
 
