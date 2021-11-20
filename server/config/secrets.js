@@ -3,7 +3,87 @@ const retrieveSecrets = require("../secretsManager");
 const AWS = require('aws-sdk')
 console.log("*******************Secrets");
 require('dotenv').config();
-// async function asyncCall(secretName)  {
+
+
+async function getSecrets(key) {
+
+    // console.log("aaaaaaaaaaaaaaa");
+    // // ! Test Lines
+    // const a =key;
+    // console.log(a);
+    // const secret=  process.env.DATABASE_DEVELOPMENT;
+    // return secret;
+
+
+        AWS.config.update({ region: 'us-east-2' })
+
+        const sm = new AWS.SecretsManager()
+
+
+        const params = {
+            SecretId: key
+        }
+
+        try {
+            const secret = await sm.getSecretValue(params).promise()
+            console.log("First: "+secret)
+            
+
+
+            const secretsJSON = JSON.parse(secret.SecretString);
+            console.log(secretsJSON);
+
+            
+            let secretsString = "";
+            Object.keys(secretsJSON).forEach((key) => {
+                secretsString =secretsJSON[key];
+            });
+            console.log("Second: "+secretsString);
+            // return secretsString;
+
+            // await fs.writeFile("../../.env", secretsString, function(err, result) {
+            //     if(err){
+            //         console.log('error', err)
+            //     console.log("fail-------------------------");}
+            //   });
+            return secretsString;
+        } catch (err) {
+            console.error('Could not retrieve secret', err)
+            return err
+        }
+}
+
+// if (process.argv.length < 3) {
+//   console.log('Please provide a secret key')
+//   process.exit(0)
+
+
+// console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+// const keyArg = process.argv[2]
+// console.log(keyArg);
+// getSecrets(keyArg)
+// console.log("qqqqqqqqqqqqqqqqqqqq");
+
+module.exports = { 
+    getSecrets:getSecrets}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    // async function asyncCall(secretName)  {
 //     const params = secretName
 // try {
 //     //get secretsString:
@@ -109,64 +189,3 @@ require('dotenv').config();
 
 
 // ---------------------------------
-
-
-async function getSecrets (key) {
-
-    // console.log("aaaaaaaaaaaaaaa");
-    // // ! Test Lines
-    // const a =key;
-    // console.log(a);
-    // const secret=process.env.DATABASE_DEVELOPMENT;
-    // return secret;
-
-
-AWS.config.update({ region: 'us-east-2' })
-
-const sm = new AWS.SecretsManager()
-
-
-  const params = {
-    SecretId: key
-  }
-
-  try {
-    const secret = await sm.getSecretValue(params).promise()
-    console.log("First: "+secret)
-    
-
-
-    const secretsJSON = JSON.parse(secret.SecretString);
-    console.log(secretsJSON);
-
-	
-	let secretsString = "";
-	Object.keys(secretsJSON).forEach((key) => {
-		secretsString =secretsJSON[key];
-	});
-    console.log("Second: "+secretsString);
-    // return secretsString;
-
-    // await fs.writeFile("../../.env", secretsString, function(err, result) {
-    //     if(err){
-    //         console.log('error', err)
-    //     console.log("fail-------------------------");}
-    //   });
-    return secretsString;
-  } catch (err) {
-    console.error('Could not retrieve secret', err)
-  }
-}
-
-// if (process.argv.length < 3) {
-//   console.log('Please provide a secret key')
-//   process.exit(0)
-
-
-// console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-// const keyArg = process.argv[2]
-// console.log(keyArg);
-// getSecrets(keyArg)
-// console.log("qqqqqqqqqqqqqqqqqqqq");
-
-module.exports = { getSecrets };
