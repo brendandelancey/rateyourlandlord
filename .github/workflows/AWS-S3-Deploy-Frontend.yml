@@ -1,8 +1,8 @@
 name: AWS Deploy 
 on:
   push:
+    branches: [ front-end/deploy ]
   pull_request:
-
     branches: [ front-end/deploy ]
 
 jobs:
