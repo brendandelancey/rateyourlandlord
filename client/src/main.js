@@ -12,7 +12,7 @@ Vue.use(IconsPlugin);
 
 // Setting up default vue's http modules for api calls
 Vue.prototype.$http = axios;
-// Load the token from the localStorage
+// Load the token from the local Storage
 const token = localStorage.getItem("token");
 // Is there is any token then we will simply append default axios authorization headers
 if (token) {
