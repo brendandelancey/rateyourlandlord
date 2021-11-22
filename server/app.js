@@ -124,7 +124,7 @@ app.get('/test', (req, res) => {
 /**
  * -------------- SERVER ----------------
  */
-//Probaby should hide the port in a "".env" file using 
+//Probably should hide the port in a "".env" file using 
 //"dotenv" thats what the .env.Port is for
 var deployment=true;
 // const port=process.env.PORT_DEPLOYMENT
