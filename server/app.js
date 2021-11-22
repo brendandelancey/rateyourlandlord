@@ -3,10 +3,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const passport = require('passport');
-const fs = require("fs").promises;
-const retrieveSecrets = require("./retrieveSecrets");
-
-
 
 
 // Gives us access to variables set in the .env file via `process.env.VARIABLE_NAME` syntax
@@ -20,38 +16,6 @@ require('dotenv').config();
 
 // Initialize the app by creating an express aplication named -> "app"
 const app = express();
-
-// app.get("/", (req, res) => {
-// 	return res.status(200).json({
-// 		SECRET_1: process.env.SECRET_1,
-// 		SECRET_2: process.env.SECRET_2,
-//         DATABASE_DEPLOYMENT: process.env.DATABASE_DEPLOYMENT,
-//         ID_RSA_PRIV: process.env.ID_RSA_PRIV
-
-
-// 	});
-// });
-
-// app.listen(4000, async () => {
-// 	try {
-// 		//get secretsString:
-// 		const secretsString = await retrieveSecrets();
-
-// 		//write to .env file at root level of project:
-// 		await fs.writeFile(".env", secretsString);
-
-// 		//configure dotenv package
-// 		dotenv.config();
-
-// 		console.log("Server running on port 4000");
-// 	} catch (error) {
-// 		//log the error and crash the app
-// 		console.log("Error in setting environment variables", error);
-// 		process.exit(-1);
-// 	}
-// });
-
-
 // require('./config/database');
 
 // Middleware
@@ -80,18 +44,17 @@ app.use(cors());
 //Static Directory: Static files are files that clients download as they are 
 //from the server. Create a new directory, public. 
 //Express, by default does not allow you to serve static files. You need
-// to enable it using the following built-in middleware
-
-// require('./config/secrets')
+// to enable it using the following built-in middleware.
 
 /**
  * -------------- Database ----------------
  */
+
 //Used to point to config database file
 require('./config/database');
 
 
-/** 
+/**
  * -------------- Model ----------------
  */
 
@@ -109,11 +72,12 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 
-
-
 /**
  * -------------- ROUTES ----------------
  */
+// app.get('/', (req, res) =>{
+//     return res.send("<h1>Hello World</h1>")
+// })
 // Bring in the Users route
 const users = require('./routes/api/users');
 //**Created
@@ -131,30 +95,10 @@ app.use('/api/search', search);
 //Generally * is for finding all other requests beside the ones you have defined
 //and labling them as 404 errors -> may leave it
 
-
-
-
-
-
-
-
-
-
-
-
 //**After testing */
 // app.get('*', (req, res) => {
 //     res.sendFile(path.join(__dirname, 'public/index.html'));
 // })
-
-
-
-
-
-
-
-
-
 
 //These are to be changed -> post, put, delete
 // app.get('/users/users', (req, res) => {
@@ -184,7 +128,7 @@ const port=process.env.PORT_DEPLOYMENT
 
 var PORT;
 // deployment? PORT=port: PORT=5000
-PORT=80
+PORT=5000
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
