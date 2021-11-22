@@ -117,6 +117,9 @@ app.use('/api/search', search);
 //     return res.send(`DELETE HTTP method on user/${req.params.userId} resource`,);
 //   });
 
+app.get('/test', function routeHandler(req, res) {
+	res.send('ok');
+  });
 
 /**
  * -------------- SERVER ----------------
