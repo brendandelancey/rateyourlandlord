@@ -24,4 +24,8 @@ sudo systemctl restart nginx
 
 # start our node app in the background using pm2
 
-sudo pm2 restart all
+cd server
+
+sudo pm2 kill
+
+sudo pm2 start app.js -xn 'app'
