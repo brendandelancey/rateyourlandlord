@@ -5,23 +5,27 @@
 cd /home/ubuntu/rateyourlandlord
 
 # install node modules
-sudo git fetch origin master
-sudo git reset --hard origin/master
+sudo git fetch origin back-end/deploy
+sudo git reset --hard origin/back-end/deploy
 
-sudo git pull origin master
+sudo git pull origin back-end/deploy
 
 sudo npm install
 
-cd client
+# cd client
 
-npm install
+# npm install
 
-sudo npm run build
+# sudo npm run build
 
-cd ..
+# cd ..
 
 sudo systemctl restart nginx
 
 #start our node app in the background using pm2
 
-sudo pm2 restart all
+cd server
+
+sudo pm2 kill
+
+sudo pm2 start app.js --watch

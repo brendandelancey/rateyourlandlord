@@ -1,29 +1,24 @@
-name: AWS Deploy 
+name: AWS Deploy
 on:
   push:
-  
-    branches: [ front-end/deploy ]
-    
+    branches: [front-end/deploy]
+
   pull_request:
-  
-    branches: [ front-end/deploy ]
+    branches: [front-end/deploy]
 
 jobs:
-
   start:
-
     runs-on: ubuntu-latest
 
     steps:
-    
       - name: Run multi line script
         run: |
           npm install
           npm build
-      
+
       - name: Checkout to repo
         uses: actions/checkout@v2
-        
+
       - name: S3 Sync
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -33,13 +28,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
           aws-region: us-east-2
-          source_dir: 'dist'
-    
+          source_dir: "dist"
+
       - name: invalidate
         uses: chetan/invalidate-cloudfront-action@v2
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
-          PATHS: '/*'
-          AWS_REGION: 'us-east-2'
+          PATHS: "/*"
+          AWS_REGION: "us-east-2"
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
