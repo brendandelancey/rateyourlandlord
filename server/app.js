@@ -109,7 +109,7 @@ app.use('/api/search', search);
 //     return res.send('POST HTTP method on user resource');
 //   });
    
-// app.put('/api/users/:userId', (req, res) => {
+//app.put('/api/users/:userId', (req, res) => {
 //     return res.send(`PUT HTTP method on user/${req.params.userId} resource`,);
 //   });
    
