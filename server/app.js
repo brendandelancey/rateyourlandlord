@@ -130,7 +130,7 @@ var deployment=true;
 // const port=process.env.PORT_DEPLOYMENT
 
 var PORT;
-// deployment? PORT=port: PORT=5000
+// deployment ? PORT=port: PORT=5000
 PORT=5000
 
 app.listen(PORT, () => {
