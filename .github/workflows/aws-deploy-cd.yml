@@ -1,21 +1,18 @@
-name: AWS Deploy 
+name: AWS Deploy
 on:
   push:
-    branches: [ deploy ]
+    branches: [back-end/deploy]
   pull_request:
-    branches: [ deploy ]
+    branches: [back-end/deploy]
 
 jobs:
-
   start:
-
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Checkout to repo 
+      - name: Checkout to repo
         uses: actions/checkout@v2
-        
+
       - name: AWS SSM Send Command
         uses: peterkimzz/aws-ssm-send-command@1.0.1
         with:
@@ -26,4 +23,3 @@ jobs:
           comment: Deploy the master branch
           working-directory: /home/ubuntu/rateyourlandlord/scripts
           command: /bin/sh ./deploy_application.sh
-    
