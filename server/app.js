@@ -128,7 +128,7 @@ const port=process.env.PORT_DEPLOYMENT
 
 var PORT;
 // deployment? PORT=port: PORT=5000
-PORT=5000
+PORT=80
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
