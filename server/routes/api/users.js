@@ -16,6 +16,11 @@ const jwtDecode = require("jwt-decode");
  * @access Public
  */
 
+ router.get('/test', function routeHandler(req, res) {
+	res.send('data finally crap and garbage');
+  });
+
+
 router.post('/register', (req, res) => {
     //switch to normal
     let {
