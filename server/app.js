@@ -124,7 +124,7 @@ app.use('/api/search', search);
 //Probably should hide the port in a "".env" file using 
 //"dotenv" thats what the .env.Port is for
 var deployment=true;
-const port=process.env.PORT_DEPLOYMENT
+// const port=process.env.PORT_DEPLOYMENT
 
 var PORT;
 // deployment? PORT=port: PORT=5000
