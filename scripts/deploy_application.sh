@@ -28,4 +28,4 @@ cd server
 
 sudo pm2 kill
 
-sudo pm2 start app.js -xn 'app'
+sudo pm2 start app.js
