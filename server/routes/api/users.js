@@ -15,6 +15,12 @@ const jwtDecode = require("jwt-decode");
  * @desc Register the User
  * @access Public
  */
+
+ router.get('/', (req, res) => {
+        res.json({message: "Hello world!"});
+    });
+
+
 router.post('/register', (req, res) => {
     //switch to normal
     let {

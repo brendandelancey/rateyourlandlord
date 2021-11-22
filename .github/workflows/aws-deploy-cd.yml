@@ -1,4 +1,4 @@
-name: AWS Deploy
+name: AWS Back-End Deploy
 on:
   push:
     branches: [back-end/deploy]
