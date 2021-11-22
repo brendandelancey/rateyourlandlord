@@ -22,6 +22,6 @@ sudo npm install
 
 sudo systemctl restart nginx
 
-#start our node app in the background using pm2
+# start our node app in the background using pm2
 
 sudo pm2 restart all
