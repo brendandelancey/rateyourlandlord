@@ -7,7 +7,7 @@ const fs = require("fs").promises;
 const retrieveSecrets = require("./retrieveSecrets");
 
 // Gives us access to variables set in the .env file via `process.env.VARIABLE_NAME` syntax
-require("dotenv").config();
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 /**
  * -------------- GENERAL SETUP ----------------
@@ -139,6 +139,8 @@ app.post("/test", (req, res) => {
   });
 });
 
+process;
+
 //These are to be changed -> post, put, delete
 // app.get('/users/users', (req, res) => {
 //     return res.send('GET HTTP method on user resource');
@@ -165,7 +167,8 @@ app.post("/test", (req, res) => {
 // const port=process.env.PORT_DEPLOYMENT
 
 var PORT;
-PORT = 5000;
+const port = process.env.PORT;
+PORT = port;
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
