@@ -29,12 +29,37 @@
           placeholder="Search by name"
         />
       </div>
+
       <div class="nav">
         <nav>
           <ul class="nav_links">
-            <li><a href="/login" v-if="!isLoggedIn">Login</a></li>
+            <li>
+              <!-- <a href="/login" v-if="!isLoggedIn">Login</a> -->
+              <v-row data-app justify="center">
+                <v-dialog max-width="600px">
+                  <template v-slot:activator="{ on, attrs }">
+                    <a v-bind="attrs" v-on="on" v-if="!isLoggedIn">Login</a>
+                  </template>
+                  <login />
+                  <!-- v-on:close-dialog="closeDialog" -->
+                </v-dialog>
+              </v-row>
+            </li>
+            <spacer></spacer>
             <li><a href="/profile" v-if="isLoggedIn">Profiles</a></li>
-            <li><a href="/register" v-if="!isLoggedIn">Register</a></li>
+            <spacer></spacer>
+            <li>
+              <!-- <a href="/register" v-if="!isLoggedIn">Register</a> -->
+              <v-row data-app justify="center">
+                <v-dialog max-width="600px">
+                  <template v-slot:activator="{ on, attrs }">
+                    <a v-bind="attrs" v-on="on" v-if="!isLoggedIn">Register</a>
+                  </template>
+                  <signup />
+                  <!-- v-on:close-dialog="closeDialog" -->
+                </v-dialog>
+              </v-row>
+            </li>
             <li>
               <a href="/logout" v-if="isLoggedIn" @click.prevent="logoutUser"
                 >Logout</a
@@ -49,7 +74,10 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import Login from "../views/Login.vue";
+import SignUp from "../views/SignUp.vue";
 export default {
+  components: { login: Login, signup: SignUp },
   computed: {
     ...mapGetters(["isLoggedIn"]),
     data() {
@@ -57,6 +85,8 @@ export default {
         // autocomplete:null,
         // place:null,
         // key:""
+
+        // dialog: false,
         address: "",
         placeResult: null,
         id: "",
@@ -69,10 +99,16 @@ export default {
   },
   methods: {
     //! This might not be how you call two modules, needs testing
-    ...mapActions(["logout","addressSearch", "landlordSearch"]),
+    ...mapActions(["logout", "addressSearch", "landlordSearch"]),
     logoutUser() {
       this.logout();
     },
+    // closeDialog: function(){
+    //       console.log(this.dialog);
+    //       console.log('close dialog 2');
+    //       this.dialog = false;
+
+    //     } ,
 
     home() {
       this.$router.push("/");
@@ -125,7 +161,7 @@ export default {
             lastname: listOfNames[1],
           },
         };
-     // console.log("Name Two Words:" + JSON.stringify(this.objectOfSearches));
+        // console.log("Name Two Words:" + JSON.stringify(this.objectOfSearches));
         this.searchByLandlord();
       }
       // 4 searches 3+ spaces, 1 object
@@ -165,7 +201,7 @@ export default {
             lastname: listOfNames[listOfNames.length - 1],
           },
         };
-     // console.log(
+        // console.log(
         //   "Name Three Words:" + JSON.stringify(this.objectOfSearches)
         // );
         this.searchByLandlord();
@@ -180,9 +216,9 @@ export default {
 
     AddressSearch(e) {
       //  LOWERCASE
-   // console.log(e.target.value);
+      // console.log(e.target.value);
       var addressField = e.target.value;
-   // console.log(addressField);
+      // console.log(addressField);
 
       //Custom Search
       if (addressField != null && addressField != "") {
@@ -221,7 +257,7 @@ export default {
               (provinceInSearch = v.toLowerCase()))
             : null;
         });
-     // console.log("New Address After province: " + addressField);
+        // console.log("New Address After province: " + addressField);
         quebec.some((v) => {
           addressField.includes(v.toLowerCase()) &&
           !addressField.includes(v.toLowerCase() + " city")
@@ -235,7 +271,7 @@ export default {
             : null;
         });
 
-     // console.log("New Address after qubec: " + addressField);
+        // console.log("New Address after qubec: " + addressField);
         //This then needs to be mapped to actual province
         // provinceAbreviations.some(v => {addressField.includes(v.toLowerCase())? (addressField=addressField.replace(" "+ v.toLowerCase(), ""), provinceInSearch=v.toLowerCase()):null});
 
@@ -250,14 +286,14 @@ export default {
               (countryInSearch = v.toLowerCase()))
             : null;
         });
-     // console.log("New Address after country: " + addressField);
+        // console.log("New Address after country: " + addressField);
 
-     // console.log(
+        // console.log(
         //   "Address Field Spaces: " +
         //     (addressField.split(" ").length - 1).toString()
         // );
-     // console.log("Province: " + provinceInSearch);
-     // console.log("Country: " + countryInSearch);
+        // console.log("Province: " + provinceInSearch);
+        // console.log("Country: " + countryInSearch);
 
         // // callOne:{
         // //         street:,
@@ -280,7 +316,7 @@ export default {
             },
           };
 
-       // console.log(
+          // console.log(
           //   "Adress One Word:" + JSON.stringify(this.objectOfAddressSearches)
           // );
           this.searchByAddress();
@@ -305,7 +341,7 @@ export default {
             },
           };
 
-       // console.log(
+          // console.log(
           //   "Adress One Word:" + JSON.stringify(this.objectOfAddressSearches)
           // );
           this.searchByAddress();
@@ -332,7 +368,7 @@ export default {
               country: countryInSearch,
             },
           };
-       // console.log(
+          // console.log(
           //   "Adress Two Words:" + JSON.stringify(this.objectOfAddressSearches)
           // );
           this.searchByAddress();
@@ -366,7 +402,7 @@ export default {
               country: countryInSearch,
             },
           };
-       // console.log(
+          // console.log(
           //   "Adress Three Words:" + JSON.stringify(this.objectOfAddressSearches)
           // );
           this.searchByAddress();
@@ -420,7 +456,7 @@ export default {
               country: countryInSearch,
             },
           };
-       // console.log(
+          // console.log(
           //   "Adress Four Or More Words:" +
           //     JSON.stringify(this.objectOfAddressSearches)
           // );
@@ -430,7 +466,6 @@ export default {
     },
 
     searchByAddress() {
-
       this.addressSearch(this.objectOfAddressSearches)
         .then((res) => {
           if (res) {
@@ -438,20 +473,18 @@ export default {
           }
         })
         .catch((err) => {
-        console.log(err);
+          console.log(err);
         });
     },
     searchByLandlord() {
-
       this.landlordSearch(this.objectOfSearches)
         .then((res) => {
           if (res) {
             this.$router.push("/searchresults");
-            
           }
         })
         .catch((err) => {
-        console.log(err);
+          console.log(err);
         });
     },
   },
@@ -496,6 +529,7 @@ a {
 }
 .nav_links {
   list-style: none;
+  padding: 0 0 0 20px;
 }
 .nav_links li {
   display: inline-block;
@@ -521,11 +555,13 @@ a {
   padding-left: 50px;
 }
 .searchByAddress {
+  background-color: white;
   padding-left: 10px;
   border-radius: 25px;
   width: 45%;
 }
 .searchByName {
+  background-color: white;
   padding-left: 10px;
   margin-left: 20px;
   border-radius: 25px;
