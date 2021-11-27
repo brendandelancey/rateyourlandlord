@@ -4,7 +4,6 @@ const path = require("path");
 const cors = require("cors");
 const passport = require("passport");
 const fs = require("fs").promises;
-const retrieveSecrets = require("./retrieveSecrets");
 
 // Gives us access to variables set in the .env file via `process.env.VARIABLE_NAME` syntax
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
@@ -108,8 +107,6 @@ app.use(cors());
 //from the server. Create a new directory, public.
 //Express, by default does not allow you to serve static files. You need
 // to enable it using the following built-in middleware
-
-require("./config/secrets");
 
 /**
  * -------------- Database ----------------
