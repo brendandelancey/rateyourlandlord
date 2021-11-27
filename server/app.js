@@ -15,38 +15,38 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 // Initialize the app by creating an express aplication named -> "app"
 const app = express();
 
-// app.use((req, res, next) => {
-//   // res.header("Access-Control-Allow-Origin", "*");
-//   res.setHeader("Access-Control-Allow-Origin", "*");
+app.use((req, res, next) => {
+  // res.header("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
-// // Request methods you wish to allow
-// res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-//   );
+  // Request methods you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
 
-//   // Request headers you wish to allow
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization"
-//   );
+  // Request headers you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization"
+  );
 
-//   //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-//   // Pass to next layer of middleware
-//   // next();
-//   next();
-// });
+  // Pass to next layer of middleware
+  // next();
+  next();
+});
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    callback(null, true);
-  },
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     callback(null, true);
+//   },
+//   credentials: true,
+//   optionsSuccessStatus: 200,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // app.get("/", (req, res) => {
 // 	return res.status(200).json({
