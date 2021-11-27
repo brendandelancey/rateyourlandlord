@@ -16,6 +16,11 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 // Initialize the app by creating an express aplication named -> "app"
 const app = express();
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://rateyourstudenthouse.com");
+  next();
+});
+
 // app.get("/", (req, res) => {
 // 	return res.status(200).json({
 // 		SECRET_1: process.env.SECRET_1,
@@ -100,11 +105,6 @@ require("./model/User");
 app.use(passport.initialize());
 //Bring in the Passport Stradegy
 require("./config/passport")(passport);
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
 
 /**
  * -------------- ROUTES ----------------
