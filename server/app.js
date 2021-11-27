@@ -96,7 +96,7 @@ require("./model/User");
  * -------------- PASSPORT AUTHENTICATION ----------------
  */
 
-//Use the passport Middleware
+//Use  the passport Middleware
 app.use(passport.initialize());
 //Bring in the Passport Stradegy
 require("./config/passport")(passport);
