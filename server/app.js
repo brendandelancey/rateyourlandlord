@@ -15,29 +15,6 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 // Initialize the app by creating an express aplication named -> "app"
 const app = express();
 
-app.use((req, res, next) => {
-  // res.header("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
-  // Request methods you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-
-  // Request headers you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization"
-  );
-
-  //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-  // Pass to next layer of middleware
-  // next();
-  next();
-});
-
 // const corsOptions = {
 //   origin: (origin, callback) => {
 //     callback(null, true);
@@ -45,39 +22,6 @@ app.use((req, res, next) => {
 //   credentials: true,
 //   optionsSuccessStatus: 200,
 // };
-
-// app.use(cors(corsOptions));
-
-// app.get("/", (req, res) => {
-// 	return res.status(200).json({
-// 		SECRET_1: process.env.SECRET_1,
-// 		SECRET_2: process.env.SECRET_2,
-//         DATABASE_DEPLOYMENT: process.env.DATABASE_DEPLOYMENT,
-//         ID_RSA_PRIV: process.env.ID_RSA_PRIV
-
-// 	});
-// });
-
-// app.listen(4000, async () => {
-// 	try {
-// 		//get secretsString:
-// 		const secretsString = await retrieveSecrets();
-
-// 		//write to .env file at root level of project:
-// 		await fs.writeFile(".env", secretsString);
-
-// 		//configure dotenv package
-// 		dotenv.config();
-
-// 		console.log("Server running on port 4000");
-// 	} catch (error) {
-// 		//log the error and crash the app
-// 		console.log("Error in setting environment variables", error);
-// 		process.exit(-1);
-// 	}
-// });
-
-// require('./config/database');
 
 // Middleware
 // From Data Middleware
@@ -106,6 +50,29 @@ var corsOptions = {
   methods: "GET, PUT, POST, OPTIONS, DELETE ",
 };
 app.use(cors(corsOptions));
+
+// app.use((req, res, next) => {
+//   // res.header("Access-Control-Allow-Origin", "*");
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+
+//   // Request methods you wish to allow
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+//   );
+
+//   // Request headers you wish to allow
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization"
+//   );
+
+//   //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+//   // Pass to next layer of middleware
+//   // next();
+//   next();
+// });
 
 //Cors: Cross-origin resource sharing (CORS) allows AJAX requests to skip
 //the Same-origin policy and access resources from remote hosts.
