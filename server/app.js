@@ -100,6 +100,13 @@ app.use(bodyParser.json());
 
 // app.use(cors());
 
+var corsOptions = {
+  origin: "http://localhost:8080",
+  optionsSuccessStatus: 200, // For legacy browser support
+  methods: "GET, PUT, POST, OPTIONS, DELETE ",
+};
+app.use(cors(corsOptions));
+
 //Cors: Cross-origin resource sharing (CORS) allows AJAX requests to skip
 //the Same-origin policy and access resources from remote hosts.
 
