@@ -15,6 +15,8 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 // Initialize the app by creating an express aplication named -> "app"
 const app = express();
 
+app.use(cors());
+
 app.use((req, res, next) => {
   // res.header("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Origin", "*");
