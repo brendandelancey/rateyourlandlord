@@ -101,7 +101,7 @@ app.use(bodyParser.json());
 // app.use(cors());
 
 var corsOptions = {
-  origin: "http://localhost:8080",
+  origin: "*",
   optionsSuccessStatus: 200, // For legacy browser support
   methods: "GET, PUT, POST, OPTIONS, DELETE ",
 };
