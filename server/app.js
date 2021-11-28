@@ -15,8 +15,6 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 // Initialize the app by creating an express aplication named -> "app"
 const app = express();
 
-app.use(cors());
-
 app.use((req, res, next) => {
   // res.header("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -99,7 +97,9 @@ app.use(bodyParser.json());
 //request stream and exposes it on req.body
 
 // Cors Middleware
-app.use(cors());
+
+// app.use(cors());
+
 //Cors: Cross-origin resource sharing (CORS) allows AJAX requests to skip
 //the Same-origin policy and access resources from remote hosts.
 
