@@ -44,12 +44,25 @@ app.use(bodyParser.json());
 
 // app.use(cors());
 
-var corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200, // For legacy browser support
-  methods: "GET, PUT, POST, OPTIONS, DELETE ",
-};
-app.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: "*",
+//   optionsSuccessStatus: 200, // For legacy browser support
+//   methods: "GET, PUT, POST, OPTIONS, DELETE ",
+// };
+// app.use(cors(corsOptions));
+
+console.log("cccccccccccccc");
+
+app.options("*", (req, res) => {
+  res
+    .writeHead(200, "", {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, PUT, POST, OPTIONS, DELETE",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept",
+    })
+    .end();
+});
 
 // app.use((req, res, next) => {
 //   // res.header("Access-Control-Allow-Origin", "*");
