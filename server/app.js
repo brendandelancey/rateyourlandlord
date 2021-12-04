@@ -100,6 +100,11 @@ app.use(passport.initialize());
 //Bring in the Passport Stradegy
 require("./config/passport")(passport);
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 /**
  * -------------- ROUTES ----------------
  */
