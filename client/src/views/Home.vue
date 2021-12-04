@@ -10,6 +10,7 @@
         @keyup.enter="AddressSearch($event)"
         country="CA"
       >
+        <!-- <v-alert class="info" type="success"></v-alert> -->
       </vue-google-autocomplete>
       <!-- <input id="auto_complete" class="HsearchByAddress" type="text" v-model="searchAddress" placeholder="Search by address" onChange={}>  -->
 
@@ -19,7 +20,21 @@
         @keyup.enter="NameSearch($event)"
         placeholder="Search by name:  first name / last name"
       />
+
+      <v-alert
+        class="infos"
+        dismissible
+        color="#222325"
+        shaped
+        dark
+        v-show="elementVisible"
+      >
+        Want to leave a review? Search first to see if someone else has already
+        added your house. If not click the add review button at the bottom off
+        the search screen.</v-alert
+      >
     </div>
+
     <div class="LandingSearch"></div>
 
     <div class="LandingAbout">
@@ -31,7 +46,20 @@
           />
         </div>
         <div class="houseText">
-          <p>Text</p>
+          <v-hover close-delay="540" v-slot="{ hover }">
+            <v-card
+              :elevation="hover ? 12 : 2"
+              class="mx-auto"
+              max-width="60%"
+              shaped
+            >
+              <v-card-text class="my-4 text-center text-h6">
+                Purpose: This website is to allow students to have acountability
+                of there landlords and to empower and hold up those landlords
+                that display integrity.
+              </v-card-text>
+            </v-card>
+          </v-hover>
         </div>
       </div>
       <div class="apartmentBuildingRow">
@@ -42,7 +70,28 @@
           />
         </div>
         <div class="apartmentBuildingText">
-          <p>Text</p>
+          <v-hover close-delay="540" v-slot="{ hover }">
+            <v-card
+              :elevation="hover ? 12 : 2"
+              class="mx-auto"
+              max-width="80%"
+              shaped
+            >
+              <v-card-text class="my-4 text-center text-h6">
+                Reason: Our story is that of having both landlords that were
+                horrendous and a landlord that was upstanding and reputable. On
+                multiple occasions we had landlords enter our houses without
+                permission, harras and shout at tenants, break covid
+                restrictions and enter our house when without alerting anyone to
+                their presence. One landlord in particular, was not a legal
+                landlord with the city we live in, accused a tenant of theft
+                from there own house, and demand entrance during covide while
+                simultaneously not wearing proper health and safety equipement
+                even at the very beginning of the pandemic when no one knew how
+                deadly the virus was.
+              </v-card-text>
+            </v-card>
+          </v-hover>
         </div>
       </div>
     </div>
@@ -70,9 +119,12 @@ export default {
       nameSearched: "",
       objectOfSearches: null,
       objectOfAddressSearches: null,
+      elementVisible: false,
     };
   },
-
+  created() {
+    setTimeout(() => (this.elementVisible = true), 5000);
+  },
   mounted() {
     this.$refs.address.focus();
 
@@ -274,7 +326,7 @@ export default {
       }
       //Custom Search
       else if (addressField != null && addressField != "") {
-        console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        // console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         // Change these to lower case
         const province = [
           "Alberta",
@@ -694,6 +746,27 @@ export default {
   padding: 5px;
   height: 50px;
 }
+.infos {
+  /* background-color: black; */
+  order: 2;
+  /* padding-left: 10px; */
+  position: absolute;
+  top: 110%;
+  margin-left: 20px;
+  border-radius: 25px;
+  width: 35%;
+  /* padding: 5px; */
+  /* height: 50px; */
+  align-items: center;
+  justify-content: center;
+  font-size: 120%;
+
+  /* display: flex; */
+  /* min-width: 400px; */
+  /* padding-top: 15%;
+  position: absolute;
+  */
+}
 .houseRow {
   display: flex;
   padding: 10px;
@@ -708,7 +781,8 @@ export default {
 } */
 .houseText {
   order: 2;
-  width: 50%;
+  width: 75%;
+  padding: 35px;
 }
 .houseText,
 p {
@@ -732,7 +806,7 @@ p {
 } */
 .apartmentBuildingText {
   order: 1;
-  width: 50%;
+  width: 75%;
   align-items: center;
   justify-content: center;
 }

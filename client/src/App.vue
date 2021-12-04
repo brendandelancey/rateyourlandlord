@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <top-header></top-header>
-    </div>
-    <!-- <Errors v-if="error" :msg="error"/> -->
-    <router-view></router-view>
-    <bottom-header class="footer"></bottom-header>
+    <v-app>
+      <div id="nav">
+        <top-header></top-header>
+      </div>
+      <!-- <Errors v-if="error" :msg="error"/> -->
+      <router-view></router-view>
+      <bottom-header class="footer"></bottom-header>
+    </v-app>
   </div>
 </template>
 
@@ -43,20 +45,23 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
   position: relative;
   min-height: 100vh;
-  padding-bottom: 6rem;
+  /* padding-bottom: 6rem; */
+  padding-bottom: 3rem;
 }
 .footer {
   /* clear: both; */
   width: 100%;
   position: absolute;
 
+  /* padding: 10px 10px 0px 10px; */
+
   /* height: 2.5rem;  */
   /* margin-top: 5.2rem; */
   /* padding-top: 2rem; */
-  bottom: 0;
+  bottom: -3rem;
   /* min-height: 100%; */
   /* bottom:0; */
 
