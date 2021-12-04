@@ -11,7 +11,7 @@
     <div class="navbar">
       <div class="logo" @click="home()">
         <img
-          :src="require('../assets/RateYourLanlordLogo67p.png')"
+          :src="require('../assets/RateYourStudentHouseGrey67p.png')"
           alt="Rate Your Landlord"
         />
       </div>
@@ -521,7 +521,8 @@ a {
   margin-right: auto;
   order: 1;
   background-color: #acacac;
-  padding: 0 3% 0 0;
+  /* padding: 0 3% 0 0; */
+  width: 235px;
 }
 .nav {
   order: 3;

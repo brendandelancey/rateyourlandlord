@@ -5,7 +5,7 @@ const cors = require("cors");
 const passport = require("passport");
 const fs = require("fs").promises;
 
-// Gives us access to variables set in the .env file via `process.env.VARIABLE_NAME` syntax
+// Gives us access to variables set in the .env file via `process.env.VARIABLE_NAME` s>
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 /**
@@ -77,10 +77,10 @@ app.options("*", (req, res) => {
 //   // Request headers you wish to allow
 //   res.setHeader(
 //     "Access-Control-Allow-Headers",
-//     "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization"
+//     "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, A>
 //   );
 
-//   //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content>
 
 //   // Pass to next layer of middleware
 //   // next();
@@ -91,7 +91,7 @@ app.options("*", (req, res) => {
 //the Same-origin policy and access resources from remote hosts.
 
 // Setting up the static directory
-//app.use(express.static(path.join(__dirname, 'public')));//*May have to recreate this collection of files
+//app.use(express.static(path.join(__dirname, 'public')));//*May have to recreate this>
 //Static Directory: Static files are files that clients download as they are
 //from the server. Create a new directory, public.
 //Express, by default does not allow you to serve static files. You need
@@ -162,7 +162,7 @@ app.post("/test", (req, res) => {
   });
 });
 
-process;
+// process;
 
 //These are to be changed -> post, put, delete
 // app.get('/users/users', (req, res) => {
@@ -191,7 +191,7 @@ process;
 
 var PORT;
 const port = process.env.PORT;
-PORT = port;
+PORT = 5000;
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
