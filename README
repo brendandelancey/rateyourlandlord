@@ -1,0 +1,7 @@
+# Steps For Deployment
+
+1. Change server Port number in server/app.js
+
+2. Change keys.js to deploy = true
+
+3. Change client/store/modules url = config.DOMAIN

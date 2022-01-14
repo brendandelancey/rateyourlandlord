@@ -201,6 +201,16 @@ router.get(
     session: false,
   }),
   (req, res) => {
+    User.findOne({
+      username: req.body.username,
+    });
+    // .then((user) => {
+    //   if (!user) {
+    //     console.log("Fail");
+    //     return res.status(404).json({
+    //       msg: "Username is not found.",
+    //       success: false,
+    //     });
     return res.json({
       user: req.user,
     });

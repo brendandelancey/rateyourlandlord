@@ -46,7 +46,7 @@
               </v-row>
             </li>
             <spacer></spacer>
-            <li><a href="/profile" v-if="isLoggedIn">Profiles</a></li>
+            <li><a href="/profile" v-if="isLoggedIn">Profile</a></li>
             <spacer></spacer>
             <li>
               <!-- <a href="/register" v-if="!isLoggedIn">Register</a> -->

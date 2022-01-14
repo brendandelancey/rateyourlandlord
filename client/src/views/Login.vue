@@ -122,6 +122,7 @@ export default {
         .then((res) => {
           if (res.data.success) {
             console.log("Here2");
+            // localStorage.setItem( "username", res.data.user.username );
             this.showAlertSuccess();
           }
         })

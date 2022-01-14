@@ -54,9 +54,20 @@
               shaped
             >
               <v-card-text class="my-4 text-center text-h6">
-                Purpose: This website is to allow students to have acountability
-                of there landlords and to empower and hold up those landlords
-                that display integrity.
+                Purpose
+                <br />
+                RYSH is designed to protect students and rectify the unequal
+                power imbalance between tenant and landlord. It exists as an
+                online platform that holds each landlord accountable by allowing
+                their student rentees to rate their experience whether amazing
+                or horrible.
+                <br />
+                Mission Statement
+                <br />
+                Our mission is to protect and elevate the experience of every
+                student who seeks to live independently while simultaneously
+                promoting the business of all landlords who provide a safe and
+                enjoyable experience.
               </v-card-text>
             </v-card>
           </v-hover>
@@ -78,17 +89,18 @@
               shaped
             >
               <v-card-text class="my-4 text-center text-h6">
-                Reason: Our story is that of having both landlords that were
-                horrendous and a landlord that was upstanding and reputable. On
-                multiple occasions we had landlords enter our houses without
-                permission, harras and shout at tenants, break covid
-                restrictions and enter our house when without alerting anyone to
-                their presence. One landlord in particular, was not a legal
-                landlord with the city we live in, accused a tenant of theft
-                from there own house, and demand entrance during covide while
-                simultaneously not wearing proper health and safety equipement
-                even at the very beginning of the pandemic when no one knew how
-                deadly the virus was.
+                Our Story
+                <br />
+                RYSH was built by students who experienced the very real dangers
+                of having unreliable landlords. With RYSH we seek to protect new
+                students from the harassment and fear that was all too familiar
+                for past renters like ourselves. We learned first-hand that
+                there are too few resources to protect students against
+                untrustworthy landlords and have built RYSH in response to this
+                failure. With it’s creation we hope students across Canada will
+                be protected from dangers of having a bad rent manager while
+                simultaneously giving them a portal to praise and grow the
+                business of the many amazing landlords currently in business.
               </v-card-text>
             </v-card>
           </v-hover>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import router from "../../router";
 import config from "../../../config/env.js";
-const url = config.DOMAIN;
+const url = config.LOCAL;
 
 const state = {
   token: localStorage.getItem("token") || "",

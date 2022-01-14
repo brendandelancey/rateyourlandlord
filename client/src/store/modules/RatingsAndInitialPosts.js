@@ -1,6 +1,6 @@
 import axios from "axios";
 import config from "../../../config/env.js";
-const url = config.DOMAIN;
+const url = config.LOCAL;
 
 const state = {
   queryofRatings: [],

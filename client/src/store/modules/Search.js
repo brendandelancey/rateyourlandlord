@@ -1,20 +1,10 @@
 import axios from "axios";
 import config from "../../../config/env.js";
-const url = config.DOMAIN;
+const url = config.LOCAL;
 
 const state = {
   queryResults: [],
   searchparameters: {},
-  todos: [
-    {
-      id: 1,
-      title: "Go outside",
-    },
-    {
-      id: 2,
-      title: "Come back in",
-    },
-  ],
 };
 
 const getters = {
