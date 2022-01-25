@@ -377,8 +377,8 @@ export default {
       this.newAdvancedSearch();
     },
     newAdvancedSearch() {
-      console.log(this.country);
-      console.log(this.province);
+      // console.log(this.country);
+      // console.log(this.province);
       const advancedSearchObject = {
         street: this.street.toLowerCase(),
         city: this.city.toLowerCase(),

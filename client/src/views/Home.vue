@@ -38,7 +38,7 @@
     <div class="LandingSearch"></div>
 
     <div class="LandingAbout">
-      <div class="houseRow">
+      <div id="houseRow" class="houseRow">
         <div class="stylizedHouse">
           <img
             :src="require('../assets/housedrawnstylized.png')"
@@ -52,17 +52,38 @@
               class="mx-auto"
               max-width="60%"
               shaped
+              id="infoCard"
             >
-              <v-card-text class="my-4 text-center text-h6">
-                Purpose: This website is to allow students to have acountability
-                of there landlords and to empower and hold up those landlords
-                that display integrity.
+              <v-card-text id="infoBox" class="my-4 text-center text-h6">
+                Purpose RYSH is designed to protect students and rectify the
+                unequal power imbalance between tenant and landlord. It exists
+                as an online platform that holds each landlord accountable by
+                allowing their student rentees to rate their experience whether
+                amazing or horrible.
               </v-card-text>
             </v-card>
           </v-hover>
         </div>
       </div>
-      <div class="apartmentBuildingRow">
+
+      <div class="In_Between">
+        <v-card
+          :elevation="hover ? 12 : 2"
+          class="mx-auto"
+          max-width="80%"
+          shaped
+          id="infoCard"
+        >
+          <v-card-text id="infoBox" class="my-4 text-center text-h6">
+            Mission Statement Our mission is to protect and elevate the
+            experience of every student who seeks to live independently while
+            simultaneously promoting the business of all landlords who provide a
+            safe and enjoyable experience.
+          </v-card-text>
+        </v-card>
+      </div>
+
+      <div id="apartmentRow" class="apartmentBuildingRow">
         <div class="stylizedApartment">
           <img
             :src="require('../assets/apartmentbuildingdrawnstylized.png')"
@@ -76,19 +97,20 @@
               class="mx-auto"
               max-width="80%"
               shaped
+              id="infoCard"
             >
-              <v-card-text class="my-4 text-center text-h6">
-                Reason: Our story is that of having both landlords that were
-                horrendous and a landlord that was upstanding and reputable. On
-                multiple occasions we had landlords enter our houses without
-                permission, harras and shout at tenants, break covid
-                restrictions and enter our house when without alerting anyone to
-                their presence. One landlord in particular, was not a legal
-                landlord with the city we live in, accused a tenant of theft
-                from there own house, and demand entrance during covide while
-                simultaneously not wearing proper health and safety equipement
-                even at the very beginning of the pandemic when no one knew how
-                deadly the virus was.
+              <v-card-text id="infoBox" class="my-4 text-center text-h6">
+                Our Story: RYSH was built by students who experienced the very
+                real dangers of having unreliable landlords. With RYSH we seek
+                to protect new students from the harassment and fear that was
+                all too familiar for past renters like ourselves. We learned
+                first-hand that there are too few resources to protect students
+                against untrustworthy landlords and have built RYSH in response
+                to this failure. With it’s creation we hope students across
+                Canada will be protected from dangers of having a bad rent
+                manager while simultaneously giving them a portal to praise and
+                grow the business of the many amazing landlords currently in
+                business.
               </v-card-text>
             </v-card>
           </v-hover>
@@ -700,6 +722,11 @@ export default {
 </script>
 
 <style>
+.In_Between {
+  padding-bottom: 130px;
+  padding-top: 60px;
+}
+
 .LandingPage {
   background-color: rgb(252, 238, 223);
 }
@@ -760,6 +787,7 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: 120%;
+  /* font-size: 5vw; */
 
   /* display: flex; */
   /* min-width: 400px; */
@@ -772,21 +800,13 @@ export default {
   padding: 10px;
 }
 .stylizedHouse {
-  order: 1;
+  order: 2;
   width: 50%;
 }
-/* .stylizedHouse, img{
-
-
-} */
 .houseText {
-  order: 2;
+  order: 1;
   width: 75%;
   padding: 35px;
-}
-.houseText,
-p {
-  justify-content: center;
 }
 
 .apartmentBuildingRow {
@@ -794,32 +814,94 @@ p {
   padding: 10px;
 }
 .stylizedApartment {
-  order: 2;
+  order: 1;
   width: 50%;
 }
-/* .stylizedApartment, img{
-  
-    
-    
-    
-
-} */
 .apartmentBuildingText {
-  order: 1;
+  order: 2;
   width: 75%;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
 }
-.apartmentBuildingText,
-p {
-  align-items: center;
-  /* justify-content: center; 
-     flex-direction: column; */
+@media only screen and (max-width: 600px) {
+  .Hsearch {
+    display: block;
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .HsearchByAddress {
+    background-color: white;
+    order: 1;
+    /* padding-left: 10px; */
+    border-radius: 25px;
+    width: 65%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 50px;
+  }
+  .HsearchByName {
+    background-color: white;
+    order: 2;
+    /* padding-left: 10px; */
+    margin-left: 0px;
+    border-radius: 25px;
+    width: 65%;
+    margin-bottom: 20px;
+    height: 50px;
+  }
 
-  /* height: 100%; */
-  /* flex: 0 0 50%; */
-  text-align: center;
-  /* vertical-align: middle; */
-  /* display: table-cell;  */
+  .infos {
+    order: 2;
+    position: absolute;
+    top: 110%;
+    margin-left: 5px;
+    width: 90%;
+    align-items: center;
+    font-size: 4vw;
+  }
+  .In_Between {
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .houseRow {
+    display: block;
+    padding: 0px;
+  }
+  .houseText {
+    width: 100%;
+    padding: 0px;
+  }
+  #infoBox {
+    width: 100%;
+    font-size: 4vw !important;
+  }
+  #houseRow {
+    display: block;
+  }
+  #apartmentRow {
+    display: block;
+    width: 100%;
+  }
+  .stylizedApartment {
+    order: 2;
+    width: 90%;
+  }
+  .stylizedHouse {
+    order: 1;
+    width: 90%;
+  }
+  #infoCard {
+    width: 100%;
+    max-width: 100%;
+  }
+  .apartmentBuildingText {
+    width: 100%;
+    order: 1;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 </style>

@@ -46,7 +46,11 @@
               </v-row>
             </li>
             <spacer></spacer>
-            <li><a href="/profile" v-if="isLoggedIn">Profiles</a></li>
+            <li>
+              <a v-if="isLoggedIn" v-on="on" @click.prevent="navToProfile"
+                >Profiles</a
+              >
+            </li>
             <spacer></spacer>
             <li>
               <!-- <a href="/register" v-if="!isLoggedIn">Register</a> -->
@@ -102,6 +106,9 @@ export default {
     ...mapActions(["logout", "addressSearch", "landlordSearch"]),
     logoutUser() {
       this.logout();
+    },
+    navToProfile() {
+      this.$router.push("/profile");
     },
     // closeDialog: function(){
     //       console.log(this.dialog);
@@ -567,5 +574,14 @@ a {
   margin-left: 20px;
   border-radius: 25px;
   width: 45%;
+}
+
+@media only screen and (max-width: 600px) {
+  .searchByName {
+    display: none;
+  }
+  .searchByAddress {
+    display: none;
+  }
 }
 </style>

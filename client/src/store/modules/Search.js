@@ -5,16 +5,6 @@ const url = config.DOMAIN;
 const state = {
   queryResults: [],
   searchparameters: {},
-  todos: [
-    {
-      id: 1,
-      title: "Go outside",
-    },
-    {
-      id: 2,
-      title: "Come back in",
-    },
-  ],
 };
 
 const getters = {

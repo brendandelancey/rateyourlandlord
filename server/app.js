@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 
 // Cors Middleware
 
-// app.use(cors());
+app.use(cors());
 
 // var corsOptions = {
 //   origin: "*",
@@ -59,7 +59,7 @@ app.options("*", (req, res) => {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, PUT, POST, OPTIONS, DELETE",
       "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept",
+        "Origin, X-Requested-With, Content-Type, Accept, authorization, Authorization",
     })
     .end();
 });
