@@ -193,6 +193,6 @@ var PORT;
 const port = process.env.PORT;
 PORT = 5000;
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
