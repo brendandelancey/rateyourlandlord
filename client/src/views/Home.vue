@@ -1,5 +1,13 @@
 <template>
   <div class="LandingPage">
+    <title>
+      Rate Your Student House - Rate, Review and Find Reviews For Potential
+      Student Homes
+    </title>
+    <meta
+      name="description"
+      content="Allows you to rate, review and find reviews for your specific rental house. Search by your address or landlord and find reviews made by other students to help you make the best decision possible when renting or leave your own review to help others."
+    />
     <div class="Hsearch">
       <vue-google-autocomplete
         ref="address"
@@ -10,6 +18,7 @@
         @keyup.enter="AddressSearch($event)"
         country="CA"
       >
+        <!-- <v-alert class="info" type="success"></v-alert> -->
       </vue-google-autocomplete>
       <!-- <input id="auto_complete" class="HsearchByAddress" type="text" v-model="searchAddress" placeholder="Search by address" onChange={}>  -->
 
@@ -19,30 +28,100 @@
         @keyup.enter="NameSearch($event)"
         placeholder="Search by name:  first name / last name"
       />
+
+      <v-alert
+        class="infos"
+        dismissible
+        color="#222325"
+        shaped
+        dark
+        v-show="elementVisible"
+      >
+        Want to leave a review? Search first to see if someone else has already
+        added your house. If not click the add review button at the bottom off
+        the search screen.</v-alert
+      >
     </div>
+
     <div class="LandingSearch"></div>
 
     <div class="LandingAbout">
-      <div class="houseRow">
+      <div id="houseRow" class="houseRow">
         <div class="stylizedHouse">
           <img
             :src="require('../assets/housedrawnstylized.png')"
-            alt="Rate Your Landlord"
+            alt="Rate and Review Your Student House and Landlord"
           />
         </div>
         <div class="houseText">
-          <p>Text</p>
+          <v-hover close-delay="540" v-slot="{ hover }">
+            <v-card
+              :elevation="hover ? 12 : 2"
+              class="mx-auto"
+              max-width="60%"
+              shaped
+              id="infoCard"
+            >
+              <v-card-text id="infoBox" class="my-4 text-center text-h6">
+                Purpose RYSH is designed to protect students and rectify the
+                unequal power imbalance between tenant and landlord. It exists
+                as an online platform that holds each landlord accountable by
+                allowing their student rentees to rate their experience whether
+                amazing or horrible.
+              </v-card-text>
+            </v-card>
+          </v-hover>
         </div>
       </div>
-      <div class="apartmentBuildingRow">
+
+      <div class="In_Between">
+        <v-card
+          :elevation="hover ? 12 : 2"
+          class="mx-auto"
+          max-width="80%"
+          shaped
+          id="infoCard"
+        >
+          <v-card-text id="infoBox" class="my-4 text-center text-h6">
+            Mission Statement Our mission is to protect and elevate the
+            experience of every student who seeks to live independently while
+            simultaneously promoting the business of all landlords who provide a
+            safe and enjoyable experience.
+          </v-card-text>
+        </v-card>
+      </div>
+
+      <div id="apartmentRow" class="apartmentBuildingRow">
         <div class="stylizedApartment">
           <img
             :src="require('../assets/apartmentbuildingdrawnstylized.png')"
-            alt="Rate Your Landlord"
+            alt="Rate and Review Your Student House and Landlord"
           />
         </div>
         <div class="apartmentBuildingText">
-          <p>Text</p>
+          <v-hover close-delay="540" v-slot="{ hover }">
+            <v-card
+              :elevation="hover ? 12 : 2"
+              class="mx-auto"
+              max-width="80%"
+              shaped
+              id="infoCard"
+            >
+              <v-card-text id="infoBox" class="my-4 text-center text-h6">
+                Our Story: RYSH was built by students who experienced the very
+                real dangers of having unreliable landlords. With RYSH we seek
+                to protect new students from the harassment and fear that was
+                all too familiar for past renters like ourselves. We learned
+                first-hand that there are too few resources to protect students
+                against untrustworthy landlords and have built RYSH in response
+                to this failure. With it’s creation we hope students across
+                Canada will be protected from dangers of having a bad rent
+                manager while simultaneously giving them a portal to praise and
+                grow the business of the many amazing landlords currently in
+                business.
+              </v-card-text>
+            </v-card>
+          </v-hover>
         </div>
       </div>
     </div>
@@ -70,9 +149,12 @@ export default {
       nameSearched: "",
       objectOfSearches: null,
       objectOfAddressSearches: null,
+      elementVisible: false,
     };
   },
-
+  created() {
+    setTimeout(() => (this.elementVisible = true), 5000);
+  },
   mounted() {
     this.$refs.address.focus();
 
@@ -274,7 +356,7 @@ export default {
       }
       //Custom Search
       else if (addressField != null && addressField != "") {
-        console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        // console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         // Change these to lower case
         const province = [
           "Alberta",
@@ -648,6 +730,11 @@ export default {
 </script>
 
 <style>
+.In_Between {
+  padding-bottom: 130px;
+  padding-top: 60px;
+}
+
 .LandingPage {
   background-color: rgb(252, 238, 223);
 }
@@ -694,25 +781,40 @@ export default {
   padding: 5px;
   height: 50px;
 }
+.infos {
+  /* background-color: black; */
+  order: 2;
+  /* padding-left: 10px; */
+  position: absolute;
+  top: 110%;
+  margin-left: 20px;
+  border-radius: 25px;
+  width: 35%;
+  /* padding: 5px; */
+  /* height: 50px; */
+  align-items: center;
+  justify-content: center;
+  font-size: 120%;
+  /* font-size: 5vw; */
+
+  /* display: flex; */
+  /* min-width: 400px; */
+  /* padding-top: 15%;
+  position: absolute;
+  */
+}
 .houseRow {
   display: flex;
   padding: 10px;
 }
 .stylizedHouse {
-  order: 1;
-  width: 50%;
-}
-/* .stylizedHouse, img{
-
-
-} */
-.houseText {
   order: 2;
   width: 50%;
 }
-.houseText,
-p {
-  justify-content: center;
+.houseText {
+  order: 1;
+  width: 75%;
+  padding: 35px;
 }
 
 .apartmentBuildingRow {
@@ -720,32 +822,94 @@ p {
   padding: 10px;
 }
 .stylizedApartment {
-  order: 2;
-  width: 50%;
-}
-/* .stylizedApartment, img{
-  
-    
-    
-    
-
-} */
-.apartmentBuildingText {
   order: 1;
   width: 50%;
-  align-items: center;
-  justify-content: center;
 }
-.apartmentBuildingText,
-p {
-  align-items: center;
-  /* justify-content: center; 
-     flex-direction: column; */
+.apartmentBuildingText {
+  order: 2;
+  width: 75%;
+  /* align-items: center;
+  justify-content: center; */
+}
+@media only screen and (max-width: 600px) {
+  .Hsearch {
+    display: block;
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .HsearchByAddress {
+    background-color: white;
+    order: 1;
+    /* padding-left: 10px; */
+    border-radius: 25px;
+    width: 65%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 50px;
+  }
+  .HsearchByName {
+    background-color: white;
+    order: 2;
+    /* padding-left: 10px; */
+    margin-left: 0px;
+    border-radius: 25px;
+    width: 65%;
+    margin-bottom: 20px;
+    height: 50px;
+  }
 
-  /* height: 100%; */
-  /* flex: 0 0 50%; */
-  text-align: center;
-  /* vertical-align: middle; */
-  /* display: table-cell;  */
+  .infos {
+    order: 2;
+    position: absolute;
+    top: 110%;
+    margin-left: 5px;
+    width: 90%;
+    align-items: center;
+    font-size: 4vw;
+  }
+  .In_Between {
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .houseRow {
+    display: block;
+    padding: 0px;
+  }
+  .houseText {
+    width: 100%;
+    padding: 0px;
+  }
+  #infoBox {
+    width: 100%;
+    font-size: 4vw !important;
+  }
+  #houseRow {
+    display: block;
+  }
+  #apartmentRow {
+    display: block;
+    width: 100%;
+  }
+  .stylizedApartment {
+    order: 2;
+    width: 90%;
+  }
+  .stylizedHouse {
+    order: 1;
+    width: 90%;
+  }
+  #infoCard {
+    width: 100%;
+    max-width: 100%;
+  }
+  .apartmentBuildingText {
+    width: 100%;
+    order: 1;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 </style>

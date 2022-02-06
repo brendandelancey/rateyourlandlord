@@ -1,7 +1,7 @@
 <template>
   <div class="searchresults">
     <h4 class="advancedsearch" @click="AdvancedSearch()">Advanced Search</h4>
-  
+
     <div class="queryofIPs">
       <div
         v-for="initialpost in queriedResults"
@@ -9,33 +9,39 @@
         class="initial-post"
       >
         <div @click="ViewReview(initialpost)" class="result">
-          <div  class="rating">
-            <h1>
-              {{ initialpost.ratingAverage }} / 5
-            </h1>
+          <div class="rating">
+            <h1>{{ initialpost.ratingAverage }} / 5</h1>
           </div>
           <div class="theReview">
-          <h1 v-if="initialpost.landlordfirstname.length+initialpost.landlordlastname.length < 26">
-            {{ initialpost.landlordfirstname }} {{ initialpost.landlordlastname }} 
-          </h1>
-          <h1 v-else>
-            {{ initialpost.landlordfirstname.substring(0,13) }} {{ initialpost.landlordlastname.substring(0,13)+".."  }} 
-          </h1>
-          <h2 v-if="initialpost.street.length+initialpost.city.length < 70">
-             {{ initialpost.street }} {{ initialpost.city }}
-          </h2>
-          <h2 v-else>
-             {{ initialpost.street.substring(0,50) }} {{ initialpost.city.substring(0,20)+".."  }} 
-          </h2>
+            <h1
+              v-if="
+                initialpost.landlordfirstname.length +
+                  initialpost.landlordlastname.length <
+                26
+              "
+            >
+              {{ initialpost.landlordfirstname }}
+              {{ initialpost.landlordlastname }}
+            </h1>
+            <h1 v-else>
+              {{ initialpost.landlordfirstname.substring(0, 13) }}
+              {{ initialpost.landlordlastname.substring(0, 13) + ".." }}
+            </h1>
+            <h2 v-if="initialpost.street.length + initialpost.city.length < 70">
+              {{ initialpost.street }} {{ initialpost.city }}
+            </h2>
+            <h2 v-else>
+              {{ initialpost.street.substring(0, 50) }}
+              {{ initialpost.city.substring(0, 20) + ".." }}
+            </h2>
           </div>
         </div>
       </div>
     </div>
-   
+
     <h4 class="createAPost" @click="CreatePost()">
       Is your house not in the list above Add Your House Here
     </h4>
-
   </div>
 </template>
 
@@ -51,7 +57,6 @@ export default {
   },
 
   computed: mapGetters(["queriedResults"]),
- 
 
   methods: {
     ...mapActions(["fetchRatings"]),
@@ -60,34 +65,35 @@ export default {
       this.$router.push("/advancedsearch");
     },
     CreatePost() {
-   // console.log("HHHHEEEERRRREEEE")
+      // console.log("HHHHEEEERRRREEEE")
       this.$router.push("/createpost");
     },
     CreateRating() {
       this.$router.push("/createrating");
     },
     ViewReview(initialpost) {
-      const id=initialpost.id;
-      const IP =JSON.stringify(initialpost);
-   // console.log("READ THIS: "+ IP)
-      localStorage.setItem( "initialpost", IP );
-    
-   // console.log("In Here");
-   // console.log("Initial Post ID: " + JSON.stringify(id));
+      const id = initialpost.id;
+      const IP = JSON.stringify(initialpost);
+      // console.log("READ THIS: "+ IP)
+      localStorage.setItem("initialpost", IP);
+
+      // console.log("In Here");
+      // console.log("Initial Post ID: " + JSON.stringify(id));
       this.fetchRatings(id)
         .then((res) => {
-       // console.log("Resp: ");
-       // console.log(res);
+          // console.log("Resp: ");
+          // console.log(res);
           if (res) {
-         // console.log("GOT HERE");
+            // console.log("GOT HERE");
             // Router needs a fix onComplete event
-            this.$router.push ({name:"ViewRatingsAndReviews",
-              params: {id},
+            this.$router.push({
+              name: "ViewRatingsAndReviews",
+              params: { id },
             });
           }
         })
         .catch((err) => {
-       console.log(err);
+          console.log(err);
         });
     },
   },
@@ -142,17 +148,17 @@ export default {
 };
 </script>
 <style>
-.advancedsearch{
+.advancedsearch {
   cursor: pointer;
-   padding-bottom: 2rem;
-   padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
 }
 .searchresults {
-  min-height:85vh; 
-    /* position:relative;  */
+  min-height: 85vh;
+  /* position:relative;  */
 }
-.result{
-    /* position: absolute;  */
+.result {
+  /* position: absolute;  */
   /* top: 50%; */
   /* left: 100%; */
   display: flex;
@@ -163,91 +169,77 @@ export default {
   width: 75%;
   cursor: pointer;
   padding-bottom: 1rem;
-  
-
 }
-.initial-post{
-    /* position: absolute;  */
+.initial-post {
+  /* position: absolute;  */
   /* top: 50%; */
   /* left: 100%; */
- 
+
   justify-content: center;
   padding-bottom: 35px;
-  
+
   /* padding: 20px; */
   /* margin: 0 auto; */
-
 }
-.theReview{
-  
+.theReview {
   background-color: #eaeff1;
   height: 150px;
   width: 50%;
- 
-   
+
   /* margin: 0 auto; */
-  
+
   /* padding: 35px;
   text-align: center;
   justify-content: center;
   vertical-align: middle; */
-  
-
 }
 .theReview h1 {
   height: 35%;
   /* line-height: 10px; */
   font-size: 36px;
-  
-  
+
   /* margin: 0 auto; */
   /* text-align: center;
   justify-content: center;
   vertical-align: middle; */
-  
-
 }
 .theReview h2 {
   height: 65%;
   /* line-height: 10px; */
   font-size: 24px;
   justify-content: left;
-
-
 }
-.rating{
-  
+.rating {
   background-color: darkgray;
   height: 150px;
   width: 150px;
   /* padding: 35px; */
-  
-  
 }
-.rating h1{
-  
+.rating h1 {
   line-height: 150px;
   /* background-color: darkgray; */
   /* height: 150px; */
   /* width: 150px; */
   /* padding: 35px; */
-  
-  
 }
-.createAPost{
+.createAPost {
   cursor: pointer;
-    /* clear: both; */
+  /* clear: both; */
   width: 100%;
   position: absolute;
-  height: 1.5rem; 
+  height: 1.5rem;
   padding-bottom: 50px;
   bottom: 0;
   margin-bottom: 6rem;
   /* padding-top: 50px; */
-  
 }
-.queryofIPs{
-  padding-bottom:2rem;
+.queryofIPs {
+  padding-bottom: 2rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .createAPost {
+    margin-bottom: 1rem;
+  }
+}
 </style>

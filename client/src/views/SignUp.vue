@@ -210,7 +210,7 @@ export default {
         password: this.password,
         confirm_password: this.confirm_password,
       };
-      console.log(user);
+      // console.log(user);
       this.register(user)
         .then((res) => {
           if (res.data.success) {
