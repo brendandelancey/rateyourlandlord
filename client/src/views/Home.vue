@@ -1,5 +1,13 @@
 <template>
   <div class="LandingPage">
+    <title>
+      Rate Your Student House - Rate, Review and Find Reviews For Potential
+      Student Homes
+    </title>
+    <meta
+      name="description"
+      content="Allows you to rate, review and find reviews for your specific rental house. Search by your address or landlord and find reviews made by other students to help you make the best decision possible when renting or leave your own review to help others."
+    />
     <div class="Hsearch">
       <vue-google-autocomplete
         ref="address"
@@ -42,7 +50,7 @@
         <div class="stylizedHouse">
           <img
             :src="require('../assets/housedrawnstylized.png')"
-            alt="Rate Your Landlord"
+            alt="Rate and Review Your Student House and Landlord"
           />
         </div>
         <div class="houseText">
@@ -87,7 +95,7 @@
         <div class="stylizedApartment">
           <img
             :src="require('../assets/apartmentbuildingdrawnstylized.png')"
-            alt="Rate Your Landlord"
+            alt="Rate and Review Your Student House and Landlord"
           />
         </div>
         <div class="apartmentBuildingText">
