@@ -41,7 +41,7 @@ app.use(bodyParser.json());
 //request stream and exposes it on req.body
 
 // Cors Middleware
-
+// ! Disable on production
 app.use(cors());
 
 // var corsOptions = {
