@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 
 // Cors Middleware
 // ! Disable on production
-app.use(cors());
+// app.use(cors());
 
 // var corsOptions = {
 //   origin: "*",
