@@ -51,8 +51,6 @@ app.use(bodyParser.json());
 // };
 // app.use(cors(corsOptions));
 
-console.log("cccccccccccccc");
-
 app.options("*", (req, res) => {
   res
     .writeHead(200, "", {
@@ -190,9 +188,10 @@ app.post("/test", (req, res) => {
 // const port=process.env.PORT_DEPLOYMENT
 
 var PORT;
-const port = process.env.PORT;
+const portDev = process.env.PORT_DEPLOYMENT;
+// ! This value for production
 PORT = 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server started on port ${portDev}`);
 });

@@ -23,10 +23,12 @@
         :key="rating.id"
         class="initialpost"
       >
-        <div class="review">
+        <div class="rating_review_block">
           <div class="reviewRating">
             <h4>Landlord Rating:</h4>
-            <span> {{ rating.rating }} / 5</span>
+            <div>
+              <span> {{ rating.rating }} / 5</span>
+            </div>
           </div>
           <div class="reviewReview">
             <h4>Review:</h4>
@@ -86,7 +88,7 @@ export default {
   padding-bottom: 50px;
   justify-content: center;
 }
-.review {
+.rating_review_block {
   flex-basis: 75%;
 }
 .reviewReview {
@@ -100,22 +102,36 @@ export default {
   padding: 8px;
 }
 .reviewReview span {
+  flex: 2;
+  vertical-align: middle;
+  text-align: left;
+  /* padding: 3px; */
+  background-color: #dddcde;
 }
 .reviewReview div {
   flex: 2;
   vertical-align: middle;
-  font-size: 20px;
+
   text-align: left;
   padding: 9px;
   background-color: #dddcde;
   overflow: auto;
-  height: 105px;
+  width: 200px;
+  font-size: 20px;
+}
+.reviewRating div {
+  flex: 2;
+  vertical-align: middle;
+  text-align: left;
+  padding: 9px;
+  background-color: #dddcde;
+  overflow: auto;
+  width: 200px;
 }
 .reviewRating {
-  /* background-color: #eaeff1; */
   display: flex;
   flex-direction: row;
-  line-height: 28px;
+  /* line-height: 28px; */
   background-color: #eaeff1;
 }
 
@@ -129,10 +145,9 @@ export default {
   vertical-align: middle;
   font-size: 36px;
   text-align: left;
-  padding: 9px;
+  /* padding: 3px; */
   background-color: #dddcde;
 }
-
 .IP {
   display: flex;
   flex-direction: column;
@@ -173,6 +188,67 @@ export default {
 @media only screen and (max-width: 600px) {
   .createRating {
     margin-bottom: 1rem;
+  }
+  .rating_review_block {
+    flex-basis: 75%;
+  }
+  .reviewReview {
+    display: flex;
+    flex-direction: row;
+    background-color: #eaeff1;
+  }
+  .reviewReview h4 {
+    flex: 1;
+    text-align: left;
+    padding: 8px;
+  }
+  .reviewReview span {
+    flex: 2;
+    vertical-align: middle;
+    text-align: left;
+    /* padding: 3px; */
+    background-color: #dddcde;
+  }
+  .reviewReview div {
+    flex: 2;
+    vertical-align: middle;
+
+    text-align: left;
+    padding: 9px;
+    background-color: #dddcde;
+    overflow: auto;
+    width: 200px;
+    font-size: 20px;
+  }
+  .reviewRating div {
+    flex: 2;
+    vertical-align: middle;
+    text-align: left;
+    padding: 9px;
+    background-color: #dddcde;
+    overflow: auto;
+    width: 200px;
+  }
+  .reviewRating {
+    display: flex;
+    flex-direction: row;
+    /* line-height: 28px; */
+    background-color: #eaeff1;
+  }
+
+  .reviewRating h4 {
+    flex: 1;
+    text-align: left;
+    padding: 8px;
+    font-size: 22px;
+  }
+  .reviewRating span {
+    flex: 2;
+    vertical-align: middle;
+    font-size: 36px;
+    text-align: left;
+    /* padding: 3px; */
+    background-color: #dddcde;
   }
 }
 </style>

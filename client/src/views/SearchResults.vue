@@ -10,7 +10,10 @@
       >
         <div @click="ViewReview(initialpost)" class="result">
           <div class="rating">
-            <h1>{{ initialpost.ratingAverage }} / 5</h1>
+            <h1>
+              {{ parseFloat(initialpost.ratingAverage).toFixed(1).toString() }}
+              / 5.0
+            </h1>
           </div>
           <div class="theReview">
             <h1
@@ -27,7 +30,7 @@
               {{ initialpost.landlordfirstname.substring(0, 13) }}
               {{ initialpost.landlordlastname.substring(0, 13) + ".." }}
             </h1>
-            <h2 v-if="initialpost.street.length + initialpost.city.length < 70">
+            <h2 v-if="initialpost.street.length + initialpost.city.length < 35">
               {{ initialpost.street }} {{ initialpost.city }}
             </h2>
             <h2 v-else>
@@ -206,6 +209,7 @@ export default {
 .theReview h2 {
   height: 65%;
   /* line-height: 10px; */
+  padding: 15px;
   font-size: 24px;
   justify-content: left;
 }
@@ -240,6 +244,50 @@ export default {
 @media only screen and (max-width: 600px) {
   .createAPost {
     margin-bottom: 1rem;
+  }
+  .theReview {
+    background-color: #eaeff1;
+    height: 150px;
+    width: 50%;
+
+    /* margin: 0 auto; */
+
+    /* padding: 35px;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle; */
+  }
+  /* //! Limit characters for review */
+  .theReview h1 {
+    height: 35%;
+    /* line-height: 10px; */
+    font-size: 24px;
+
+    /* margin: 0 auto; */
+    /* text-align: center;
+  justify-content: center;
+  vertical-align: middle; */
+  }
+  .theReview h2 {
+    height: 65%;
+    /* line-height: 10px; */
+    padding: 15px;
+    font-size: 20px;
+    justify-content: left;
+  }
+  .rating {
+    background-color: darkgray;
+    height: 150px;
+    width: 150px;
+    /* padding: 35px; */
+  }
+  .rating h1 {
+    line-height: 150px;
+    font-size: 32px;
+    /* background-color: darkgray; */
+    /* height: 150px; */
+    /* width: 150px; */
+    /* padding: 35px; */
   }
 }
 </style>
